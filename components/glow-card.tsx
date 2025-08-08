@@ -49,7 +49,7 @@ export function GlowCard({ className, children }: Props) {
             WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
             maskComposite: "exclude",
             WebkitMaskComposite: "xor",
-          } as any}
+          } as React.CSSProperties}
         />
       </div>
 
