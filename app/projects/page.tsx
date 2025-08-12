@@ -5,7 +5,7 @@ import Link from "next/link"
 import { MetallicBackground } from "@/components/metallic-background"
 import { NavBar } from "@/components/nav-bar"
 import { Footer } from "@/components/footer"
-// import { Cursor } from "@/components/cursor"
+import { Cursor } from "@/components/cursor"
 import { GlowCard } from "@/components/glow-card"
 import { siteConfig } from "@/lib/site-config"
 import { motion } from "framer-motion"
@@ -16,7 +16,7 @@ export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen bg-black text-zinc-200 cursor-none">
       <MetallicBackground />
-      {/* <Cursor /> */}
+      <Cursor />
       <NavBar />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 pb-20">
@@ -38,7 +38,7 @@ export default function ProjectsPage() {
                   <Image
                     src={p.image || "/placeholder.svg?height=720&width=1280&query=project%20cover%20image"}
                     alt={p.title}
-                    fill
+                    fill={true}
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover"
                   />

@@ -43,9 +43,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-body {
-  cursor: url('../public/navigate.png'), auto;
-}
 
 
 :root {

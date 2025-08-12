@@ -6,7 +6,7 @@ import { NavBar } from "@/components/nav-bar"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Copy, Linkedin, Github, Code2, Twitter } from 'lucide-react'
+import { Mail, Phone, MapPin, Copy, Linkedin, Github, Code2, X } from 'lucide-react'
 import { useState } from "react"
 import { siteConfig } from "@/lib/site-config"
 import { Cursor } from "@/components/cursor"
@@ -67,7 +67,7 @@ export default function ConnectPage() {
                 <Link href={`mailto:${contact.email}`} className="text-zinc-300 hover:text-zinc-50 underline underline-offset-4">
                   {contact.email}
                 </Link>
-                <CopyButton text={contact.email} />
+                
               </CardContent>
             </Card>
           </GlowCard>
@@ -80,7 +80,7 @@ export default function ConnectPage() {
                   Phone
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex items-center justify-between">
+              <CardContent className="flex items-center justify-between text-white">
                 <Link href={`tel:${contact.phone}`} className="text-zinc-300 hover:text-zinc-50">
                   {contact.phone}
                 </Link>
@@ -106,29 +106,29 @@ export default function ConnectPage() {
           <GlowCard>
             <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
               <CardHeader>
-                <CardTitle className="text-zinc-200">Social</CardTitle>
+                <CardTitle className="text-white">Social</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-3">
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40">
-                  <Link href={socials.linkedin} target="_blank" aria-label="LinkedIn profile">
+                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:text-border-white">
+                  <Link href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" className="text-white">
                     <Linkedin className="mr-2 h-4 w-4" />
                     LinkedIn
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40">
-                  <Link href={socials.x} target="_blank" aria-label="X profile">
-                    <Twitter className="mr-2 h-4 w-4" />
+                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 ">
+                  <Link href={socials.x} target="_blank" aria-label="X profile" className="text-white">
+                    <X className="mr-2 h-4 w-4" />
                     X
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40">
-                  <Link href={socials.github} target="_blank" aria-label="GitHub profile">
+                  <Link href={socials.github} target="_blank" aria-label="GitHub profile" className="text-white">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40">
-                  <Link href={socials.leetcode} target="_blank" aria-label="LeetCode profile">
+                  <Link href={socials.leetcode} target="_blank" aria-label="LeetCode profile" className="text-white">
                     <Code2 className="mr-2 h-4 w-4" />
                     LeetCode
                   </Link>

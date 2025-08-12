@@ -34,7 +34,7 @@ export default function AboutPage() {
           {/* Hobbies */}
           {about.hobbies.map((hobby) => (
             <GlowCard key={hobby.title} className="col-span-12 sm:col-span-6 lg:col-span-4">
-              <div className="relative h-full w-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+              <div className="relative h-[200px] w-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
                 <Image
                   src={hobby.image || "/placeholder.svg?height=800&width=1200&query=hobby%20photo%20for%20portfolio"}
                   alt={hobby.title}
@@ -59,9 +59,12 @@ export default function AboutPage() {
                 : idx % 3 === 0
                 ? "col-span-12 sm:col-span-4"
                 : "col-span-12 sm:col-span-6"
+            
+            const height = idx % 5 === 0 ? "h-[400px]" : "h-[200px]"
+            
             return (
               <GlowCard key={g.caption + idx} className={span}>
-                <div className="relative h-full w-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+                <div className={`relative ${height} w-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur`}>
                   <Image
                     src={g.src || "/placeholder.svg?height=1200&width=1600&query=hackathon%20photo%20for%20portfolio"}
                     alt={g.caption}
@@ -78,7 +81,7 @@ export default function AboutPage() {
 
           {/* YouTube Card */}
           <GlowCard className="col-span-12">
-            <div className="relative flex h-full w-full items-center justify-between gap-6 rounded-2xl border border-zinc-800/80 bg-zinc-950/40 p-6 backdrop-blur">
+            <div className="relative flex h-[200px] w-full items-center justify-between gap-6 rounded-2xl border border-zinc-800/80 bg-zinc-950/40 p-6 backdrop-blur">
               <div>
                 <div className="inline-flex items-center gap-2 text-zinc-300">
                   <Youtube className="h-5 w-5 text-red-400" />

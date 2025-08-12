@@ -11,7 +11,6 @@ export function NavBar({
     { href: "/#home", label: "Home" },
     { href: "/about", label: "Who Am I" },
     { href: "/projects", label: "Projects" },
-    { href: "/gallery", label: "Gallery" },
     { href: "/#skills", label: "Skills" },
     { href: "/#achievements", label: "Achievements" },
     { href: "/#clubs", label: "Clubs" },
