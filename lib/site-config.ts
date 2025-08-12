@@ -201,7 +201,7 @@ export const siteConfig = {
     gallery: [
       { src: "/mercuria.jpg", caption: "EcoSap — 2nd Prize, Mercuria 2024" },
       { src: "/metadome.jpg", caption: "Multi-agent orchestration at Emerging Tech 2024"},
-      { src: "/latenights.jpg", caption: "Multi-agent orchestration at Mercuria 2024" },
+      { src: "/latenights.jpg", caption: "latenights sprints" },
       { src: "/companyvisits2.jpg" , caption:"Company visits"},
       { src: "/sarkworkshop.jpg", caption: "Hands-on workshop at SARK" },
       { src: "/projectbooth.jpg", caption: "Project demo booth" },
