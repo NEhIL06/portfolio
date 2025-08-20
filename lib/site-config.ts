@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Nehil Chandrakar",
-  tagline: "Born builder — crafting systems, shaping experiences.",
-  role: "Builder • Engineer • Designer",
+  tagline: "builder — crafting systems, shaping experiences.",
+  role: "Developer • Engineer • Designer",
   contact: {
     email: "chnadrakarnehil.06112002@gmail.com",
     phone: "+919131203322",
