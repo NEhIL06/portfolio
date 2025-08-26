@@ -4,7 +4,7 @@ export const siteConfig = {
   role: "Developer • Engineer • Designer",
   contact: {
     email: "chnadrakarnehil.06112002@gmail.com",
-    phone: "+919131203322",
+    phone: "",
     location: "Tumkur, India",
   },
   socials: {
