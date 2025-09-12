@@ -52,7 +52,7 @@ export const siteConfig = {
       description: "Mobile app empowering small farmers to list crops and connect directly with buyers.",
       stack: ["React Native", "Appwrite", "Node.js", "Redis", "REST APIs"],
       link: "https://github.com/NEhIL06/Krishi_Bazaar",
-      demo: undefined,
+      demo: "https://landingpage-kb.vercel.app/",
       image: "/krishibazar.png",
       facts: [
         "Real-time weather and market news inside the app",
@@ -64,8 +64,8 @@ export const siteConfig = {
       title: "SkyScope",
       description: "Backend for a real-time 2D virtual office enabling presence and collaboration.",
       stack: ["TurboRepo", "Node.js", "WebSockets", "WebRTC", "MongoDB", "Redis", "Docker", "CI/CD"],
-      link: "#",
-      demo: undefined,
+      link: "https://github.com/NEhIL06/metaverse_2d",
+      demo: "https://metaverse-frontend-6gjy.onrender.com/",
       image: "/skyscope.png",
       facts: [
         "Proximity-based P2P voice chat",
@@ -76,8 +76,8 @@ export const siteConfig = {
     {
       title: "Avanti",
       description: "AI assistant simplifying travel ticketing and banking for elderly & multilingual users.",
-      stack: ["Three.js", "React.js", "Node.js", "Flask", "Gemini", "11Labs", "Rhubarb", "ffmpeg", "Sarvam.ai"],
-      link: "#",
+      stack: ["Three.js", "React.js", "Node.js", "Flask", "Gemini", "11Labs", "Rhubarb", "ffmpeg", "Sarvam.ai","COnversational AI"],
+      link: "https://github.com/NEhIL06/Avanti",
       demo: undefined,
       image: "/avanti.png",
       facts: [
@@ -89,9 +89,9 @@ export const siteConfig = {
     {
       title: "The Journal ",
       description: "Minimal Next.js front-end for a journaling platform focused on clarity and calm UI.",
-      stack: ["Next.js", "React", "Tailwind CSS"],
-      link: "#",
-      demo: undefined,
+      stack: ["SpringBoot", "React", "Tailwind CSS", "Java", "Apache Kafka", "MongoDB","JWT","Swagger","REST APIs"],
+      link: "https://github.com/NEhIL06/The_Journal",
+      demo: "https://the-journal-frontend-kvh8.vercel.app/",
       image: "/journal.png",
       facts: ["Keyboard-first interactions", "Local drafts & autosave", "Theming and accessibility"],
     },
@@ -100,7 +100,7 @@ export const siteConfig = {
       description: "AI-enabled API key management to store, rotate, and retrieve keys securely.",
       stack: ["Next.js", "TypeScript", "PostgreSQL", "tRPC", "JWT"],
       link: "#",
-      demo: undefined,
+      demo: "https://keybankpro.vercel.app/",
       image: "/keybank.png",
       facts: ["Secret versioning & rotation", "AI suggestions for least-privilege policies", "Audit trails"],
     },
@@ -108,8 +108,8 @@ export const siteConfig = {
     {
       title: "NewsAnchor — AI-powered news anchor",
       description: "An AI-powered news anchor that summarizes, narrates, and presents daily headlines.",
-      stack: ["Next.js", "Node.js", "TTS", "LLM"],
-      link: "#",
+      stack: ["Three.js","Vite.js", "React.js", "Node.js", "Flask", "Gemini", "11Labs", "Rhubarb", "ffmpeg", "Sarvam.ai"],
+      link: "https://github.com/NEhIL06/NEWS_ANCHOR",
       demo: undefined,
       image: "/newsanchor.png",
       facts: ["Multi-lingual narration", "Topic clustering", "Daily digest pipeline"],
@@ -117,8 +117,8 @@ export const siteConfig = {
     {
       title: "InstaFood",
       description: "Instant food delivery experience with streamlined browsing and checkout.",
-      stack: ["React Native", "Node.js", "Stripe", "Redis"],
-      link: "#",
+      stack: ["React Native", "Node.js", "Stripe", "Redis", "JavaScript"],
+      link: "https://github.com/NEhIL06/Instafood",
       demo: undefined,
       image: "/instafood.png",
       facts: ["Real-time delivery tracking", "Optimized menus & search", "Offer scheduling"],
@@ -127,7 +127,7 @@ export const siteConfig = {
       title: "AWS Music Recommender",
       description: "AI-based music recommender backed by AWS services.",
       stack: ["AWS", "Python", "SageMaker", "Lambda"],
-      link: "#",
+      link: "https://github.com/NEhIL06/AWSMusicRecommeder",
       demo: undefined,
       image: "/awsmusicrecommender.png",
       facts: ["Feature stores on AWS", "Hybrid recommenders", "A/B tested playlists"],
@@ -135,22 +135,26 @@ export const siteConfig = {
     {
       title: "WebGen",
       description: "AI-powered website generator that scaffolds modern, responsive sites.",
-      stack: ["Next.js", "LLM", "Tailwind CSS"],
-      link: "#",
+      stack: ["React.js", "LLM", "Tailwind CSS", "Node.js", "Express.js","JWT","REST APIs"],
+      link: "https://github.com/NEhIL06/web_gen",
       demo: undefined,
       image: "/webgen.png",
       facts: ["Component library aware generation", "Prompt presets", "One-click export"],
     },
     {
-      title: "AI Photo Editor",
-      description: "Photo editor with AI-based transformations and retouching.",
-      stack: ["React", "WebGL", "LLM", "Cloud Functions"],
-      link: "#",
+      title: "AI Food Recommender",
+      description: "AI-powered recommendation system suggesting dishes based on cravings, calories, and health preferences.",
+      stack: ["Python", "Crew AI", "GRPO", "Vector DBMS", "LLM"],
+      link: "https://github.com/NEhIL06/AI_Food_Asistant",
       demo: undefined,
-      image: "/aiphotoeditor.png",
-      facts: ["Inpainting / background removal", "Look presets", "Batch operations"],
-    },
-
+      image: "/awsmusicrecommender.png",
+      facts: [
+        "Improved recommendation accuracy by 30%",
+        "Multilingual support across 5+ Indian languages",
+        "Personalized health and diet-aware suggestions"
+      ],
+    }
+    
     // Previously included
   
    
