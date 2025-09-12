@@ -43,7 +43,7 @@ export const siteConfig = {
   },
   projectsPage: {
     title: "Selected Projects",
-    quote: "MY Goal is to build systems that look simple on the surface and remain dependable under pressure.",
+    quote: "My Goal is to build systems that look simple on the surface and remain dependable under pressure.",
   },
   projects: [
     // Provided additions
