@@ -214,9 +214,9 @@ export const siteConfig = {
     youtube: {
       channelName: "Your Channel Name",
       tagline: "Engineering, design, and shipping better software.",
-      link: "https://www.youtube.com/@your-channel",
-      latestVideo: "https://www.youtube.com/watch?v=example",
-      preview: "/avanti.png",
+      link: "https://www.youtube.com/@nehilchandrakar9251",
+      latestVideo: "https://youtu.be/1INa8_HbocU?si=Xl_WdT7wgUkrzQXL",
+      preview: "/youtube-preview.png",
     },
   },
 }
