@@ -153,7 +153,33 @@ export const siteConfig = {
         "Multilingual support across 5+ Indian languages",
         "Personalized health and diet-aware suggestions"
       ],
-    }
+    },
+    {
+      title: "Interview Assitant Pro",
+      description: "Interview assistant, a platform dedicated to help HRs shortlist candidates and save company time.",
+      stack: ["React.js", "Express.js", "TypeScript", "Generative AI", "MongoDB", "Node.js","JWT","REST APIs","Gemini","RAG"],
+      link: "https://github.com/NEhIL06/InterviewAssistant",
+      demo: "https://interviewassistantfe.onrender.com/",
+      image: "/interviewassistant.png",
+      facts: [
+        "Scores each response and summary of each candidates and a summary of the interview",
+        "Conducts structured interviews based on the candidates resume",
+        "Saves HR time by automating the interview process"
+      ],
+    },
+    {
+      title: "EcoSap",
+      description: "An Platform designed to give initative to the small farmers to grow more trees and reduce the carbon footprint.",
+      stack: ["React.js", "Express.js", "TypeScript","FASTApi", "YOLO", "MongoDB", "Node.js","REST APIs","Gemini","Distributed Services"],
+      link: "https://github.com/NEhIL06/Ecosap",
+      demo: undefined,
+      image: "/interviewassistant.png",
+      facts: [
+        "Easy Setup and the automative monitoring of the trees",
+        "Ecocredicts are granted based on the growth of the trees",
+        "The Credits can then be used to buy agricultural products from the platform",
+      ],
+    },
     
     // Previously included
   
