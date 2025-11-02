@@ -211,7 +211,7 @@ export const siteConfig = {
     { title: "Mercuria India Hackathon 2024 — EcoSap", subtitle: "2nd Prize", date: "Nov 2024" },
     { title: "Emerging Tech Hackathon 2024 — Multi-Agent Orchestration for Choice Prediction", subtitle: "Honourable Mention", date: "Dec 2024" },
     { title: "The Better Hack 2025 — Jarvis for Food (Multi-agentic orchestration using GRPO)", subtitle: "Top 5", date: "May 2025" },
-    { title: "LinkedIn", subtitle: "500+ Connections", date: "May 2025" },
+  
   ],
   clubs: [
     {
