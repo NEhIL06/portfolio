@@ -1,3 +1,4 @@
+
 export const siteConfig = {
   name: "Nehil Chandrakar",
   tagline: "builder — crafting systems, shaping experiences.",
@@ -94,6 +95,14 @@ export const siteConfig = {
       demo: "https://the-journal-frontend-kvh8.vercel.app/",
       image: "/journal.png",
       facts: ["Keyboard-first interactions", "Local drafts & autosave", "Theming and accessibility"],
+    },{
+      title: "zenletics",
+      description: "AI-powered fitness app offering personalized workout plans, nutrition advice, and progress tracking.",
+      stack:["Next.js","TypeScript","Tailwind CSS","Node.js","MongoDB","JWT","REST APIs","Generative AI","Gemini AI"],
+      link:"https://github.com/NEhIL06/zenfit",
+      demo:"https://zenletics.vercel.app/",
+      image:"/zenletics.png",
+      facts:["Personalized workout plans","Nutrition advice","Progress tracking"]
     },
     {
       title: "KeyBank",
@@ -145,13 +154,26 @@ export const siteConfig = {
       title: "AI Food Recommender",
       description: "AI-powered recommendation system suggesting dishes based on cravings, calories, and health preferences.",
       stack: ["Python", "Crew AI", "GRPO", "Vector DBMS", "LLM"],
-      link: "https://github.com/NEhIL06/AI_Food_Asistant",
+      link: "https://github.com/NEhIL06/RAG-Engine-for-food-recommendation",
       demo: undefined,
       image: "/awsmusicrecommender.png",
       facts: [
         "Improved recommendation accuracy by 30%",
         "Multilingual support across 5+ Indian languages",
         "Personalized health and diet-aware suggestions"
+      ],
+    },{
+      title: "RAG_Talent_Search",
+      description: "A talent search engine leveraging Retrieval-Augmented Generation (RAG) to match candidates with job descriptions effectively.",
+      stack: ["Python", "FastAPI", "RAG", "LLM", "ChromaDB", "Elasticsearch"],
+      link: "https://github.com/NEhIL06/RAG_talent_search", 
+      demo: undefined,
+      image: "/streaming.png",
+      facts: [
+        "Combines dense and sparse retrieval for improved candidate-job matching",
+        "Implements reranking with CrossEncoder (MiniLM-L-6-v2) for fine-grained scoring",
+        "Evaluated using Recall@K, Precision@K, and MRR metrics for retrieval quality",
+        "Dockerized architecture for seamless local orchestration and deployment"
       ],
     },
     {
@@ -194,7 +216,7 @@ export const siteConfig = {
   clubs: [
     {
       name: "AI BREWERY",
-      role: "Founding Member",
+      role: "Co-Founder & Secretary Community",
       since: "Nov 2024 – Present",
       location: "SIT, KA",
       posts: ["Co-founded an organization empowering students in emerging tech."],
@@ -238,7 +260,7 @@ export const siteConfig = {
       { src: "/companyvisits.jpg", caption: "Conversations and connections" },
     ],
     youtube: {
-      channelName: "Your Channel Name",
+      channelName: "NehilChandrakar",
       tagline: "Engineering, design, and shipping better software.",
       link: "https://www.youtube.com/@nehilchandrakar9251",
       latestVideo: "https://youtu.be/1INa8_HbocU?si=Xl_WdT7wgUkrzQXL",

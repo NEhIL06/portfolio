@@ -14,7 +14,6 @@ export function NavBar({
     { href: "/#skills", label: "Skills" },
     { href: "/#achievements", label: "Achievements" },
     { href: "/#clubs", label: "Clubs" },
-    { href: "/connect", label: "Connect" },
   ],
 }: {
   links?: { href: string; label: string }[]
