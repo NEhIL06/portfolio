@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "builder — crafting systems, shaping experiences.",
   role: "Developer • Engineer • Designer",
   contact: {
-    email: "chnadrakarnehil.06112002@gmail.com",
+    email: "nehil.contact@gmail.com",
     phone: "",
     location: "Tumkur, India",
   },
