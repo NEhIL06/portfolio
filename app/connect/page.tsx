@@ -6,7 +6,7 @@ import { NavBar } from "@/components/nav-bar"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Copy, Linkedin, Github, Code2, X } from 'lucide-react'
+import { Mail, MapPin, Copy, Linkedin, Github, Code2, X } from 'lucide-react'
 import { useState } from "react"
 import { siteConfig } from "@/lib/site-config"
 import { Cursor } from "@/components/cursor"
@@ -27,10 +27,10 @@ function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) 
           // noop
         }
       }}
-      className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40"
+      className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all text-white hover:text-white"
     >
-      <Copy className="mr-2 h-4 w-4" />
-      {copied ? "Copied" : label}
+      <Copy className="mr-2 h-4 w-4 text-white" />
+      <span className="text-white">{copied ? "Copied" : label}</span>
     </Button>
   )
 }
@@ -54,9 +54,9 @@ export default function ConnectPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
           <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-zinc-200">
                   <Mail className="h-5 w-5 text-zinc-400" />
@@ -64,86 +64,73 @@ export default function ConnectPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex items-center justify-between">
-                <Link href={`mailto:${contact.email}`} className="text-zinc-300 hover:text-zinc-50 underline underline-offset-4">
+                <Link href={`mailto:${contact.email}`} className="text-zinc-300 hover:text-zinc-50 underline underline-offset-4 transition-colors">
                   {contact.email}
                 </Link>
-                
+                <CopyButton text={contact.email} />
               </CardContent>
             </Card>
           </GlowCard>
 
           <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-zinc-200">
-                  <Phone className="h-5 w-5 text-zinc-400" />
-                  Phone
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-between text-white">
-                <Link href={`tel:${contact.phone}`} className="text-zinc-300 hover:text-zinc-50">
-                  {contact.phone}
-                </Link>
-                <CopyButton text={contact.phone} />
-              </CardContent>
-            </Card>
-          </GlowCard>
-
-          <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-zinc-200">
                   <MapPin className="h-5 w-5 text-zinc-400" />
                   Location
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-300">{contact.location}</CardContent>
+              <CardContent className="text-zinc-300 text-lg">{contact.location}</CardContent>
             </Card>
           </GlowCard>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-1 max-w-3xl mx-auto">
           <GlowCard>
             <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
               <CardHeader>
-                <CardTitle className="text-white">Social</CardTitle>
+                <CardTitle className="text-zinc-200 text-xl">Find Me Online</CardTitle>
+                <p className="text-sm text-zinc-400 mt-2">Connect with me on these platforms</p>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-3">
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:text-border-white">
-                  <Link href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" className="text-white">
-                    <Linkedin className="mr-2 h-4 w-4" />
-                    LinkedIn
+              <CardContent className="grid grid-cols-2 gap-3">
+                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
+                  <Link href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" className="text-white hover:text-white">
+                    <Linkedin className="mr-2 h-4 w-4 text-white" />
+                    <span className="text-white">LinkedIn</span>
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 ">
-                  <Link href={socials.x} target="_blank" aria-label="X profile" className="text-white">
-                    <X className="mr-2 h-4 w-4" />
-                    X
+                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
+                  <Link href={socials.x} target="_blank" aria-label="X profile" className="text-white hover:text-white">
+                    <X className="mr-2 h-4 w-4 text-white" />
+                    <span className="text-white">X</span>
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40">
-                  <Link href={socials.github} target="_blank" aria-label="GitHub profile" className="text-white">
-                    <Github className="mr-2 h-4 w-4" />
-                    GitHub
+                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
+                  <Link href={socials.github} target="_blank" aria-label="GitHub profile" className="text-white hover:text-white">
+                    <Github className="mr-2 h-4 w-4 text-white" />
+                    <span className="text-white">GitHub</span>
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40">
-                  <Link href={socials.leetcode} target="_blank" aria-label="LeetCode profile" className="text-white">
-                    <Code2 className="mr-2 h-4 w-4" />
-                    LeetCode
+                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
+                  <Link href={socials.leetcode} target="_blank" aria-label="LeetCode profile" className="text-white hover:text-white">
+                    <Code2 className="mr-2 h-4 w-4 text-white" />
+                    <span className="text-white">LeetCode</span>
                   </Link>
                 </Button>
               </CardContent>
             </Card>
           </GlowCard>
+        </div>
 
-          <GlowCard className="md:col-span-2">
+        <div className="mt-8 max-w-3xl mx-auto">
+          <GlowCard>
             <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
               <CardHeader>
-                <CardTitle className="text-zinc-200">What can we build together?</CardTitle>
+                <CardTitle className="text-zinc-200 text-2xl">What can we build together?</CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-300">
-                I specialize in systems design, scalable backends, and human-centered interfaces. If your project needs thoughtful engineering and a high bar for craft, drop me a note — I usually respond within a day.
+              <CardContent className="text-zinc-300 text-lg leading-relaxed">
+                I enjoy building things that work well and feel simple — whether it&apos;s an AI idea, a web app, or a fun side project. 
+                Let&apos;s connect and make something awesome.
               </CardContent>
             </Card>
           </GlowCard>
