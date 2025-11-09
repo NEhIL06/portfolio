@@ -13,10 +13,11 @@ import { Achievements } from "@/components/achievements"
 import { Clubs } from "@/components/clubs"
 import { Footer } from "@/components/footer"
 import { Cursor } from "@/components/cursor"
-
+import { Analytics } from "@vercel/analytics/next"
 export default function Page() {
   return (
     <main className="relative min-h-screen bg-black text-zinc-200 cursor-none">
+      <Analytics/>
       <MetallicBackground />
       <Cursor />
       <NavBar />
