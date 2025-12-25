@@ -31,8 +31,6 @@ export default function Page() {
         </Section>
 
 
-
-        {/* Quick actions under hero */}
         <div className="mx-auto mt-6 max-w-5xl px-4 sm:px-6">
           <div className="flex flex-wrap gap-3">
             <Button
@@ -59,8 +57,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Short Who Am I on home (full page at /about) */}
-        {/* Short Who Am I on home (full page at /about) */}
         <Section id="about">
           <WhoAmI />
         </Section>
@@ -71,20 +67,16 @@ export default function Page() {
           <Skills />
         </Section>
 
-        {/* Projects - horizontal carousel (full grid at /projects) */}
-        {/* Projects - horizontal carousel (full grid at /projects) */}
+        
         <Section id="projects">
           <Projects />
         </Section>
 
-        {/* Achievements */}
-        {/* Achievements */}
+   
         <Section id="achievements">
           <Achievements />
         </Section>
 
-        {/* Clubs */}
-        {/* Clubs */}
         <Section id="clubs">
           <Clubs />
         </Section>

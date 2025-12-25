@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
+    default: " \t Nehil Chandrakar",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.tagline,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: siteConfig.tagline,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.png",
   },
 };
 

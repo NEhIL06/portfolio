@@ -2,7 +2,7 @@
 
 A premium, high-performance personal portfolio built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**. Designed with a focus on aesthetics, smooth animations, and interactive 3D elements.
 
-![Portfolio Preview](public/me1.jpg)
+![Portfolio Preview](public/portfolio.png)
 
 ## ✨ Key Features
 
@@ -47,8 +47,8 @@ my_story/
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/NEhiL06/my_story.git
-    cd my_story
+    cd your_folder_name
+    git clone https://github.com/NEhIL06/portfolio.git
     ```
 
 2.  **Install dependencies:**
