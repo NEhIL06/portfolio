@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Story | Professional Portfolio
 
-## Getting Started
+A premium, high-performance personal portfolio built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**. Designed with a focus on aesthetics, smooth animations, and interactive 3D elements.
 
-First, run the development server:
+![Portfolio Preview](public/me1.jpg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Key Features
+
+-   **Interactive 3D Elements**: Integrated Spline scenes for a modern, immersive experience.
+-   **Smooth Motion**: Powered by Framer Motion and Lenis for buttery-smooth scrolling and transitions.
+-   **Dynamic Backgrounds**: Metallic glassmorphism effects and interactive cursor tracking.
+-   **Responsive Design**: Fully optimized for all screen sizes, from mobile to ultra-wide monitors.
+-   **Analytics Integrated**: Vercel Analytics for tracking engagement and performance.
+-   **Snowfall Effect**: A subtle, elegant snowfall overlay using `react-snowfall`.
+
+## 🛠️ Tech Stack
+
+-   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+-   **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/), [Lenis Scroll](https://lenis.darkroom.engineering/)
+-   **3D Graphics**: [Spline](https://spline.design/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Deployment**: [Vercel](https://vercel.com/)
+
+## 📂 Project Structure
+
+```text
+my_story/
+├── app/                # Next.js App Router pages and layouts
+├── components/         # Reusable UI components
+│   ├── ui/             # Atomic UI components (buttons, sections, etc.)
+│   └── ...             # Feature-specific components (Hero, Skills, Projects)
+├── lib/                # Utility functions and shared logic
+├── public/             # Static assets (images, PDFs, SVGs)
+└── ...                 # Configuration files (Tailwind, TypeScript, ESLint)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   Node.js 18.x or later
+-   npm, yarn, pnpm, or bun
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/NEhiL06/my_story.git
+    cd my_story
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-## Deploy on Vercel
+4.  **Open the app:**
+    Navigate to [http://localhost:3000](http://localhost:3000) to see the result.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project is optimized for deployment on the **Vercel Platform**.
+
+```bash
+npm run build
+```
+
+For more details, check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Connect with Me
+
+-   **LinkedIn**: [Nehil Chandrakar](https://www.linkedin.com/in/nehil-chandrakar-272410259/)
+-   **GitHub**: [@NEhiL06](https://github.com/NEhiL06)
+-   **Email**: [nehil.contact@gmail.com](mailto:nehil.contact@gmail.com)
+
+---
+
+Built with ❤️ by [Nehil](https://nehil.vercel.app)
