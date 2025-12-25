@@ -51,7 +51,7 @@ export default function Page() {
               variant="outline"
               className="border-zinc-700/80 bg-zinc-900/40 hover:bg-zinc-800/40 backdrop-blur supports-[backdrop-filter]:bg-zinc-900/30"
             >
-              <Link href="/Nehil_s_resume.pdf" target="_blank" aria-label="Download resume as PDF">
+              <Link href="/Nehil_SDE (1).pdf" target="_blank" aria-label="Download resume as PDF">
                 <Download className="mr-2 h-4 w-4" />
                 Resume
               </Link>
