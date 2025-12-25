@@ -6,18 +6,8 @@ import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-export function NavBar({
-  links = [
-    { href: "/#home", label: "Home" },
-    { href: "/about", label: "Who Am I" },
-    { href: "/projects", label: "Projects" },
-    { href: "/#skills", label: "Skills" },
-    { href: "/#achievements", label: "Achievements" },
-    { href: "/#clubs", label: "Clubs" },
-  ],
-}: {
-  links?: { href: string; label: string }[]
-}) {
+export function NavBar() {
+  const links = siteConfig.navItems
   const pathname = usePathname()
   return (
     <header className="fixed inset-x-0 top-0 z-50">

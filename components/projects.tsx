@@ -39,16 +39,16 @@ export function Projects() {
               className="snap-start shrink-0 w-[88vw] sm:w-[560px]"
             >
               <GlowCard>
-                <div className="group relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+              <div className="group relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
                   <div className="relative aspect-[16/9]">
                     <Image
-                      src={p.image }
+                      src={p.image}
                       alt={`${p.title} cover image`}
                       fill
                       sizes="(max-width: 768px) 88vw, 560px"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
-                    
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     {/* Hover overlay with interesting facts */}
                     <div className="absolute inset-0 flex items-end">

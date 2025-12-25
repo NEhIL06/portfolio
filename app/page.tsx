@@ -14,21 +14,23 @@ import { Clubs } from "@/components/clubs"
 import { Footer } from "@/components/footer"
 import { Cursor } from "@/components/cursor"
 import { Analytics } from "@vercel/analytics/next"
+import { Section } from "@/components/ui/section"
+import Snowfall from "react-snowfall"
 export default function Page() {
   return (
     <main className="relative min-h-screen bg-black text-zinc-200 cursor-none">
-      <Analytics/>
+      <Snowfall color="white"/>
+      <Analytics />
       <MetallicBackground />
       <Cursor />
       <NavBar />
 
       <div className="relative">
-        {/* Hero */}
-        <section id="home" className="scroll-mt-24">
+        <Section id="home">
           <Hero />
-        </section>
+        </Section>
 
-        
+
 
         {/* Quick actions under hero */}
         <div className="mx-auto mt-6 max-w-5xl px-4 sm:px-6">
@@ -58,29 +60,34 @@ export default function Page() {
         </div>
 
         {/* Short Who Am I on home (full page at /about) */}
-        <section id="about" className="scroll-mt-24">
+        {/* Short Who Am I on home (full page at /about) */}
+        <Section id="about">
           <WhoAmI />
-        </section>
+        </Section>
 
         {/* Skills */}
-        <section id="skills" className="scroll-mt-24">
+        {/* Skills */}
+        <Section id="skills">
           <Skills />
-        </section>
+        </Section>
 
         {/* Projects - horizontal carousel (full grid at /projects) */}
-        <section id="projects" className="scroll-mt-24">
+        {/* Projects - horizontal carousel (full grid at /projects) */}
+        <Section id="projects">
           <Projects />
-        </section>
+        </Section>
 
         {/* Achievements */}
-        <section id="achievements" className="scroll-mt-24">
+        {/* Achievements */}
+        <Section id="achievements">
           <Achievements />
-        </section>
+        </Section>
 
         {/* Clubs */}
-        <section id="clubs" className="scroll-mt-24">
+        {/* Clubs */}
+        <Section id="clubs">
           <Clubs />
-        </section>
+        </Section>
 
         <Footer />
       </div>
