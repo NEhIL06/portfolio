@@ -1,54 +1,47 @@
 "use client"
 
 import Image from "next/image"
-import { MetallicBackground } from "@/components/metallic-background"
-import { NavBar } from "@/components/nav-bar"
-import { Footer } from "@/components/footer"
-import { Cursor } from "@/components/cursor"
 import { GlowCard } from "@/components/glow-card"
 import { siteConfig } from "@/lib/site-config"
 import { motion } from "framer-motion"
 import { Youtube } from 'lucide-react'
+import { SplitText } from "@/components/motion/split-text"
 
 export default function AboutPage() {
   const { about } = siteConfig
   return (
-    <main className="relative min-h-screen bg-black text-zinc-200 cursor-none">
-      <MetallicBackground />
-      <Cursor />
-      <NavBar />
-
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 pb-20">
-        <motion.h1
+    <div className="relative min-h-screen pt-32 pb-24">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <h1 className="text-5xl sm:text-7xl font-semibold tracking-tighter text-white mb-6">
+          <SplitText>Who Am I?</SplitText>
+        </h1>
+        <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl font-semibold tracking-tight bg-gradient-to-b from-zinc-100 to-zinc-400 bg-clip-text text-transparent"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-2xl text-lg text-zinc-400 mb-16"
         >
-          Who Am I?
-        </motion.h1>
-        <p className="mt-3 max-w-2xl text-zinc-400">{about.intro}</p>
+          {about.intro}
+        </motion.p>
 
         {/* Mosaic grid */}
         <div className="mt-10 grid grid-cols-12 auto-rows-[200px] gap-4">
           {/* Hobbies */}
           {about.hobbies.map((hobby) => (
-            <GlowCard key={hobby.title} className="col-span-12 sm:col-span-6 lg:col-span-4">
-              <div className="relative h-[200px] w-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
-                <Image
-                  src={hobby.image || "/placeholder.svg?height=800&width=1200&query=hobby%20photo%20for%20portfolio"}
-                  alt={hobby.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover opacity-70"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
-                <div className="absolute bottom-0 p-4">
-                  <h3 className="text-lg font-medium text-zinc-100">{hobby.title}</h3>
-                  <p className="text-sm text-zinc-300">{hobby.description}</p>
-                </div>
+            <div key={hobby.title} className="col-span-12 sm:col-span-6 lg:col-span-4 group relative h-full min-h-[200px] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#111111]">
+              <Image
+                src={hobby.image || "/placeholder.svg?height=800&width=1200&query=hobby%20photo%20for%20portfolio"}
+                alt={hobby.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+              <div className="absolute bottom-0 p-6 z-10 w-full">
+                <h3 className="text-xl font-medium text-[#EDEDED]">{hobby.title}</h3>
+                <p className="text-sm text-[#A1A1AA] mt-1">{hobby.description}</p>
               </div>
-            </GlowCard>
+            </div>
           ))}
 
           {/* Hackathons / Events Gallery tiles with varied spans */}
@@ -56,26 +49,20 @@ export default function AboutPage() {
             const span =
               idx % 5 === 0
                 ? "col-span-12 sm:col-span-8 row-span-2"
-                : idx % 3 === 0
-                ? "col-span-12 sm:col-span-4"
-                : "col-span-12 sm:col-span-6"
-            
-            const height = idx % 5 === 0 ? "h-[400px]" : "h-[200px]"
-            
+                : "col-span-12 sm:col-span-4 row-span-1"
+
             return (
-              <GlowCard key={g.caption + idx} className={span}>
-                <div className={`relative ${height} w-full overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur`}>
-                  <Image
-                    src={g.src || "/placeholder.svg?height=1200&width=1600&query=hackathon%20photo%20for%20portfolio"}
-                    alt={g.caption}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 p-4 text-sm text-zinc-300">{g.caption}</div>
-                </div>
-              </GlowCard>
+              <div key={g.caption + idx} className={`${span} group relative h-full min-h-[200px] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#111111]`}>
+                <Image
+                  src={g.src || "/placeholder.svg?height=1200&width=1600&query=hackathon%20photo%20for%20portfolio"}
+                  alt={g.caption}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90" />
+                <div className="absolute bottom-0 w-full p-6 text-sm font-medium text-[#EDEDED] z-10">{g.caption}</div>
+              </div>
             )
           })}
 
@@ -119,8 +106,6 @@ export default function AboutPage() {
           </GlowCard>
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </div>
   )
 }

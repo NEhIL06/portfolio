@@ -1,13 +1,32 @@
 
 export const siteConfig = {
   name: "Nehil Chandrakar",
-  tagline: "builder — crafting systems, shaping experiences.",
-  role: "Developer • Engineer • Designer",
+  url: "https://nehil.dev",
+  tagline: "Always building, crafting systems, and shaping scalable digital experiences.",
+  role: "Full Stack Engineer",
+  currentRole: {
+    title: "Full Stack Engineer Intern",
+    company: "Alcovia",
+  },
   contact: {
     email: "nehil.contact@gmail.com",
     phone: "",
-    location: "Tumkur, India",
+    location: "Gurugram, India",
   },
+  experience: [
+    {
+      role: "Full Stack Engineer Intern",
+      company: "Alcovia",
+      duration: "Present",
+      description: "Building scalable backend features, collaborating explicitly on seamless UX workflows.",
+      link: "https://x.com/alcovia",
+    }
+  ],
+  stats: [
+    { label: "Projects", value: 14, suffix: "+" },
+    { label: "Hackathon Wins", value: 3 },
+    { label: "Students Mentored", value: 350, suffix: "+" },
+  ],
   socials: {
     linkedin: "https://www.linkedin.com/in/nehil-chandrakar-272410259/",
     x: "https://x.com/Chandrakar43234",
@@ -15,12 +34,12 @@ export const siteConfig = {
     leetcode: "https://leetcode.com/u/jolly_fog/",
   },
   navItems: [
-    { href: "/#home", label: "Home" },
-    { href: "/about", label: "Who Am I" },
-    { href: "/projects", label: "Projects" },
-    { href: "/#skills", label: "Skills" },
-    { href: "/#achievements", label: "Achievements" },
-    { href: "/#clubs", label: "Clubs" },
+    { href: '/', label: "Home" },
+    { href: "/about", label: "Who Am I?" },
+
+    { href: "/projects", label: "My Work" },
+
+
   ],
   education: {
     institute: "Siddaganga Institute of Technology",
@@ -60,6 +79,7 @@ export const siteConfig = {
       title: "Krishi Baazar",
       description: "Mobile app empowering small farmers to list crops and connect directly with buyers.",
       stack: ["React Native", "Appwrite", "Node.js", "Redis", "REST APIs"],
+      featured: true,
       link: "https://github.com/NEhIL06/Krishi_Bazaar",
       demo: "https://landingpage-kb.vercel.app/",
       image: "/krishibazar.png",
@@ -73,6 +93,7 @@ export const siteConfig = {
       title: "SkyScope",
       description: "Backend for a real-time 2D virtual office enabling presence and collaboration.",
       stack: ["TurboRepo", "Node.js", "WebSockets", "WebRTC", "MongoDB", "Redis", "Docker", "CI/CD"],
+      featured: true,
       link: "https://github.com/NEhIL06/metaverse_2d",
       demo: "https://metaverse-frontend-6gjy.onrender.com/",
       image: "/skyscope.png",
@@ -86,6 +107,7 @@ export const siteConfig = {
       title: "Avanti",
       description: "AI assistant simplifying travel ticketing and banking for elderly & multilingual users.",
       stack: ["Three.js", "React.js", "Node.js", "Flask", "Gemini", "11Labs", "Rhubarb", "ffmpeg", "Sarvam.ai", "COnversational AI"],
+      featured: true,
       link: "https://github.com/NEhIL06/Avanti",
       demo: undefined,
       image: "/avanti.png",
@@ -107,6 +129,7 @@ export const siteConfig = {
       title: "zenletics",
       description: "AI-powered fitness app offering personalized workout plans, nutrition advice, and progress tracking.",
       stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "JWT", "REST APIs", "Generative AI", "Gemini AI"],
+      featured: true,
       link: "https://github.com/NEhIL06/zenfit",
       demo: "https://zenletics.vercel.app/",
       image: "/zenletics.png",

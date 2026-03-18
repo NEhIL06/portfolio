@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bodoni_Moda, Playfair_Display } from "next/font/google";
 import SmoothScrollProvider from "./smoothscroll";
 import "./globals.css";
 
@@ -15,9 +15,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: " \t Nehil Chandrakar",
+    default: "Nehil Chandrakar",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.tagline,
@@ -38,6 +52,10 @@ export const metadata: Metadata = {
   },
 };
 
+import { NavBar } from "@/components/nav-bar"
+import { MetallicBackground } from "@/components/metallic-background"
+import { Footer } from "@/components/footer"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,9 +64,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bodoni.variable} ${playfair.variable} antialiased selection:bg-zinc-800 selection:text-white bg-black font-sans`}
       >
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: siteConfig.name,
+              url: siteConfig.url,
+              jobTitle: siteConfig.currentRole.title,
+              worksFor: {
+                "@type": "Organization",
+                name: siteConfig.currentRole.company,
+              },
+            }),
+          }}
+        />
+        <SmoothScrollProvider>
+          <MetallicBackground />
+          <NavBar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

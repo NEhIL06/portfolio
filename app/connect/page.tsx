@@ -1,16 +1,15 @@
 "use client"
 
 import Link from "next/link"
-import { MetallicBackground } from "@/components/metallic-background"
-import { NavBar } from "@/components/nav-bar"
-import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Mail, MapPin, Copy, Linkedin, Github, Code2, X } from 'lucide-react'
 import { useState } from "react"
 import { siteConfig } from "@/lib/site-config"
-import { Cursor } from "@/components/cursor"
 import { GlowCard } from "@/components/glow-card"
+import { SplitText } from "@/components/motion/split-text"
+import { motion } from "framer-motion"
+import FlipLink from "@/components/motion/flip-link"
 
 function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
   const [copied, setCopied] = useState(false)
@@ -39,19 +38,20 @@ export default function ConnectPage() {
   const { contact, socials } = siteConfig
 
   return (
-    <main className="relative min-h-screen bg-black text-zinc-200 cursor-none">
-      <MetallicBackground />
-      <Cursor />
-      <NavBar />
-
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 pt-28 pb-20">
-        <div className="mb-10 text-center">
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight bg-gradient-to-b from-zinc-100 to-zinc-400 bg-clip-text text-transparent">
-            Let&apos;s Connect
+    <div className="relative min-h-screen pt-32 pb-24">
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="mb-16 text-center">
+          <h1 className="text-5xl sm:text-7xl font-semibold tracking-tighter text-white mb-6">
+            <SplitText>Let&apos;s Connect</SplitText>
           </h1>
-          <p className="mt-3 text-zinc-400">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-zinc-400 max-w-2xl mx-auto"
+          >
             I&apos;m always open to collaborating, brainstorming, or building something meaningful.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
@@ -94,28 +94,24 @@ export default function ConnectPage() {
               </CardHeader>
               <CardContent className="grid grid-cols-2 gap-3">
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <Link href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" className="text-white hover:text-white">
-                    <Linkedin className="mr-2 h-4 w-4 text-white" />
-                    <span className="text-white">LinkedIn</span>
-                  </Link>
+                  <FlipLink href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                    LinkedIn
+                  </FlipLink>
                 </Button>
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <Link href={socials.x} target="_blank" aria-label="X profile" className="text-white hover:text-white">
-                    <X className="mr-2 h-4 w-4 text-white" />
-                    <span className="text-white">X</span>
-                  </Link>
+                  <FlipLink href={socials.x} target="_blank" aria-label="X profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                    X / Twitter
+                  </FlipLink>
                 </Button>
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <Link href={socials.github} target="_blank" aria-label="GitHub profile" className="text-white hover:text-white">
-                    <Github className="mr-2 h-4 w-4 text-white" />
-                    <span className="text-white">GitHub</span>
-                  </Link>
+                  <FlipLink href={socials.github} target="_blank" aria-label="GitHub profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                    GitHub
+                  </FlipLink>
                 </Button>
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <Link href={socials.leetcode} target="_blank" aria-label="LeetCode profile" className="text-white hover:text-white">
-                    <Code2 className="mr-2 h-4 w-4 text-white" />
-                    <span className="text-white">LeetCode</span>
-                  </Link>
+                  <FlipLink href={socials.leetcode} target="_blank" aria-label="LeetCode profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                    LeetCode
+                  </FlipLink>
                 </Button>
               </CardContent>
             </Card>
@@ -129,15 +125,13 @@ export default function ConnectPage() {
                 <CardTitle className="text-zinc-200 text-2xl">What can we build together?</CardTitle>
               </CardHeader>
               <CardContent className="text-zinc-300 text-lg leading-relaxed">
-                I enjoy building things that work well and feel simple — whether it&apos;s an AI idea, a web app, or a fun side project. 
+                I enjoy building things that work well and feel simple — whether it&apos;s an AI idea, a web app, or a fun side project.
                 Let&apos;s connect and make something awesome.
               </CardContent>
             </Card>
           </GlowCard>
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </div>
   )
 }

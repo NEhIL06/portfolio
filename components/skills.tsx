@@ -1,69 +1,59 @@
 "use client"
-
-import { useMemo, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
 import { siteConfig } from "@/lib/site-config"
-import { cn } from "@/lib/utils"
-
-const categories = ["Languages", "Frameworks & Tools", "Computer Fundamentals"] as const
+import { Marquee } from "@/components/motion/marquee"
+import { SplitText } from "@/components/motion/split-text"
 
 export function Skills() {
-  const skills = siteConfig.skills
-  const [active, setActive] = useState<(typeof categories)[number]>("Languages")
+  const { languages, frameworks, fundamentals } = siteConfig.skills
 
-  const activeList = useMemo(() => {
-    if (active === "Languages") return skills.languages
-    if (active === "Frameworks & Tools") return skills.frameworks
-    return skills.fundamentals
-  }, [active, skills])
+  // Ensure enough items to scroll smoothly without wrapping visibly
+  const makeList = (arr: string[]) => Array(4).fill(arr).flat()
+
+  const safeLanguages = makeList(languages)
+  const safeFrameworks = makeList(frameworks)
+  const safeFundamentals = makeList(fundamentals)
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10">
-      <div className="flex items-center justify-between gap-4 flex-wrap">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-zinc-100">Skills</h2>
-
-        <div className="flex gap-2 rounded-full border border-zinc-800/80 bg-zinc-950/40 p-1 backdrop-blur">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={cn(
-                "rounded-full px-3 py-1.5 text-sm transition-colors",
-                active === cat ? "bg-zinc-800 text-zinc-100" : "text-zinc-300 hover:text-zinc-100"
-              )}
-              aria-pressed={active === cat}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+    <section className="py-24 sm:py-32 overflow-hidden relative">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 mb-20 relative z-10 flex flex-col items-center text-center">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white mb-6">
+          <SplitText>Technical Arsenal</SplitText>
+        </h2>
+        <p className="text-zinc-400 text-lg md:text-xl max-w-2xl">
+          The tools and technologies I use to build scalable backends, resilient architectures, and premium web experiences.
+        </p>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        <AnimatePresence mode="popLayout">
-          {activeList.map((skill) => (
-            <motion.div
-              key={skill}
-              layout
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25 }}
-              className="group rounded-xl border border-zinc-800/80 bg-zinc-950/40 p-4 backdrop-blur hover:border-zinc-700/80"
+      <div className="relative flex flex-col gap-6 md:gap-8 -rotate-2 scale-105 origin-center">
+        {/* Languages & Frameworks (Row 1) */}
+        <Marquee speed={40} className="[--gap:1.5rem]">
+          {safeLanguages.concat(safeFrameworks).map((skill, idx) => (
+            <div
+              key={`row1-${skill}-${idx}`}
+              className="flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3 backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-zinc-200">{skill}</span>
-                <Badge className="border border-zinc-700/80 bg-zinc-900/40 text-zinc-300">Pro</Badge>
-              </div>
-              <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800/80">
-                <div className="h-full w-3/4 bg-gradient-to-r from-amber-300/80 to-amber-500/80 group-hover:from-amber-200 group-hover:to-amber-400 transition-all" />
-              </div>
-            </motion.div>
+              <span className="text-base md:text-lg font-medium text-[#EDEDED]">{skill}</span>
+            </div>
           ))}
-        </AnimatePresence>
+        </Marquee>
+
+        {/* Fundamentals & DB (Row 2 - Reverse) */}
+        <Marquee direction="right" speed={30} className="[--gap:1.5rem]">
+          {safeFundamentals.concat(safeLanguages).map((skill, idx) => (
+            <div
+              key={`row2-${skill}-${idx}`}
+              className="flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3 backdrop-blur-md transition-all hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+            >
+              <span className="text-base md:text-lg font-medium text-[#EDEDED]">{skill}</span>
+            </div>
+          ))}
+        </Marquee>
+
+        {/* Gradient fades on sides */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black via-black/80 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black via-black/80 to-transparent" />
       </div>
-    </div>
+    </section>
   )
 }
+

@@ -1,34 +1,56 @@
 "use client"
+import { useEffect, useState } from "react"
+import { motion, useMotionTemplate, useSpring } from "framer-motion"
+import { useReducedMotion } from "./motion/use-reduced-motion"
+import { useIsTouch } from "./motion/use-is-touch"
 
-import Image from "next/image"
+export function MetallicBackground() {
+  const isTouch = useIsTouch()
+  const prefersReducedMotion = useReducedMotion()
+  const disableMotion = isTouch || prefersReducedMotion
 
-export function MetallicBackground({
-  noiseSrc = "",
-}: {
-  noiseSrc?: string
-}) {
+  const [mounted, setMounted] = useState(false)
+
+  const smoothX = useSpring(0, { stiffness: 50, damping: 40 })
+  const smoothY = useSpring(0, { stiffness: 50, damping: 40 })
+
+  useEffect(() => {
+    setMounted(true)
+    // Set initial position to center
+    smoothX.set(window.innerWidth / 2)
+    smoothY.set(window.innerHeight / 2)
+
+    if (disableMotion) return
+
+    const handleMouseMove = (e: MouseEvent) => {
+      smoothX.set(e.clientX)
+      smoothY.set(e.clientY)
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [disableMotion, smoothX, smoothY])
+
+  const background = useMotionTemplate`
+    radial-gradient(1200px 600px at ${smoothX}px ${smoothY}px, rgba(160,160,160,0.18), transparent 50%),
+    linear-gradient(180deg, #0a0a0a 0%, #0c0c0c 40%, #0a0a0a 100%)
+  `
+
   return (
     <>
-      <div
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-1000"
         style={{
-          background:
-            "radial-gradient(1200px 600px at 50% -20%, rgba(160,160,160,0.18), transparent 50%), radial-gradient(800px 400px at 70% 0%, rgba(255,255,255,0.08), transparent 60%), linear-gradient(180deg, #0a0a0a 0%, #0c0c0c 40%, #0a0a0a 100%)",
+          opacity: mounted ? 1 : 0,
+          background: disableMotion
+            ? "radial-gradient(1200px 600px at 50% -20%, rgba(160,160,160,0.18), transparent 50%), linear-gradient(180deg, #0a0a0a 0%, #0c0c0c 40%, #0a0a0a 100%)"
+            : background,
         }}
       />
-      <div className="pointer-events-none fixed inset-0 z-0 mix-blend-soft-light opacity-[0.06]">
-        <Image
-          src={noiseSrc || "/placeholder.svg"}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
-          aria-hidden="true"
-        />
-      </div>
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(1200px_500px_at_50%_0%,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_60%,rgba(0,0,0,0.35)_100%)]" />
+
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(1200px_500px_at_50%_0%,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_60%,rgba(0,0,0,0.35)_100%)] opacity-80" />
     </>
   )
 }
+

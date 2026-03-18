@@ -1,10 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { MetallicBackground } from "@/components/metallic-background"
-import { NavBar } from "@/components/nav-bar"
-import { Footer } from "@/components/footer"
-import { Cursor } from "@/components/cursor"
 import { siteConfig } from "@/lib/site-config"
 import { motion } from "framer-motion"
 
@@ -12,11 +8,7 @@ export default function GalleryPage() {
   const images = siteConfig.about.gallery
 
   return (
-    <main className="relative min-h-screen bg-black text-zinc-200 cursor-none">
-      <MetallicBackground />
-      <Cursor />
-      <NavBar />
-
+    <div className="relative min-h-screen bg-black text-zinc-200">
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 pb-20">
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -50,8 +42,6 @@ export default function GalleryPage() {
           ))}
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </div>
   )
 }

@@ -1,39 +1,34 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
+import { siteConfig } from "@/lib/site-config"
+import { TextReveal } from "@/components/motion/text-reveal"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
-export function WhoAmI({
-  title = "Who Am I",
-  content = "I’m a Developer — I design and engineer systems that are clean, scalable, and human. I obsess over details, craft thoughtful abstractions, and ship with intent. From distributed backends to intuitive interfaces, I aim to create software that is fast, reliable, and delightful.",
-}: {
-  title?: string
-  content?: string
-}) {
+export function WhoAmI() {
+  const { about } = siteConfig
+
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10">
-      <motion.h2
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
-        transition={{ duration: 0.6 }}
-        className="text-2xl sm:text-3xl font-semibold text-zinc-100"
-      >
-        {title}
-      </motion.h2>
+    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-24 md:py-40 flex flex-col items-center justify-center min-h-[50vh]">
+      <div className="w-full max-w-4xl">
+        <h2 className="text-sm font-mono tracking-widest text-zinc-500 uppercase mb-8 text-center sm:text-left">Who Am I</h2>
 
-      <Card className="mt-4 border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
-        <CardContent className="p-6 text-zinc-300 leading-relaxed">
-          <p>{content}</p>
-          <p className="mt-4 text-zinc-400">
-            Explore more about me, my hobbies, and my journey on the{" "}
-            <Link href="/about" className="underline underline-offset-4 text-zinc-200 hover:text-zinc-50">
-              dedicated page
-            </Link>.
-          </p>
-        </CardContent>
-      </Card>
+        {/* Document scale scroll-driven text reveal */}
+        <TextReveal className="text-2xl sm:text-3xl md:text-4xl leading-snug font-medium text-white/90">
+          {about.intro}
+        </TextReveal>
+
+        <div className="mt-16 flex justify-center sm:justify-start opacity-80 hover:opacity-100 transition-opacity">
+          <Link
+            href="/about"
+            className="group flex items-center gap-2 text-lg font-medium text-zinc-300 hover:text-white"
+          >
+            Learn more about my journey
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
+
