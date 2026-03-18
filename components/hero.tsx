@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { siteConfig } from "@/lib/site-config"
 import { MagneticButton } from "@/components/motion/magnetic-button"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
+
 import { ArrowRight, Download, ChevronDown } from 'lucide-react'
 import FlipLink from "@/components/motion/flip-link"
 

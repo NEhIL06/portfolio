@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, MapPin, Copy, Linkedin, Github, Code2, X } from 'lucide-react'
+import { Mail, MapPin, Copy } from 'lucide-react'
 import { useState } from "react"
 import { siteConfig } from "@/lib/site-config"
 import { GlowCard } from "@/components/glow-card"

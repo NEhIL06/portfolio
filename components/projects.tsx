@@ -2,10 +2,10 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import Image from "next/image"
-import Link from "next/link"
+
 import { siteConfig } from "@/lib/site-config"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, ArrowRight } from "lucide-react"
+
 import FlipLink from "@/components/motion/flip-link"
 
 export function Projects() {
