@@ -234,6 +234,50 @@ export const siteConfig = {
       ],
     },
 
+    {
+      title: "ScribeAI",
+      description: "Real-time AI-powered meeting transcription with intelligent summaries, action items, and key decisions.",
+      stack: ["Next.js", "TypeScript", "Socket.io", "Google Gemini", "PostgreSQL", "Prisma", "Better Auth", "Tailwind CSS"],
+      featured: true,
+      link: "https://github.com/NEhIL06/ScribeAI",
+      demo: "https://scribe-ai-ws.vercel.app",
+      image: "/scribeai.png",
+      facts: [
+        "Live speech-to-text transcription with ~200ms latency via Google Gemini",
+        "Dual audio capture from microphone or browser tab/screen",
+        "AI-generated meeting summaries with action items and key decisions",
+        "WebSocket-powered real-time streaming with pause/resume controls",
+      ],
+    },
+    {
+      title: "TruEstate",
+      description: "Comprehensive sales management dashboard for tracking and analyzing transaction data with advanced filtering and visualization.",
+      stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn UI", "Zustand", "Recharts", "Express", "Prisma", "PostgreSQL"],
+      link: "https://github.com/NEhIL06/TruEstate",
+      demo: "https://tru-estate-teid.vercel.app",
+      image: "/truestate.png",
+      facts: [
+        "Debounced search across customer name and phone number",
+        "Multi-dimension filtering: region, gender, age, category, tags, payment, date range",
+        "Server-side pagination with dynamic Prisma queries",
+        "Interactive data visualization with Recharts",
+      ],
+    },
+    {
+      title: "Outbreak Prediction System",
+      description: "Real-time disease outbreak prediction and monitoring system powered by XGBoost machine learning.",
+      stack: ["Python", "FastAPI", "XGBoost", "React", "TypeScript", "WebSocket", "Tailwind CSS"],
+      link: "https://github.com/NEhIL06/Realtime-health-system",
+      demo: undefined,
+      image: "/outbreak.png",
+      facts: [
+        "XGBoost model with 35 features including weather, demographic, and WASH data",
+        "Real-time predictions every 10 seconds via WebSocket streaming",
+        "Multi-district monitoring with intelligent outbreak alerts",
+        "Interactive dashboard with probability gauges and live logging",
+      ],
+    },
+
     // Previously included
 
 
