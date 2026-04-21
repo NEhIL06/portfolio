@@ -13,9 +13,9 @@ export function Clubs() {
   if (!clubs || clubs.length === 0) return null
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-24 md:py-32">
-      <div className="flex items-center justify-between mb-12">
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
+    <div className="mx-auto max-w-5xl container-x py-20 md:py-32">
+      <div className="flex items-center justify-between mb-10 sm:mb-12">
+        <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-zinc-100">
           <SplitText>Communities & Leadership</SplitText>
         </h2>
       </div>

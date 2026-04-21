@@ -43,6 +43,7 @@ export function NavBar() {
   }
 
   return (
+    <>
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto rounded-full border border-white/10 bg-black/40 backdrop-blur-md overflow-hidden shadow-2xl">
       <div className="relative flex items-center justify-between px-3 py-2 gap-2">
         {/* Scroll Progress Bar */}
@@ -50,6 +51,15 @@ export function NavBar() {
           className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-white/0 via-white/50 to-white origin-left z-0"
           style={{ scaleX }}
         />
+
+        {/* Mobile brand (left) */}
+        <Link
+          href="/"
+          aria-label="Home"
+          className="md:hidden relative z-10 pl-2 pr-1 text-sm font-semibold tracking-wider text-white font-serif"
+        >
+          NC.
+        </Link>
 
         {/* Desktop nav — all links including Home in one row */}
         <nav aria-label="Main" className="hidden md:flex items-center gap-1 relative z-10">
@@ -102,25 +112,27 @@ export function NavBar() {
           </Button>
 
           <button
-            className="md:hidden text-[#A1A1AA] hover:text-white transition-colors"
+            className="md:hidden text-[#A1A1AA] hover:text-white transition-colors p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl z-40"
-          >
+    {/* Mobile Menu — rendered outside <header> so the header's overflow-hidden + translate don't clip it */}
+    <AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+          className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl z-[60]"
+        >
             <nav className="flex flex-col gap-4">
               {allNavLinks.map((l, i) => (
                 <motion.div
@@ -161,10 +173,10 @@ export function NavBar() {
                   </FlipLink>
                 </Button>
               </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+          </nav>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   )
 }

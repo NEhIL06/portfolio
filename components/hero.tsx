@@ -5,16 +5,16 @@ import { siteConfig } from "@/lib/site-config"
 import { MagneticButton } from "@/components/motion/magnetic-button"
 import { Button } from "@/components/ui/button"
 
-import { ArrowRight, Download, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import FlipLink from "@/components/motion/flip-link"
 
 export function Hero() {
   const { name } = siteConfig
 
   return (
-    <div className="relative mx-auto flex h-[100dvh] min-h-[600px] flex-col items-center justify-center max-w-5xl px-2 sm:px-6 pb-32 pt-0 text-center">
+    <div className="relative mx-auto flex h-[100dvh] min-h-[600px] flex-col items-center justify-center max-w-5xl container-x pb-20 sm:pb-32 pt-0 text-center overflow-hidden">
       {/* Ambient beams */}
-      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-10 h-[600px] w-[1200px] -translate-x-1/2">
+      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-10 h-[600px] w-[1200px] max-w-[100vw] -translate-x-1/2">
         <div className="absolute inset-0 blur-[100px] opacity-20 bg-[conic-gradient(from_120deg,rgba(255,255,255,0.2),rgba(180,180,180,0.05),rgba(255,255,255,0.15))]" />
       </div>
 
@@ -25,7 +25,7 @@ export function Hero() {
         className="relative z-10 flex flex-col items-center"
       >
         <h1
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[1.05] font-semibold tracking-tight font-serif"
+          className="text-[clamp(2.75rem,11vw,4rem)] sm:text-7xl md:text-8xl lg:text-9xl leading-[1.05] font-semibold tracking-tight font-serif"
         >
           <span className="flex flex-wrap justify-center gap-x-[0.2em] bg-[linear-gradient(110deg,#fafafa,#d5d5d5_40%,#a3a3a3_65%,#fafafa_95%)] bg-clip-text text-transparent [background-size:200%] animate-[shine_8s_linear_infinite]">
             {name.split(" ").map((word, wordIdx) => (
@@ -44,7 +44,7 @@ export function Hero() {
         </h1>
 
         <motion.p
-          className="mt-6 text-sm sm:text-base font-medium tracking-[0.2em] uppercase text-[#A1A1AA]"
+          className="mt-5 text-[11px] sm:text-base font-medium tracking-[0.2em] uppercase text-[#A1A1AA]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: (name.length * 0.04) + 1.1, duration: 0.8 }}
@@ -53,7 +53,7 @@ export function Hero() {
         </motion.p>
 
         <motion.p
-          className="mt-3 max-w-xl text-base sm:text-lg text-zinc-500 italic"
+          className="mt-3 max-w-xl text-sm sm:text-lg text-zinc-500 italic"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: (name.length * 0.04) + 1.2, duration: 0.8 }}
@@ -62,15 +62,15 @@ export function Hero() {
         </motion.p>
 
         <motion.div
-          className="mt-8 flex flex-wrap justify-center gap-4"
+          className="mt-8 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4 w-full sm:w-auto"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: (name.length * 0.04) + 1.4, duration: 0.8 }}
         >
-          <MagneticButton>
+          <MagneticButton className="w-full sm:w-auto">
             <Button
               variant="default"
-              className="group bg-[#EDEDED] text-[#0a0a0a] hover:bg-white shadow-[0_0_15px_rgba(255,255,255,0.1)] rounded-full px-8 py-6 text-lg transition-all flex items-center"
+              className="group bg-[#EDEDED] text-[#0a0a0a] hover:bg-white shadow-[0_0_15px_rgba(255,255,255,0.1)] rounded-full px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg transition-all flex items-center w-full sm:w-auto justify-center"
             >
               <FlipLink
                 href="/connect"
@@ -84,16 +84,16 @@ export function Hero() {
             </Button>
           </MagneticButton>
 
-          <MagneticButton>
+          <MagneticButton className="w-full sm:w-auto">
             <Button
               variant="outline"
-              className="border-white/10 bg-black/40 hover:bg-white/5 hover:text-[#EDEDED] backdrop-blur-md rounded-full px-8 py-6 text-lg text-[#EDEDED] transition-colors flex items-center"
+              className="border-white/10 bg-black/40 hover:bg-white/5 hover:text-[#EDEDED] backdrop-blur-md rounded-full px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg text-[#EDEDED] transition-colors flex items-center w-full sm:w-auto justify-center"
             >
-              <Download className="mr-2 h-5 w-5" />
+              
               <FlipLink
-                href="/Nehil_SDE (1).pdf"
+                href="/resume"
                 target="_blank"
-                aria-label="Download resume as PDF"
+                aria-label="View resume"
                 baseColor="#EDEDED"
                 hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)"
               >
@@ -109,7 +109,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 pb-safe"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

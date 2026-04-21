@@ -31,15 +31,15 @@ export default function ProjectsPage() {
 
   return (
     <div className="relative min-h-screen bg-black text-zinc-200">
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-28 pb-32">
+      <div className="relative mx-auto max-w-6xl container-x pt-24 sm:pt-28 pb-20 sm:pb-32">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white mb-4">
           <SplitText>{projectsPage.title}</SplitText>
         </h1>
-        <p className="mt-3 max-w-3xl text-zinc-400 italic">“{projectsPage.quote}”</p>
+        <p className="mt-3 max-w-3xl text-sm sm:text-base text-zinc-400 italic">“{projectsPage.quote}”</p>
 
         {/* Featured Projects */}
-        <div className="mt-16 text-3xl font-semibold text-zinc-100 mb-8 font-serif">Featured</div>
-        <div className="grid gap-8 mb-24">
+        <div className="mt-12 sm:mt-16 text-2xl sm:text-3xl font-semibold text-zinc-100 mb-6 sm:mb-8 font-serif">Featured</div>
+        <div className="grid gap-6 sm:gap-8 mb-20 sm:mb-24">
           {featuredProjects.map((p, i) => (
             <motion.div
               key={p.title}
@@ -50,8 +50,8 @@ export default function ProjectsPage() {
             >
               <TiltCard>
                 <GlowCard className="group h-full">
-                  <div className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur flex flex-col md:flex-row h-full">
-                    <div className="relative aspect-[16/9] md:aspect-auto md:w-3/5 overflow-hidden">
+                  <div className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur flex flex-col lg:flex-row h-full">
+                    <div className="relative aspect-[16/9] lg:aspect-auto lg:w-3/5 overflow-hidden">
                       <Image
                         src={p.image || "/placeholder.svg"}
                         alt={p.title}
@@ -59,11 +59,11 @@ export default function ProjectsPage() {
                         sizes="(max-width: 1024px) 100vw, 60vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
                     </div>
-                    <div className="p-8 md:w-2/5 flex flex-col justify-center">
-                      <h3 className="text-3xl font-semibold text-zinc-100">{p.title}</h3>
-                      <p className="mt-4 text-base text-zinc-400 leading-relaxed">{p.description}</p>
+                    <div className="p-6 sm:p-8 lg:w-2/5 flex flex-col justify-center">
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-zinc-100">{p.title}</h3>
+                      <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">{p.description}</p>
 
                       {p.facts && (
                         <ul className="mt-4 space-y-2 text-sm text-zinc-400 list-disc list-inside">
@@ -101,8 +101,8 @@ export default function ProjectsPage() {
         </div>
 
         {/* All Projects Filter */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 border-b border-zinc-800/50 pb-4">
-          <h2 className="text-2xl font-semibold text-zinc-100 font-serif">More Projects</h2>
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-4 mb-8 border-b border-zinc-800/50 pb-4">
+          <h2 className="text-xl sm:text-2xl font-semibold text-zinc-100 font-serif">More Projects</h2>
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map(cat => (
               <button

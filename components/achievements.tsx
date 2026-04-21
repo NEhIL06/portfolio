@@ -9,7 +9,7 @@ export function Achievements() {
   const items = siteConfig.achievements
 
   return (
-    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-24 md:py-32 flex flex-col md:flex-row gap-12 relative items-start">
+    <div className="mx-auto max-w-5xl container-x py-20 md:py-32 flex flex-col md:flex-row gap-8 md:gap-12 relative items-start">
       <div className="md:w-1/3 md:sticky md:top-64">
         <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-4">
           <SplitText>Milestones</SplitText>
@@ -32,9 +32,9 @@ export function Achievements() {
                 <GlowCard>
                   <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950/40 p-6 backdrop-blur transition-all duration-300 hover:bg-zinc-900/50">
                     <div className="flex flex-col gap-2">
-                      <div className="flex flex-wrap items-center justify-between gap-y-2">
-                        <h3 className="text-xl sm:text-2xl text-zinc-100 font-semibold">{a.title}</h3>
-                        <div className="text-sm font-mono text-zinc-500 bg-zinc-900/50 px-3 py-1 rounded-full whitespace-nowrap border border-zinc-800/50">{a.date}</div>
+                      <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-2">
+                        <h3 className="text-lg sm:text-2xl text-zinc-100 font-semibold">{a.title}</h3>
+                        <div className="self-start sm:self-auto text-xs sm:text-sm font-mono text-zinc-500 bg-zinc-900/50 px-3 py-1 rounded-full whitespace-nowrap border border-zinc-800/50">{a.date}</div>
                       </div>
                       {a.subtitle && (
                         <p className="text-base font-medium text-amber-400/90 mt-1">{a.subtitle}</p>

@@ -38,17 +38,17 @@ export default function ConnectPage() {
   const { contact, socials } = siteConfig
 
   return (
-    <div className="relative min-h-screen pt-32 pb-24">
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
-        <div className="mb-16 text-center">
-          <h1 className="text-5xl sm:text-7xl font-semibold tracking-tighter text-white mb-6">
+    <div className="relative min-h-screen pt-24 sm:pt-32 pb-16 sm:pb-24">
+      <div className="relative mx-auto max-w-5xl container-x">
+        <div className="mb-12 sm:mb-16 text-center">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-white mb-4 sm:mb-6">
             <SplitText>Let&apos;s Connect</SplitText>
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-zinc-400 max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto"
           >
             I&apos;m always open to collaborating, brainstorming, or building something meaningful.
           </motion.p>
@@ -63,8 +63,8 @@ export default function ConnectPage() {
                   Email
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex items-center justify-between">
-                <Link href={`mailto:${contact.email}`} className="text-zinc-300 hover:text-zinc-50 underline underline-offset-4 transition-colors">
+              <CardContent className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <Link href={`mailto:${contact.email}`} className="text-zinc-300 hover:text-zinc-50 underline underline-offset-4 transition-colors break-all">
                   {contact.email}
                 </Link>
                 <CopyButton text={contact.email} />
@@ -80,7 +80,7 @@ export default function ConnectPage() {
                   Location
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-300 text-lg">{contact.location}</CardContent>
+              <CardContent className="text-zinc-300 text-base sm:text-lg">{contact.location}</CardContent>
             </Card>
           </GlowCard>
         </div>
@@ -92,7 +92,7 @@ export default function ConnectPage() {
                 <CardTitle className="text-zinc-200 text-xl">Find Me Online</CardTitle>
                 <p className="text-sm text-zinc-400 mt-2">Connect with me on these platforms</p>
               </CardHeader>
-              <CardContent className="grid grid-cols-2 gap-3">
+              <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
                   <FlipLink href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
                     LinkedIn
@@ -122,9 +122,9 @@ export default function ConnectPage() {
           <GlowCard>
             <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
               <CardHeader>
-                <CardTitle className="text-zinc-200 text-2xl">What can we build together?</CardTitle>
+                <CardTitle className="text-zinc-200 text-xl sm:text-2xl">What can we build together?</CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-300 text-lg leading-relaxed">
+              <CardContent className="text-zinc-300 text-base sm:text-lg leading-relaxed">
                 I enjoy building things that work well and feel simple — whether it&apos;s an AI idea, a web app, or a fun side project.
                 Let&apos;s connect and make something awesome.
               </CardContent>

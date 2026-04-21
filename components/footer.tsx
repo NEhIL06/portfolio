@@ -41,10 +41,10 @@ function CopyEmailButton({ email }: { email: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-white/10 bg-[#0a0a0a] overflow-hidden">
+    <footer className="relative mt-20 sm:mt-32 border-t border-white/10 bg-[#0a0a0a] overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(255,255,255,0.03)_0%,transparent_60%)]" />
 
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 py-32 flex flex-col items-center justify-center text-center">
+      <div className="relative mx-auto max-w-5xl container-x py-20 sm:py-28 md:py-32 flex flex-col items-center justify-center text-center">
         <div className="mb-8 flex items-center justify-center gap-3 rounded-full border border-white/10 bg-[#111111] px-5 py-2.5 backdrop-blur-md">
           <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -53,16 +53,16 @@ export function Footer() {
           <span className="text-sm font-medium text-[#EDEDED]">{siteConfig.contact.location}</span>
         </div>
 
-        <h2 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-[#EDEDED] mb-8">
+        <h2 className="text-3xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-[#EDEDED] mb-6 sm:mb-8 leading-[1.1]">
           <SplitText>Ready to build?</SplitText>
         </h2>
-        <p className="text-lg text-[#A1A1AA] mb-12 max-w-lg">
+        <p className="text-base sm:text-lg text-[#A1A1AA] mb-10 sm:mb-12 max-w-lg px-2">
           Whether you have a specific project in mind or just want to chat about engineering and design, I&apos;m always open to new connections.
         </p>
 
         <CopyEmailButton email={siteConfig.contact.email} />
 
-        <div className="flex gap-6 mt-12">
+        <div className="flex gap-4 sm:gap-6 mt-10 sm:mt-12">
           <a href={siteConfig.socials.github} target="_blank" className="text-[#A1A1AA] hover:text-[#EDEDED] hover:scale-110 transition-all p-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10">
             <Github className="h-5 w-5" />
           </a>
@@ -76,12 +76,12 @@ export function Footer() {
       </div>
 
       <div className="relative border-t border-white/10 z-10 bg-[#0a0a0a]">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8 text-sm text-[#A1A1AA]">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="order-2 md:order-1 font-mono text-xs">
+        <div className="mx-auto max-w-5xl container-x py-6 sm:py-8 pb-safe text-sm text-[#A1A1AA]">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+            <p className="order-2 md:order-1 font-mono text-xs text-center md:text-left">
               © {new Date().getFullYear()} {siteConfig.name}. CRAFTED WITH TEA 🍵.
             </p>
-            <div className="flex gap-8 order-1 md:order-2 font-medium tracking-wide">
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 order-1 md:order-2 font-medium tracking-wide">
               <FlipLink href="/projects" baseColor="#A1A1AA" hoverColor="#EDEDED">Projects</FlipLink>
               <FlipLink href="/about" baseColor="#A1A1AA" hoverColor="#EDEDED">About</FlipLink>
               <FlipLink href="/connect" baseColor="#A1A1AA" hoverColor="#EDEDED">Connect</FlipLink>

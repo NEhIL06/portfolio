@@ -31,7 +31,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/nehil-chandrakar-272410259/",
     x: "https://x.com/Chandrakar43234",
     github: "https://github.com/NEhIL06",
-    leetcode: "https://leetcode.com/u/jolly_fog/",
+    leetcode: "https://leetcode.com/u/nehil_chandraakar/",
   },
   navItems: [
     { href: '/', label: "Home" },

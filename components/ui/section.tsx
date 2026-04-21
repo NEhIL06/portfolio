@@ -24,7 +24,7 @@ export function Section({ children, id, className, parallax = false, speed = 1, 
             ref={ref}
             id={id}
             style={{ y }}
-            className={cn("scroll-mt-24 py-20 md:py-28", className)}
+            className={cn("scroll-mt-20 md:scroll-mt-28 py-20 md:py-28", className)}
             {...props}
         >
             {children}
