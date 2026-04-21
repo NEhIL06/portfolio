@@ -14,7 +14,7 @@ export async function GET() {
                 'Content-Disposition': 'inline; filename="Nehil_Chandrakar_Resume.pdf"',
             },
         });
-    } catch (error) {
+    } catch {
         return new NextResponse('PDF not found', { status: 404 });
     }
 }
