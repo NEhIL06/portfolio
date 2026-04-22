@@ -107,7 +107,7 @@ export function Projects() {
           <div className="mx-auto w-full max-w-[1500px] px-4 sm:px-6 mb-12 flex items-end justify-between shrink-0">
             <div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-white tracking-tight">Featured Work</h2>
-              <p className="mt-4 text-zinc-400 max-w-xl text-lg">A selection of my best projects. Scroll down to explore horizontally.</p>
+              <p className="mt-4 text-zinc-400 max-w-xl text-lg">A selection of my best projects. Scroll down to explore.</p>
             </div>
             <Button asChild variant="outline" className="hidden sm:inline-flex border-zinc-700/80 bg-zinc-900/40 hover:bg-zinc-800/40 hover:text-zinc-200 backdrop-blur rounded-full px-6 py-5">
               <FlipLink href="/projects" baseColor="#e4e4e7" hoverColor="#ffffff">
@@ -116,7 +116,7 @@ export function Projects() {
             </Button>
           </div>
 
-          <motion.div style={{ x: physicsX }} className="flex gap-10 px-4 sm:px-6 md:px-12 w-max items-center">
+          <motion.div style={{ x: physicsX }} className="flex gap-10 pl-24 sm:pl-48 md:pl-72 lg:pl-[28rem] pr-52 w-max items-center">
             {featured.map((p) => (
               <div key={p.title} className="w-[85vw] sm:w-[600px] lg:w-[800px] shrink-0">
                 <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#111111] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
