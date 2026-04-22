@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 export async function GET() {
-    const filePath = path.join(process.cwd(), 'public', 'Nehil_SDE (1).pdf');
+    const filePath = path.join(process.cwd(), 'public', 'Nehil_SDE.pdf');
 
     try {
         const fileBuffer = fs.readFileSync(filePath);
@@ -11,7 +11,7 @@ export async function GET() {
         return new NextResponse(fileBuffer, {
             headers: {
                 'Content-Type': 'application/pdf',
-                'Content-Disposition': 'inline; filename="Nehil_Chandrakar_Resume.pdf"',
+                'Content-Disposition': 'inline; filename="Nehil_Chandrakar.pdf"',
             },
         });
     } catch {
