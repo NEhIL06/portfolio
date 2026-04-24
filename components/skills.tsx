@@ -1,4 +1,5 @@
 "use client"
+import { motion } from "framer-motion"
 import { siteConfig } from "@/lib/site-config"
 import { Marquee } from "@/components/motion/marquee"
 import { SplitText } from "@/components/motion/split-text"

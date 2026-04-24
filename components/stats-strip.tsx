@@ -1,4 +1,5 @@
 "use client"
+import { motion } from "framer-motion"
 import { AnimatedCounter } from "@/components/motion/animated-counter"
 import { siteConfig } from "@/lib/site-config"
 
