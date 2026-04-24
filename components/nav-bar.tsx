@@ -89,12 +89,12 @@ export function NavBar() {
         <div className="flex items-center gap-3 relative z-10 pl-2">
           <Button
             size="sm"
-            className="hidden sm:inline-flex bg-white/10 text-white hover:bg-white hover:text-black border border-white/20 rounded-full px-5 font-medium transition-all active:scale-95"
+            className="hidden sm:inline-flex bg-gradient-to-r from-blue-400 to-blue-500 text-black hover:from-blue-300 hover:to-blue-400 border-0 rounded-full px-5 font-semibold transition-all active:scale-95 shadow-[0_0_20px_rgba(96,165,250,0.3)]"
           >
             <FlipLink
               href="/connect"
-              baseColor="inherit"
-              hoverColor="#0a0a0a"
+              baseColor="#000000"
+              hoverColor="#000000"
               className="flex items-center"
             >
               {"Let's Talk"}
@@ -119,7 +119,7 @@ export function NavBar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl z-40"
+            className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-blue-400/20 bg-gradient-to-br from-black via-blue-950/20 to-black backdrop-blur-xl p-6 shadow-2xl z-40"
           >
             <nav className="flex flex-col gap-4">
               {allNavLinks.map((l, i) => (
@@ -149,12 +149,12 @@ export function NavBar() {
                 transition={{ delay: allNavLinks.length * 0.05 + 0.1 }}
                 className="mt-4 pt-4 border-t border-zinc-800/50"
               >
-                <Button asChild className="w-full bg-zinc-100 text-black hover:bg-zinc-300 rounded-full">
+                <Button asChild className="w-full bg-gradient-to-r from-blue-400 to-blue-500 text-black hover:from-blue-300 hover:to-blue-400 rounded-full font-semibold shadow-[0_0_20px_rgba(96,165,250,0.3)]">
                   <FlipLink
                     href="/connect"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    baseColor="#0a0a0a"
-                    hoverColor="#0a0a0a"
+                    baseColor="#000000"
+                    hoverColor="#000000"
                     className="flex items-center justify-center w-full"
                   >
                     {"Let's Talk"}
