@@ -33,7 +33,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#0a0a0a",
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
@@ -71,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bodoni.variable} ${playfair.variable} antialiased selection:bg-zinc-800 selection:text-white bg-black font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bodoni.variable} ${playfair.variable} antialiased selection:bg-zinc-800 selection:text-white bg-white text-black font-sans`}
       >
         <script
           type="application/ld+json"

@@ -45,7 +45,7 @@ export function GlowCard({ className, children }: Props) {
         <div
           className="h-full w-full rounded-[15px]"
           style={{
-            background: `radial-gradient(250px circle at var(--x) var(--y), rgba(255,255,255,0.9), rgba(255,255,255,0.4) 40%, transparent 100%)`,
+            background: `radial-gradient(250px circle at var(--x) var(--y), rgba(0,0,0,0.2), rgba(0,0,0,0.08) 40%, transparent 100%)`,
             mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             maskComposite: "exclude",

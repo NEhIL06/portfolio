@@ -32,8 +32,8 @@ export function MetallicBackground() {
   }, [disableMotion, smoothX, smoothY])
 
   const background = useMotionTemplate`
-    radial-gradient(1200px 600px at ${smoothX}px ${smoothY}px, rgba(160,160,160,0.18), transparent 50%),
-    linear-gradient(180deg, #0a0a0a 0%, #0c0c0c 40%, #0a0a0a 100%)
+    radial-gradient(1200px 600px at ${smoothX}px ${smoothY}px, rgba(100,100,100,0.07), transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #f7f7f7 40%, #ffffff 100%)
   `
 
   return (
@@ -44,12 +44,12 @@ export function MetallicBackground() {
         style={{
           opacity: mounted ? 1 : 0,
           background: disableMotion
-            ? "radial-gradient(1200px 600px at 50% -20%, rgba(160,160,160,0.18), transparent 50%), linear-gradient(180deg, #0a0a0a 0%, #0c0c0c 40%, #0a0a0a 100%)"
+            ? "radial-gradient(1200px 600px at 50% -20%, rgba(100,100,100,0.07), transparent 50%), linear-gradient(180deg, #ffffff 0%, #f7f7f7 40%, #ffffff 100%)"
             : background,
         }}
       />
 
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(1200px_500px_at_50%_0%,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_60%,rgba(0,0,0,0.35)_100%)] opacity-80" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(1200px_500px_at_50%_0%,rgba(255,255,255,0)_0%,rgba(255,255,255,0)_60%,rgba(0,0,0,0.04)_100%)] opacity-80" />
     </>
   )
 }

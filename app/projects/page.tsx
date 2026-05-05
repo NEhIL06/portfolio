@@ -30,15 +30,15 @@ export default function ProjectsPage() {
   const filteredProjects = projects.filter(p => !p.featured && (activeTab === "All" || getCategory(p.stack) === activeTab))
 
   return (
-    <div className="relative min-h-screen bg-black text-zinc-200">
+    <div className="relative min-h-screen bg-white text-gray-900">
       <div className="relative mx-auto max-w-6xl container-x pt-24 sm:pt-28 pb-20 sm:pb-32">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 mb-4">
           <SplitText>{projectsPage.title}</SplitText>
         </h1>
-        <p className="mt-3 max-w-3xl text-sm sm:text-base text-zinc-400 italic">“{projectsPage.quote}”</p>
+        <p className="mt-3 max-w-3xl text-sm sm:text-base text-gray-500 italic">"{projectsPage.quote}"</p>
 
         {/* Featured Projects */}
-        <div className="mt-12 sm:mt-16 text-2xl sm:text-3xl font-semibold text-zinc-100 mb-6 sm:mb-8 font-serif">Featured</div>
+        <div className="mt-12 sm:mt-16 text-2xl sm:text-3xl font-semibold text-gray-900 mb-6 sm:mb-8 font-serif">Featured</div>
         <div className="grid gap-6 sm:gap-8 mb-20 sm:mb-24">
           {featuredProjects.map((p, i) => (
             <motion.div
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
             >
               <TiltCard>
                 <GlowCard className="group h-full">
-                  <div className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur flex flex-col lg:flex-row h-full">
+                  <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-gray-50 backdrop-blur flex flex-col lg:flex-row h-full">
                     <div className="relative aspect-[16/9] lg:aspect-auto lg:w-3/5 overflow-hidden">
                       <Image
                         src={p.image || "/placeholder.svg"}
@@ -59,23 +59,23 @@ export default function ProjectsPage() {
                         sizes="(max-width: 1024px) 100vw, 60vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
                     </div>
                     <div className="p-6 sm:p-8 lg:w-2/5 flex flex-col justify-center">
-                      <h3 className="text-2xl sm:text-3xl font-semibold text-zinc-100">{p.title}</h3>
-                      <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">{p.description}</p>
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900">{p.title}</h3>
+                      <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-500 leading-relaxed">{p.description}</p>
 
                       {p.facts && (
-                        <ul className="mt-4 space-y-2 text-sm text-zinc-400 list-disc list-inside">
+                        <ul className="mt-4 space-y-2 text-sm text-gray-500 list-disc list-inside">
                           {p.facts.map((fact, idx) => (
-                            <li key={idx} className="marker:text-zinc-600">{fact}</li>
+                            <li key={idx} className="marker:text-gray-400">{fact}</li>
                           ))}
                         </ul>
                       )}
 
                       <div className="mt-6 flex flex-wrap gap-2">
                         {p.stack.map((s) => (
-                          <span key={s} className="rounded-full border border-zinc-700/70 bg-zinc-900/40 px-3 py-1 text-xs text-zinc-300">
+                          <span key={s} className="rounded-full border border-gray-300 bg-gray-100 px-3 py-1 text-xs text-gray-700">
                             {s}
                           </span>
                         ))}
@@ -101,16 +101,16 @@ export default function ProjectsPage() {
         </div>
 
         {/* All Projects Filter */}
-        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-4 mb-8 border-b border-zinc-800/50 pb-4">
-          <h2 className="text-xl sm:text-2xl font-semibold text-zinc-100 font-serif">More Projects</h2>
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center justify-between gap-4 mb-8 border-b border-gray-200 pb-4">
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 font-serif">More Projects</h2>
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm transition-all duration-300 ${activeTab === cat
-                  ? "bg-zinc-100 text-black font-medium"
-                  : "bg-zinc-900/50 text-zinc-400 hover:text-zinc-200 border border-zinc-800/50 hover:border-zinc-700"
+                  ? "bg-gray-900 text-white font-medium"
+                  : "bg-gray-100 text-gray-500 hover:text-gray-900 border border-gray-200 hover:border-gray-400"
                   }`}
               >
                 {cat}
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
               >
                 <TiltCard>
                   <GlowCard className="h-full flex flex-col">
-                    <div className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/40 backdrop-blur flex-1 flex flex-col group">
+                    <div className="relative overflow-hidden rounded-2xl border border-black/10 bg-gray-50 backdrop-blur flex-1 flex flex-col group">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
                           src={p.image || "/placeholder.svg"}
@@ -144,19 +144,19 @@ export default function ProjectsPage() {
                           sizes="(max-width: 1024px) 100vw, 33vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
                       </div>
                       <div className="p-5 flex-1 flex flex-col">
-                        <h3 className="text-xl font-semibold text-zinc-100">{p.title}</h3>
-                        <p className="mt-2 text-sm text-zinc-400 line-clamp-2 flex-1">{p.description}</p>
+                        <h3 className="text-xl font-semibold text-gray-900">{p.title}</h3>
+                        <p className="mt-2 text-sm text-gray-500 line-clamp-2 flex-1">{p.description}</p>
                         <div className="mt-4 flex flex-wrap gap-1.5">
                           {p.stack.slice(0, 3).map((s) => (
-                            <span key={s} className="rounded-full border border-zinc-700/70 bg-zinc-900/40 px-2 py-0.5 text-xs text-zinc-300">
+                            <span key={s} className="rounded-full border border-gray-300 bg-gray-100 px-2 py-0.5 text-xs text-gray-700">
                               {s}
                             </span>
                           ))}
                           {p.stack.length > 3 && (
-                            <span className="rounded-full border border-zinc-700/70 bg-zinc-900/40 px-2 py-0.5 text-xs text-zinc-500">
+                            <span className="rounded-full border border-gray-300 bg-gray-100 px-2 py-0.5 text-xs text-gray-500">
                               +{p.stack.length - 3}
                             </span>
                           )}
@@ -164,13 +164,14 @@ export default function ProjectsPage() {
                         <div className="mt-5 flex items-center justify-between">
                           <div className="flex gap-3">
                             {p.link && (
-                              <Link href={p.link} target="_blank" className="text-zinc-400 hover:text-white transition-colors">
-                                <span className="sr-only">Source Code</span>
+                              <Link href={p.link} target="_blank" className="text-gray-400 hover:text-gray-900 transition-colors">
+                                
                                 <ExternalLink className="h-4 w-4" />
+                                <span className="sr-only">Source Code</span>
                               </Link>
                             )}
                             {p.demo && (
-                              <FlipLink href={p.demo} target="_blank" baseColor="#a1a1aa" hoverColor="#ffffff" className="text-sm font-medium">
+                              <FlipLink href={p.demo} target="_blank" baseColor="#6b7280" hoverColor="#111111" className="text-sm font-medium">
                                 Demo
                               </FlipLink>
                             )}

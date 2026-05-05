@@ -11,7 +11,7 @@ import { Experience } from "@/components/experience"
 import { StatsStrip } from "@/components/stats-strip"
 export default function Page() {
   return (
-    <div className="relative min-h-screen bg-black text-zinc-200">
+    <div className="relative min-h-screen bg-white text-gray-900">
       <Analytics />
 
       <div className="relative">

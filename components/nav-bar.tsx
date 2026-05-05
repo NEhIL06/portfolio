@@ -44,11 +44,11 @@ export function NavBar() {
 
   return (
     <>
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto rounded-full border border-white/10 bg-black/40 backdrop-blur-md overflow-hidden shadow-2xl">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto rounded-full border border-black/10 bg-white/70 backdrop-blur-md overflow-hidden shadow-lg">
       <div className="relative flex items-center justify-between px-3 py-2 gap-2">
         {/* Scroll Progress Bar */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-white/0 via-white/50 to-white origin-left z-0"
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-black/0 via-black/50 to-black origin-left z-0"
           style={{ scaleX }}
         />
 
@@ -56,7 +56,7 @@ export function NavBar() {
         <Link
           href="/"
           aria-label="Home"
-          className="md:hidden relative z-10 pl-2 pr-1 text-sm font-semibold tracking-wider text-white font-serif"
+          className="md:hidden relative z-10 pl-2 pr-1 text-sm font-semibold tracking-wider text-gray-900 font-serif"
         >
           NC.
         </Link>
@@ -71,21 +71,21 @@ export function NavBar() {
                 href={l.href}
                 className={cn(
                   "relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 select-none flex items-center",
-                  active ? "text-black" : "text-[#A1A1AA] hover:text-white"
+                  active ? "text-white" : "text-gray-500 hover:text-gray-900"
                 )}
               >
                 {/* The sliding pill — one shared layoutId means Framer Motion animates it smoothly */}
                 {active && (
                   <motion.div
                     layoutId="active-pill"
-                    className="absolute inset-0 rounded-full bg-white"
+                    className="absolute inset-0 rounded-full bg-gray-900"
                     transition={pillTransition}
                   />
                 )}
                 <span className="relative z-10">
                   <FlipText
                     baseColor="inherit"
-                    hoverColor={active ? "#0a0a0a" : "#ffffff"}
+                    hoverColor={active ? "#ffffff" : "#111111"}
                   >
                     {l.label}
                   </FlipText>
@@ -99,12 +99,12 @@ export function NavBar() {
         <div className="flex items-center gap-3 relative z-10 pl-2">
           <Button
             size="sm"
-            className="hidden sm:inline-flex bg-white/10 text-white hover:bg-white hover:text-black border border-white/20 rounded-full px-5 font-medium transition-all active:scale-95"
+            className="hidden sm:inline-flex bg-black/10 text-gray-900 hover:bg-gray-900 hover:text-white border border-black/20 rounded-full px-5 font-medium transition-all active:scale-95"
           >
             <FlipLink
               href="/connect"
               baseColor="inherit"
-              hoverColor="#0a0a0a"
+              hoverColor="#ffffff"
               className="flex items-center"
             >
               {"Let's Talk"}
@@ -112,7 +112,7 @@ export function NavBar() {
           </Button>
 
           <button
-            className="md:hidden text-[#A1A1AA] hover:text-white transition-colors p-1"
+            className="md:hidden text-gray-500 hover:text-gray-900 transition-colors p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -131,7 +131,7 @@ export function NavBar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.2 }}
-          className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-zinc-800/80 bg-zinc-950/95 backdrop-blur-xl p-6 shadow-2xl z-[60]"
+          className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-gray-200/80 bg-white/95 backdrop-blur-xl p-6 shadow-2xl z-[60]"
         >
             <nav className="flex flex-col gap-4">
               {allNavLinks.map((l, i) => (
@@ -144,11 +144,11 @@ export function NavBar() {
                   <FlipLink
                     href={l.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    baseColor={isActive(l.href) ? "#ffffff" : "#a1a1aa"}
-                    hoverColor="#ffffff"
+                    baseColor={isActive(l.href) ? "#111111" : "#6b7280"}
+                    hoverColor="#111111"
                     className={cn(
                       "block text-lg font-medium py-2",
-                      isActive(l.href) ? "text-white" : "text-zinc-400"
+                      isActive(l.href) ? "text-gray-900" : "text-gray-500"
                     )}
                   >
                     {l.label}
@@ -159,9 +159,9 @@ export function NavBar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: allNavLinks.length * 0.05 + 0.1 }}
-                className="mt-4 pt-4 border-t border-zinc-800/50"
+                className="mt-4 pt-4 border-t border-gray-200/50"
               >
-                <Button asChild className="w-full bg-zinc-100 text-black hover:bg-zinc-300 rounded-full">
+                <Button asChild className="w-full bg-gray-900 text-white hover:bg-gray-700 rounded-full">
                   <FlipLink
                     href="/connect"
                     onClick={() => setIsMobileMenuOpen(false)}

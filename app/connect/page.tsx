@@ -26,10 +26,10 @@ function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) 
           // noop
         }
       }}
-      className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all text-white hover:text-white"
+      className="border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-400 transition-all text-gray-700 hover:text-gray-900"
     >
-      <Copy className="mr-2 h-4 w-4 text-white" />
-      <span className="text-white">{copied ? "Copied" : label}</span>
+      <Copy className="mr-2 h-4 w-4 text-gray-600" />
+      <span className="text-gray-700">{copied ? "Copied" : label}</span>
     </Button>
   )
 }
@@ -41,14 +41,14 @@ export default function ConnectPage() {
     <div className="relative min-h-screen pt-24 sm:pt-32 pb-16 sm:pb-24">
       <div className="relative mx-auto max-w-5xl container-x">
         <div className="mb-12 sm:mb-16 text-center">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-white mb-4 sm:mb-6">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tighter text-gray-900 mb-4 sm:mb-6">
             <SplitText>Let&apos;s Connect</SplitText>
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto"
           >
             I&apos;m always open to collaborating, brainstorming, or building something meaningful.
           </motion.p>
@@ -56,15 +56,15 @@ export default function ConnectPage() {
 
         <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
           <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur h-full">
+            <Card className="border border-black/10 bg-white backdrop-blur h-full">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-zinc-200">
-                  <Mail className="h-5 w-5 text-zinc-400" />
+                <CardTitle className="flex items-center gap-2 text-gray-900">
+                  <Mail className="h-5 w-5 text-gray-400" />
                   Email
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <Link href={`mailto:${contact.email}`} className="text-zinc-300 hover:text-zinc-50 underline underline-offset-4 transition-colors break-all">
+                <Link href={`mailto:${contact.email}`} className="text-gray-700 hover:text-gray-900 underline underline-offset-4 transition-colors break-all">
                   {contact.email}
                 </Link>
                 <CopyButton text={contact.email} />
@@ -73,43 +73,43 @@ export default function ConnectPage() {
           </GlowCard>
 
           <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur h-full">
+            <Card className="border border-black/10 bg-white backdrop-blur h-full">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-zinc-200">
-                  <MapPin className="h-5 w-5 text-zinc-400" />
+                <CardTitle className="flex items-center gap-2 text-gray-900">
+                  <MapPin className="h-5 w-5 text-gray-400" />
                   Location
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-300 text-base sm:text-lg">{contact.location}</CardContent>
+              <CardContent className="text-gray-700 text-base sm:text-lg">{contact.location}</CardContent>
             </Card>
           </GlowCard>
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-1 max-w-3xl mx-auto">
           <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+            <Card className="border border-black/10 bg-white backdrop-blur">
               <CardHeader>
-                <CardTitle className="text-zinc-200 text-xl">Find Me Online</CardTitle>
-                <p className="text-sm text-zinc-400 mt-2">Connect with me on these platforms</p>
+                <CardTitle className="text-gray-900 text-xl">Find Me Online</CardTitle>
+                <p className="text-sm text-gray-500 mt-2">Connect with me on these platforms</p>
               </CardHeader>
               <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <FlipLink href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                <Button asChild variant="outline" className="border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-400 transition-all">
+                  <FlipLink href={socials.linkedin} target="_blank" aria-label="LinkedIn profile" baseColor="#374151" hoverColor="#111111" className="flex items-center text-gray-700">
                     LinkedIn
                   </FlipLink>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <FlipLink href={socials.x} target="_blank" aria-label="X profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                <Button asChild variant="outline" className="border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-400 transition-all">
+                  <FlipLink href={socials.x} target="_blank" aria-label="X profile" baseColor="#374151" hoverColor="#111111" className="flex items-center text-gray-700">
                     X / Twitter
                   </FlipLink>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <FlipLink href={socials.github} target="_blank" aria-label="GitHub profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                <Button asChild variant="outline" className="border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-400 transition-all">
+                  <FlipLink href={socials.github} target="_blank" aria-label="GitHub profile" baseColor="#374151" hoverColor="#111111" className="flex items-center text-gray-700">
                     GitHub
                   </FlipLink>
                 </Button>
-                <Button asChild variant="outline" className="border-zinc-700/70 bg-zinc-900/40 hover:bg-zinc-800/40 hover:border-zinc-600 transition-all">
-                  <FlipLink href={socials.leetcode} target="_blank" aria-label="LeetCode profile" baseColor="#ffffff" hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)" className="flex items-center text-white">
+                <Button asChild variant="outline" className="border-gray-300 bg-white hover:bg-gray-100 hover:border-gray-400 transition-all">
+                  <FlipLink href={socials.leetcode} target="_blank" aria-label="LeetCode profile" baseColor="#374151" hoverColor="#111111" className="flex items-center text-gray-700">
                     LeetCode
                   </FlipLink>
                 </Button>
@@ -120,11 +120,11 @@ export default function ConnectPage() {
 
         <div className="mt-8 max-w-3xl mx-auto">
           <GlowCard>
-            <Card className="border border-zinc-800/80 bg-zinc-950/40 backdrop-blur">
+            <Card className="border border-black/10 bg-white backdrop-blur">
               <CardHeader>
-                <CardTitle className="text-zinc-200 text-xl sm:text-2xl">What can we build together?</CardTitle>
+                <CardTitle className="text-gray-900 text-xl sm:text-2xl">What can we build together?</CardTitle>
               </CardHeader>
-              <CardContent className="text-zinc-300 text-base sm:text-lg leading-relaxed">
+              <CardContent className="text-gray-600 text-base sm:text-lg leading-relaxed">
                 I enjoy building things that work well and feel simple — whether it&apos;s an AI idea, a web app, or a fun side project.
                 Let&apos;s connect and make something awesome.
               </CardContent>
