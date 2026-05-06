@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Bodoni_Moda, Playfair_Display } from "next/font/google";
-import SmoothScrollProvider from "./smoothscroll";
 import "./globals.css";
 
 import { siteConfig } from "@/lib/site-config";
@@ -59,9 +58,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { NavBar } from "@/components/nav-bar"
-import { MetallicBackground } from "@/components/metallic-background"
-import { Footer } from "@/components/footer"
+import { LayoutShell } from "@/components/layout-shell"
 
 export default function RootLayout({
   children,
@@ -89,12 +86,7 @@ export default function RootLayout({
             }),
           }}
         />
-        <SmoothScrollProvider>
-          <MetallicBackground />
-          <NavBar />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScrollProvider>
+        <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );

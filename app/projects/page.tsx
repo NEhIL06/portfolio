@@ -35,7 +35,7 @@ export default function ProjectsPage() {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 mb-4">
           <SplitText>{projectsPage.title}</SplitText>
         </h1>
-        <p className="mt-3 max-w-3xl text-sm sm:text-base text-gray-500 italic">"{projectsPage.quote}"</p>
+        <p className="mt-3 max-w-3xl text-sm sm:text-base text-gray-500 italic">&quot;{projectsPage.quote}&quot;</p>
 
         {/* Featured Projects */}
         <div className="mt-12 sm:mt-16 text-2xl sm:text-3xl font-semibold text-gray-900 mb-6 sm:mb-8 font-serif">Featured</div>
