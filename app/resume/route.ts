@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 export async function GET() {
-    const filePath = path.join(process.cwd(), 'public', 'Nehil_SDE.pdf');
+    const filePath = path.join(process.cwd(), 'public', 'Nehil_SDE (3).pdf');
 
     try {
         const fileBuffer = fs.readFileSync(filePath);
