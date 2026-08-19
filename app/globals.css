@@ -170,6 +170,13 @@ html, body {
   }
 }
 
+@keyframes antigravity-rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
 /* Animated link underline */
 .link-hover {
   background-image: linear-gradient(currentColor, currentColor);

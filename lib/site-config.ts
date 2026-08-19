@@ -36,10 +36,8 @@ export const siteConfig = {
   navItems: [
     { href: '/', label: "Home" },
     { href: "/about", label: "Who Am I?" },
-
     { href: "/projects", label: "My Work" },
-
-
+    { href: '/writing', label: "Writing" },
   ],
   education: {
     institute: "Siddaganga Institute of Technology",

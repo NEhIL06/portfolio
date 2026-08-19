@@ -39,12 +39,13 @@ export function NavBar() {
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/"
     if (href === "/projects") return pathname.startsWith("/projects")
+    if (href === "/writing") return pathname.startsWith("/writing")
     return pathname === href
   }
 
   return (
     <>
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto rounded-full border border-black/10 bg-white/70 backdrop-blur-md overflow-hidden shadow-lg">
+    <header className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto rounded-full border border-black/10 bg-white/70 backdrop-blur-md overflow-hidden shadow-lg">
       <div className="relative flex items-center justify-between px-3 py-2 gap-2">
         {/* Scroll Progress Bar */}
         <motion.div
@@ -65,6 +66,7 @@ export function NavBar() {
         <nav aria-label="Main" className="hidden md:flex items-center gap-1 relative z-10">
           {allNavLinks.map((l) => {
             const active = isActive(l.href)
+
             return (
               <Link
                 key={l.href}
@@ -127,34 +129,36 @@ export function NavBar() {
     <AnimatePresence>
       {isMobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.2 }}
-          className="md:hidden fixed inset-x-0 top-20 mx-4 rounded-3xl border border-gray-200/80 bg-white/95 backdrop-blur-xl p-6 shadow-2xl z-[60]"
+          className="md:hidden fixed inset-x-0 bottom-20 mx-4 rounded-3xl border border-gray-200/80 bg-white/95 backdrop-blur-xl p-6 shadow-2xl z-[60]"
         >
             <nav className="flex flex-col gap-4">
-              {allNavLinks.map((l, i) => (
-                <motion.div
-                  key={l.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <FlipLink
-                    href={l.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    baseColor={isActive(l.href) ? "#111111" : "#6b7280"}
-                    hoverColor="#111111"
-                    className={cn(
-                      "block text-lg font-medium py-2",
-                      isActive(l.href) ? "text-gray-900" : "text-gray-500"
-                    )}
+              {allNavLinks.map((l, i) => {
+                return (
+                  <motion.div
+                    key={l.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {l.label}
-                  </FlipLink>
-                </motion.div>
-              ))}
+                    <FlipLink
+                      href={l.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      baseColor={isActive(l.href) ? "#111111" : "#6b7280"}
+                      hoverColor="#111111"
+                      className={cn(
+                        "block text-lg font-medium py-2",
+                        isActive(l.href) ? "text-gray-900" : "text-gray-500"
+                      )}
+                    >
+                      {l.label}
+                    </FlipLink>
+                  </motion.div>
+                )
+              })}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

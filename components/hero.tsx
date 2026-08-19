@@ -22,7 +22,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative z-10 flex flex-col items-center"
+        className="relative z-10 flex flex-col items-center -mt-14 sm:-mt-18 md:-mt-25"
       >
         <h1
           className="text-[clamp(2.75rem,11vw,4rem)] sm:text-7xl md:text-8xl lg:text-9xl leading-[1.05] font-semibold tracking-tight font-serif"
@@ -61,47 +61,6 @@ export function Hero() {
           builder&nbsp;—&nbsp;crafting systems, shaping experiences.
         </motion.p>
 
-        <motion.div
-          className="mt-8 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4 w-full sm:w-auto"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: (name.length * 0.04) + 1.4, duration: 0.8 }}
-        >
-          <MagneticButton className="w-full sm:w-auto">
-            <Button
-              variant="default"
-              className="group bg-gray-900 text-white hover:bg-black shadow-[0_0_15px_rgba(0,0,0,0.1)] rounded-full px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg transition-all flex items-center w-full sm:w-auto justify-center"
-            >
-              <FlipLink
-                href="/connect"
-                baseColor="#ffffff"
-                hoverColor="#ffffff"
-                className="flex items-center gap-2"
-              >
-                Connect with me
-              </FlipLink>
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </MagneticButton>
-
-          <MagneticButton className="w-full sm:w-auto">
-            <Button
-              variant="outline"
-              className="border-black/20 bg-white hover:bg-gray-100 backdrop-blur-md rounded-full px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg text-gray-900 transition-colors flex items-center w-full sm:w-auto justify-center"
-            >
-              
-              <FlipLink
-                href="/resume"
-                target="_blank"
-                aria-label="View resume"
-                baseColor="#111111"
-                hoverColor="linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)"
-              >
-                Resume
-              </FlipLink>
-            </Button>
-          </MagneticButton>
-        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}
