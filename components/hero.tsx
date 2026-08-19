@@ -2,11 +2,7 @@
 
 import { motion } from "framer-motion"
 import { siteConfig } from "@/lib/site-config"
-import { MagneticButton } from "@/components/motion/magnetic-button"
-import { Button } from "@/components/ui/button"
-
-import { ArrowRight, ChevronDown } from 'lucide-react'
-import FlipLink from "@/components/motion/flip-link"
+import { ChevronDown } from 'lucide-react'
 
 export function Hero() {
   const { name } = siteConfig
