@@ -508,28 +508,3 @@ export default function AlterEgoPage() {
     </div>
   )
 }
-
-/* ─── Data ─── */
-
-const _interests = [
-  { icon: "📷", title: "Photography", desc: "Capturing ordinary moments with an eye for contrast, light, and quiet stories." },
-  { icon: "✈️", title: "Travel", desc: "New places recalibrate perspective. I collect experiences, not souvenirs." },
-  { icon: "🏆", title: "Hackathons", desc: "Rapid, high-stakes creation under pressure — my favorite environment." },
-  { icon: "🎥", title: "Video & Content", desc: "Making things — tutorials, vlogs, essays — because creating is how I think." },
-  { icon: "📚", title: "Reading", desc: "Systems thinking, biographies, and anything that shifts how I see the world." },
-  { icon: "🎵", title: "Music", desc: "Lo-fi for flow state, jazz for thinking, and everything else for the commute." },
-]
-
-const _quotes = [
-  "Ship it, then make it beautiful. Waiting for perfect is just fear with better branding.",
-  "The best engineers I know are also great communicators. Code is just one language.",
-  "Curiosity is a strategy. It compounds over time the same way money does.",
-]
-
-const _currently = [
-  { label: "Building", value: "Scalable systems at Alcovia" },
-  { label: "Learning", value: "Advanced distributed systems & AI" },
-  { label: "Reading", value: "The Psychology of Money — Morgan Housel" },
-  { label: "Watching", value: "Lectures, talks, long-form essays" },
-  { label: "Based In", value: "Gurugram, India" },
-]
