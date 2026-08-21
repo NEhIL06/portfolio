@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Bodoni_Moda, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Bodoni_Moda, Playfair_Display, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
 import { siteConfig } from "@/lib/site-config";
@@ -26,6 +26,13 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -68,7 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bodoni.variable} ${playfair.variable} antialiased selection:bg-zinc-800 selection:text-white bg-white text-black font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bodoni.variable} ${playfair.variable} ${bebasNeue.variable} antialiased selection:bg-zinc-800 selection:text-white bg-white text-black font-sans overflow-x-hidden`}
       >
         <script
           type="application/ld+json"

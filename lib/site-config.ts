@@ -11,13 +11,13 @@ export const siteConfig = {
   contact: {
     email: "nehil.contact@gmail.com",
     phone: "",
-    location: "Gurugram, India",
+    location: "Remote",
   },
   experience: [
     {
       role: "Full Stack Engineer Intern",
       company: "Alcovia",
-      duration: "Present",
+      duration: "6 months",
       description: "Building scalable backend features, collaborating explicitly on seamless UX workflows.",
       link: "https://x.com/alcovia",
     }
