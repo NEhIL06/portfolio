@@ -1,3 +1,5 @@
+import { ragArticle } from "@/lib/article-rag"
+
 export interface Article {
   slug: string
   title: string
@@ -10,6 +12,7 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  ragArticle,
   {
     slug: "authentication-is-not-one-thing",
     title: "Authentication Is Not One Thing",
