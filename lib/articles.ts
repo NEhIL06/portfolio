@@ -11,6 +11,266 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "authentication-is-not-one-thing",
+    title: "Authentication Is Not One Thing",
+    subtitle: "The mental model that finally separated sessions, JWTs, OAuth, OIDC, and SSO for me.",
+    date: "Aug 2026",
+    readingTime: "11 min read",
+    tags: ["Engineering", "Security", "Authentication", "System Design"],
+    excerpt:
+      "For a long time, authentication was one blurry box in my head called login. The moment I separated identity, credentials, continuity, delegation, and permissions, the whole system became easier to reason about.",
+    content: `For a long time, authentication was one blurry box in my head called **login**.
+
+A user enters an email and password. The backend checks them. A JWT comes back. Somewhere around that flow, OAuth, sessions, cookies, API keys, and authorization all seemed to belong to the same category.
+
+I knew the words. I had used some of them. But if someone had asked me where one concept ended and the next began, my explanation would have become vague very quickly.
+
+Then I watched Hayk Simonyan's video, [7 Authentication Concepts Every Developer Should Know](https://www.youtube.com/watch?v=iX8g4LqF8p8), and the most useful part was not learning seven new definitions.
+
+It was realizing that I had been placing several different layers of a system inside one mental box.
+
+A JWT is not an authentication method. OAuth 2.0 is not a login protocol. SSO is not a token. An API key usually identifies an application, not the human using it. Authentication and authorization are connected, but they do not answer the same question.
+
+Once I separated those ideas, authentication stopped feeling like a collection of acronyms and started looking like a system.
+
+**The biggest source of confusion in authentication is not that the concepts are individually difficult. It is that we use them together and then talk about them as if they are interchangeable.**
+
+## The first split: identity is not permission
+
+Authentication answers:
+
+> Who is making this request?
+
+Authorization answers:
+
+> Now that I know who you are, what are you allowed to do?
+
+That order matters.
+
+Logging into an admin dashboard proves an identity. It does not automatically prove that the identity should be able to delete another user, view billing information, or change production settings.
+
+This is also why HTTP has different responses for these situations. A \`401 Unauthorized\` response means the request does not have valid authentication credentials. A \`403 Forbidden\` response means the server understood the request but refuses the action. The name of 401 is slightly unfortunate, but the distinction is useful: one is about proving identity, and the other is about permission.
+
+I used to think of authorization as a detail attached to authentication. Now I think of it as a separate decision that happens after authentication and needs its own design.
+
+[[diagram:auth-layers]]
+
+This diagram is the mental model I was missing. Basic Auth, JWT, OAuth, and SSO are not four competing answers to one question. They live at different parts of the stack.
+
+## Credentials: how a client proves something
+
+The simplest place to begin is HTTP Basic Authentication.
+
+With Basic Auth, the client sends a username and password with every request in the \`Authorization\` header. The credentials are Base64-encoded, but Base64 is only an encoding. Anyone who gets the value can decode it.
+
+That means HTTPS is not optional. Without encrypted transport, the credentials are exposed. Even with HTTPS, repeatedly sending the user's password creates more opportunities for it to leak through logs, proxies, or poorly handled requests.
+
+Digest Authentication tried to improve this by using a challenge from the server and sending a derived response instead of the raw password. The password does not travel in the same direct form, and the challenge helps resist replay of an identical response.
+
+But that does not make Digest the obvious modern default. Its security depends on the exact algorithm and configuration, and it still does not replace TLS. It helped me see an important pattern, though: authentication methods are often attempts to reduce how much valuable credential material crosses the network.
+
+API keys solve a related but different problem.
+
+An API key is usually a credential for a program, project, or integration. When a weather service gives my backend an API key, the service can identify which application is calling, apply a quota, and revoke access later. It does not necessarily know which person clicked the button that caused the request.
+
+That distinction becomes important in real systems.
+
+If I use the same API key for every user, the key can authenticate my application while telling the receiving API almost nothing about the individual user. If I need user-level identity or permissions, I need another mechanism on top of it.
+
+**A credential only proves the identity it was issued to represent. It does not automatically represent the human at the keyboard.**
+
+## Sessions: the server remembers you
+
+Sending a password with every request is unnecessary once the user has logged in successfully.
+
+Session-based authentication replaces that repeated proof with a temporary reference.
+
+The user submits credentials once. The server verifies them, creates a session record, and returns a session identifier, commonly in a cookie. On later requests, the browser sends the cookie and the server looks up the session.
+
+The session ID is intentionally uninteresting by itself. The useful state remains on the server: the user ID, expiration, roles, or whatever else the application needs.
+
+This makes the system stateful. If the application runs on several servers, they need a shared session store or a routing strategy that consistently reaches the right state. That adds infrastructure, but statefulness has a major advantage: revocation is straightforward.
+
+Delete the session and the reference stops working.
+
+Sessions are sometimes described as old-fashioned while JWTs are described as modern. I no longer think that framing is useful. A server-rendered web application can be extremely well served by a secure session cookie. The choice is about the shape of the system, not which technology sounds newer.
+
+The real security work also does not end when the session exists. Cookies need the right \`HttpOnly\`, \`Secure\`, and \`SameSite\` settings. State-changing requests need CSRF protection where applicable. Session identifiers need enough entropy, sensible expiration, and rotation after login.
+
+The mechanism may be simple. Operating it carelessly is not.
+
+## Bearer tokens and JWTs are not synonyms
+
+Token-based authentication changes what the client sends after login.
+
+A bearer token means that possession is enough to use it. The server does not ask the client to prove a second secret associated with the token. Whoever bears it can present it.
+
+That is a usage model, not a file format.
+
+A JWT, or JSON Web Token, is a format for carrying claims. It can contain a subject, issuer, audience, expiration time, and other data. A JWT can be signed so that a service can detect modification and trust the issuer that created it.
+
+These ideas often appear together because a signed JWT is commonly used as a bearer access token. But they are not the same thing.
+
+- A bearer token does not have to be a JWT. It can be an opaque random string.
+- A JWT does not have to be an access token. OpenID Connect, for example, uses a JWT as an ID token.
+- A signed JWT is usually readable. A signature protects integrity; it does not hide the payload.
+
+That last point is easy to miss. Putting a password or another secret inside a normal signed JWT does not make the secret encrypted. Anyone holding the token can decode its header and payload.
+
+JWTs are often called stateless because an API can validate the signature and read the claims without querying a central session store. That can be valuable when many independent services need to validate the same identity.
+
+But statelessness is not free.
+
+If a token is stolen, a locally validated token normally remains usable until it expires. If permissions change, old claims may remain valid. If the system adds a denylist or checks the database on every request to solve those problems, some of the state has simply returned under a different name.
+
+[[diagram:session-vs-token]]
+
+So the useful comparison is not "sessions bad, JWTs good."
+
+It is:
+
+- Where should the state live?
+- How quickly must access be revocable?
+- How many services need to validate the credential?
+- What happens when roles or permissions change?
+- What is the damage if the credential is stolen?
+
+The answers determine whether a server-side session, an opaque token, a locally validated JWT, or a combination makes sense.
+
+## Access and refresh tokens split the risk
+
+Short-lived access tokens create a usability problem.
+
+If an access token expires every few minutes, forcing the user to type a password every few minutes would be secure in one sense and unusable in every practical sense.
+
+Refresh tokens are the compromise.
+
+The access token is short-lived and sent to APIs. The refresh token lives longer and is used only to obtain a new access token. The user can stay signed in while the credential exposed to routine API traffic has a limited lifetime.
+
+This also means the refresh token is more valuable. If an attacker steals it, they may be able to create new access tokens long after the original one expires.
+
+That changes how it should be handled. Refresh tokens should be stored more carefully, revocable, and often rotated when used. With rotation, each refresh produces a new refresh token and invalidates the previous one. Reuse of an older token can then signal that it was copied.
+
+The pair is not just "a long token and a short token." It is a deliberate split between a frequently used credential with a small window of damage and a powerful credential exposed to fewer places.
+
+## OAuth 2.0 is about delegated access
+
+The sentence I needed to remember is simple:
+
+**OAuth 2.0 is an authorization framework.**
+
+Imagine I build an application that needs to read a user's Google Calendar.
+
+The worst design would ask for the user's Google password and impersonate them. My application would receive far more power than it needs, and the user would have to change their password to remove my access.
+
+OAuth 2.0 introduces a delegation flow instead.
+
+My application redirects the user to Google. Google authenticates the user and asks whether my application can receive a specific scope, such as read-only calendar access. If the user agrees, my application eventually receives an access token representing that limited permission.
+
+The important part is what the token says conceptually:
+
+> This application may perform these actions on behalf of the resource owner.
+
+It does not inherently say:
+
+> This is everything the application needs to know about the user's identity.
+
+OAuth separates the resource owner, client application, authorization server, and resource server. That separation lets a user grant limited access without handing the client their main credentials.
+
+Modern browser and mobile flows normally use the authorization code flow with PKCE. The details matter: redirect URIs must be validated, state must be protected, tokens must be checked for the correct issuer and audience, and a maintained library is usually a much better choice than implementing the protocol from memory.
+
+## OpenID Connect adds the identity layer
+
+If OAuth 2.0 grants access, how does "Sign in with Google" tell my application who signed in?
+
+That is where OpenID Connect, or OIDC, fits.
+
+OIDC adds an identity layer on top of OAuth 2.0. An OIDC request includes the \`openid\` scope, and the provider can return an ID token containing claims about the authentication event and the user. The ID token is a JWT, but its job is different from an access token.
+
+- The access token is presented to a resource server to call an API.
+- The ID token is consumed by the client to establish who authenticated.
+
+Using the ID token as an API access token mixes those responsibilities and can create security problems. Each token needs to be validated and used for the audience it was issued for.
+
+[[diagram:oauth-oidc]]
+
+This was the point where the vocabulary finally connected for me.
+
+OAuth 2.0 and OIDC are not competing login options. OIDC uses OAuth 2.0's machinery and adds a standardized identity result.
+
+## SSO is the experience, not the protocol
+
+Single Sign-On describes what the user experiences: sign in once, then enter several related applications without being asked for credentials each time.
+
+That experience requires the applications to trust a shared identity provider. The underlying protocol might be OpenID Connect or SAML, which is still common in enterprise environments.
+
+This is why saying "we use SSO" does not completely describe the implementation. It describes the outcome.
+
+The benefit is obvious. Users manage fewer passwords, organizations can centralize access policy, and disabling one central account can remove access across many applications.
+
+The trade-off is equally important. The identity provider becomes critical infrastructure. If it is unavailable, every connected application may become unavailable to users. If it is compromised, the blast radius can include every application that trusts it.
+
+Convenience and central control come with central dependency.
+
+## How I would choose now
+
+I used to begin with a technology:
+
+> Should I use JWT authentication?
+
+Now I think that question arrives too early.
+
+I would first ask:
+
+- Who or what is being authenticated: a person, browser, mobile app, service, or third-party integration?
+- Is this a first-party login or delegated access to another platform?
+- Which services need to validate the result?
+- How quickly must credentials and permissions be revoked?
+- Where can credentials be stored safely?
+- What trust boundary does each request cross?
+- Does the user need one login across several applications?
+
+For a conventional first-party web application, a server-side session with a secure cookie may be the clearest design.
+
+For an API used by mobile clients or several services, short-lived access tokens may fit better.
+
+For an application acting on a user's behalf against another service, OAuth 2.0 is the relevant framework.
+
+For login through an external identity provider, OIDC provides the identity layer.
+
+For organization-wide login across many products, SSO may be the required experience, implemented with OIDC or SAML.
+
+For a server-to-server integration, an API key or an OAuth client-credentials flow may represent the calling application.
+
+None of these choices removes the need for authorization. Knowing who made the request still does not decide whether that identity may perform the action.
+
+## The lesson was really about naming
+
+Authentication code is often hidden behind frameworks, middleware, SDKs, and identity providers. That is useful. I do not want every application to invent password storage or implement OAuth from scratch.
+
+But abstraction makes the vocabulary more important, not less.
+
+If I call every token a JWT, I may validate an ID token where an access token is required. If I treat OAuth as authentication, I may assume delegated API access proves identity. If I treat authentication as authorization, I may allow a logged-in user to do something they should never be permitted to do.
+
+Those are not academic naming mistakes. They change the security of the system.
+
+The login screen is only the visible beginning. Behind it are questions about credentials, state, token lifetime, trust, delegation, identity, and permissions.
+
+I still do not need to memorize every line of every specification.
+
+But I do need to know which question each part of the system is answering.
+
+**Authentication became much easier to understand when I stopped treating it as one thing.**
+
+## Sources and further reading
+
+- [7 Authentication Concepts Every Developer Should Know — Hayk Simonyan](https://www.youtube.com/watch?v=iX8g4LqF8p8)
+- [OAuth 2.0 Authorization Framework — RFC 6749](https://www.rfc-editor.org/rfc/rfc6749)
+- [OAuth 2.0 Bearer Token Usage — RFC 6750](https://www.rfc-editor.org/rfc/rfc6750)
+- [JSON Web Token — RFC 7519](https://www.rfc-editor.org/rfc/rfc7519)
+- [OpenID Connect Core 1.0 — OpenID Foundation](https://openid.net/specs/openid-connect-core-1_0.html)`,
+  },
+  {
     slug: "junior-engineers-dont-get-to-stay-junior-anymore",
     title: "Junior Engineers Don't Get to Stay Junior Anymore",
     subtitle: "AI is shortening the distance between \"Can you build this?\" and \"Should we build it this way?\"",

@@ -1,4 +1,4 @@
-# My Story | Professional Portfolio
+# My Portfolio
 
 A premium, high-performance personal portfolio built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**. Designed with a focus on aesthetics, smooth animations, and interactive 3D elements.
 
