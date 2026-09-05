@@ -70,14 +70,6 @@ export function Footer() {
     setTimeout(() => setCopied(false), 2500)
   }
 
-  const socialLinks = [
-    { name: "BEHANCE", url: "https://behance.net" },
-    { name: "LINKEDIN", url: siteConfig.socials.linkedin },
-    { name: "INSTAGRAM", url: "https://instagram.com" },
-    { name: "GITHUB", url: siteConfig.socials.github },
-    { name: "X", url: siteConfig.socials.x },
-  ].filter((s) => Boolean(s.url))
-
   return (
     <footer className="relative bg-black text-white w-full max-w-full overflow-hidden select-none font-sans border-t border-zinc-900 mt-20 sm:mt-32">
       {/* Top Banner & Ruler */}
