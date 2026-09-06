@@ -2,6 +2,7 @@ import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import { ScrollReveal } from "@/components/motion/scroll-reveal"
+import { RollText } from "@/components/motion/roll-text"
 type Project = (typeof siteConfig.projects)[number]
 const missingImages = new Set(["/newsanchor.png", "/truestate.png", "/outbreak.png"])
 export function projectCategory(stack: string[]) {
@@ -19,6 +20,6 @@ export function ProjectCard({ project: p, index, details = false }: { project: P
     <p className="project-description">{p.description}</p>
     {details && p.facts && <details className="project-details"><summary>Project highlights</summary><ul>{p.facts.map(fact => <li key={fact}>{fact}</li>)}</ul></details>}
     <ul className="project-stack">{(details ? p.stack : p.stack.slice(0, 4)).map(item => <li key={item}>{item}</li>)}</ul>
-    <div className="project-links">{p.link && p.link !== "#" && <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-link">Source code<ArrowUpRight size={15} /></a>}{p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer" className="text-link">Live demo<ArrowUpRight size={15} /></a>}</div>
+    <div className="project-links">{p.link && p.link !== "#" && <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-link"><RollText>Source code</RollText><ArrowUpRight size={15} /></a>}{p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer" className="text-link"><RollText>Live demo</RollText><ArrowUpRight size={15} /></a>}</div>
   </article></ScrollReveal>
 }

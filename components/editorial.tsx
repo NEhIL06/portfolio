@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { ScrollReveal } from "@/components/motion/scroll-reveal"
+import { RollText } from "@/components/motion/roll-text"
 
 export function SectionHeading({ number, label, title, description, href, linkLabel }: {
   number: string; label: string; title: string; description?: string; href?: string; linkLabel?: string
@@ -8,7 +9,7 @@ export function SectionHeading({ number, label, title, description, href, linkLa
   return <ScrollReveal className="section-heading">
     <div className="eyebrow"><span>{number}</span><span>{label}</span></div>
     <div className="section-heading-row"><div><h2 className="display-heading">{title}</h2>{description && <p className="section-description">{description}</p>}</div>
-      {href && <Link className="text-link" href={href}>{linkLabel}<ArrowUpRight size={17} /></Link>}
+      {href && linkLabel && <Link className="text-link" href={href}><RollText>{linkLabel}</RollText><ArrowUpRight size={17} /></Link>}
     </div>
   </ScrollReveal>
 }
