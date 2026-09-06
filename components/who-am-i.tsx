@@ -1,34 +1,11 @@
-"use client"
-
-import { siteConfig } from "@/lib/site-config"
-import { TextReveal } from "@/components/motion/text-reveal"
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-
+import { ArrowUpRight } from "lucide-react"
+import { ScrollReveal } from "@/components/motion/scroll-reveal"
 export function WhoAmI() {
-  const { about } = siteConfig
-
-  return (
-    <div className="mx-auto max-w-5xl container-x py-20 md:py-40 flex flex-col items-center justify-center min-h-[50vh]">
-      <div className="w-full max-w-4xl">
-        <h2 className="text-sm font-mono tracking-widest text-zinc-500 uppercase mb-8 text-center sm:text-left">Who Am I</h2>
-
-        {/* Document scale scroll-driven text reveal */}
-        <TextReveal className="text-2xl sm:text-3xl md:text-4xl leading-snug font-medium text-gray-900/90">
-          {about.intro}
-        </TextReveal>
-
-        <div className="mt-12 sm:mt-16 flex justify-center sm:justify-start opacity-80 hover:opacity-100 transition-opacity">
-          <Link
-            href="/about"
-            className="group flex items-center gap-2 text-lg font-medium text-gray-600 hover:text-gray-900"
-          >
-            Learn more about my journey
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
+  return <div className="site-container section-space about-preview">
+    <ScrollReveal className="about-photo"><Image src="/myimage1.jpg" alt="Nehil Chandrakar" fill sizes="(max-width: 767px) 85vw, 360px" className="object-cover" /><span className="photo-caption">The person behind the pixels.</span></ScrollReveal>
+    <ScrollReveal className="about-copy"><p className="eyebrow"><span>01</span> A little context</p><h2 className="display-heading">An engineer’s mind.<br /><em>A builder’s curiosity.</em></h2><p>I’m Nehil, a full stack engineer drawn to the space where thoughtful design meets dependable engineering.</p><p>Beyond the code, you’ll find me at hackathons, building communities, or looking for a good frame through my camera. Always learning. Usually building something.</p><Link className="text-link" href="/about">More about me <ArrowUpRight size={17} /></Link></ScrollReveal>
+  </div>
 }
 

@@ -1,196 +1,48 @@
 "use client"
-
-import { useState } from "react"
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
+import { ArrowRight, ArrowUpRight, Check, Copy, Globe } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
-import FlipLink from "@/components/motion/flip-link"
-import { ArrowRight, Check, Copy, Globe } from "lucide-react"
 
-// Checkerboard pattern top strip
 function CheckerboardBanner() {
-  return (
-    <div className="w-full max-w-full h-5 sm:h-6 bg-black relative overflow-hidden border-b border-zinc-900 select-none">
-      <div
-        className="w-full h-full"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%23ffffff'/%3E%3Crect x='8' width='8' height='8' fill='%23000000'/%3E%3Crect y='8' width='8' height='8' fill='%23000000'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23ffffff'/%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat-x",
-          backgroundSize: "16px 16px",
-        }}
-      />
-      {/* Glowing electric yellow dot accent on top right */}
-      <div className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFE500] shadow-[0_0_8px_#FFE500] z-10" />
-    </div>
-  )
+  return <div className="h-5 border-b border-zinc-900 bg-black sm:h-6" aria-hidden="true"><div className="h-full" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23fff' d='M0 0h8v8H0zm8 8h8v8H8z'/%3E%3Cpath d='M8 0h8v8H8zM0 8h8v8H0z'/%3E%3C/svg%3E")` }} /></div>
 }
-
-// Technical Ruler strip with numbered gauge ticks (-05 to 05)
 function RulerStrip() {
-  return (
-    <div className="w-full max-w-full bg-black py-2 sm:py-3 border-b border-zinc-900/80 overflow-hidden select-none">
-      <div className="w-full max-w-5xl mx-auto px-4 flex flex-col items-center justify-center">
-        {/* Gauge Ticks */}
-        <div className="w-full flex items-end justify-between h-3.5 opacity-60 overflow-hidden">
-          {Array.from({ length: 33 }).map((_, i) => {
-            const isMajor = i % 4 === 0
-            return (
-              <div
-                key={i}
-                className={`bg-zinc-400 shrink-0 ${
-                  isMajor ? "h-3.5 w-[1.5px] bg-zinc-200" : "h-1.5 w-[1px] bg-zinc-600"
-                }`}
-              />
-            )
-          })}
-        </div>
-        {/* Scale Numbers */}
-        <div className="w-full flex justify-between mt-1 font-mono text-[9px] sm:text-xs text-zinc-500 font-medium">
-          <span className="hidden sm:inline">-05</span>
-          <span className="hidden sm:inline">-04</span>
-          <span className="hidden sm:inline">-03</span>
-          <span className="hidden sm:inline">-02</span>
-          <span>-01</span>
-          <span className="text-zinc-200 font-bold">00</span>
-          <span>01</span>
-          <span className="hidden sm:inline">02</span>
-          <span className="hidden sm:inline">03</span>
-          <span className="hidden sm:inline">04</span>
-          <span className="hidden sm:inline">05</span>
-        </div>
-      </div>
-    </div>
-  )
+  return <div className="border-b border-zinc-800 bg-black px-4 py-3" aria-hidden="true"><div className="mx-auto max-w-5xl"><div className="flex h-3 items-end justify-between opacity-60">{Array.from({ length: 33 }).map((_, i) => <i key={i} className={i % 4 === 0 ? "h-3 w-px bg-zinc-200" : "h-1.5 w-px bg-zinc-600"} />)}</div><div className="mt-1 flex justify-between font-mono text-[9px] text-zinc-500"><span>-05</span><span>-03</span><span>-01</span><span className="text-white">00</span><span>01</span><span>03</span><span>05</span></div></div></div>
 }
 
 export function Footer() {
   const [copied, setCopied] = useState(false)
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(siteConfig.contact.email)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2500)
+  const [error, setError] = useState("")
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current) }, [])
+  async function copyEmail() {
+    try { await navigator.clipboard.writeText(siteConfig.contact.email); setCopied(true); setError("") }
+    catch { setError("Copy failed. Tap the email address instead.") }
+    if (timer.current) clearTimeout(timer.current)
+    timer.current = setTimeout(() => setCopied(false), 2500)
   }
-
-  return (
-    <footer className="relative bg-black text-white w-full max-w-full overflow-hidden select-none font-sans border-t border-zinc-900 mt-20 sm:mt-32">
-      {/* Top Banner & Ruler */}
-      <CheckerboardBanner />
-      <RulerStrip />
-
-      {/* Main High-Impact Header Section */}
-      <div className="relative py-12 sm:py-20 md:py-24 px-4 flex flex-col items-center justify-center text-center overflow-hidden max-w-full">
-        {/* Eyebrow */}
-        <p className="font-mono tracking-[0.25em] text-xs sm:text-sm font-extrabold text-white uppercase mb-2 sm:mb-4">
-          READY TO WORK?
-        </p>
-
-        {/* Giant Yellow Condensed Display Heading (Responsive font size to prevent overflow) */}
-        <div className="w-full overflow-hidden flex justify-center items-center py-2">
-          <h2 className="font-[family-name:var(--font-bebas)] text-[#FFE500] text-[13vw] sm:text-[12vw] md:text-[9rem] lg:text-[12rem] xl:text-[13.5rem] leading-[0.85] font-normal tracking-normal uppercase select-none transform scale-y-110 sm:scale-y-125 whitespace-nowrap">
-            CONTACT ME
-          </h2>
-        </div>
-
-        {/* Overlaid Floating Capsule Contact Button */}
-        <div className="relative -mt-6 sm:-mt-14 md:-mt-20 z-20 group">
-          <button
-            onClick={handleCopyEmail}
-            className="inline-flex items-center gap-3 sm:gap-4 bg-black/90 hover:bg-black border border-zinc-600/90 rounded-full px-5 py-2 sm:px-8 sm:py-3.5 shadow-[0_10px_35px_rgba(0,0,0,0.9)] backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[#FFE500] cursor-pointer"
-            aria-label="Copy contact email"
-          >
-            <span className="font-sans font-bold tracking-widest text-base sm:text-xl md:text-2xl text-white group-hover:text-[#FFE500] transition-colors">
-              {copied ? "COPIED!" : "CONTACT"}
-            </span>
-            <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-[#FFE500] text-black flex items-center justify-center shadow-md transition-transform duration-300 group-hover:rotate-[-45deg] group-hover:scale-110 shrink-0">
-              {copied ? (
-                <Check className="h-4 w-4 sm:h-5 sm:w-5 stroke-[3]" />
-              ) : (
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 stroke-[2.5]" />
-              )}
-            </div>
-          </button>
-        </div>
-
-        {/* Navigation Items Row with Yellow Star Separators */}
-        <nav className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-10 sm:mt-16 text-xs sm:text-sm font-semibold tracking-widest uppercase font-mono px-4 max-w-full">
-          <FlipLink href="/" baseColor="#A1A1AA" hoverColor="#FFE500">
-            HOME
-          </FlipLink>
-          <span className="text-[#FFE500] text-xs sm:text-sm select-none">✦</span>
-          <FlipLink href="/about" baseColor="#A1A1AA" hoverColor="#FFE500">
-            ABOUT
-          </FlipLink>
-          <span className="text-[#FFE500] text-xs sm:text-sm select-none">✦</span>
-          <FlipLink href="/projects" baseColor="#A1A1AA" hoverColor="#FFE500">
-            PROJECTS
-          </FlipLink>
-          <span className="text-[#FFE500] text-xs sm:text-sm select-none">✦</span>
-          <FlipLink href="/writing" baseColor="#A1A1AA" hoverColor="#FFE500">
-            WRITING
-          </FlipLink>
-        </nav>
-      </div>
-
-      {/* Middle Split Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 border-t border-b border-zinc-800 bg-black w-full max-w-full overflow-hidden">
-        {/* Left Cell */}
-        <div className="p-6 sm:p-10 border-b md:border-b-0 md:border-r border-zinc-800 flex items-center">
-          <p className="font-mono text-xs sm:text-sm tracking-wider text-zinc-300 font-medium uppercase leading-relaxed max-w-md">
-            GOT SOME EXCITING IDEAS? LET&apos;S CONNECT AND CREATE SOMETHING EXTRAORDINARY TOGETHER!
-          </p>
-        </div>
-
-        {/* Right Cell */}
-        <div
-          onClick={handleCopyEmail}
-          className="p-6 sm:p-10 flex items-center justify-between group cursor-pointer hover:bg-zinc-950/80 transition-colors overflow-hidden"
-        >
-          <div className="flex items-center gap-3 overflow-hidden min-w-0">
-            <span className="text-[#FFE500] text-lg sm:text-xl font-bold select-none shrink-0">✦</span>
-            <span className="font-mono text-xs sm:text-lg md:text-xl font-semibold text-white tracking-tight group-hover:text-[#FFE500] transition-colors truncate">
-              {siteConfig.contact.email}
-            </span>
-          </div>
-          <div className="shrink-0 ml-2 p-2 rounded-full border border-zinc-800 text-zinc-400 group-hover:border-[#FFE500] group-hover:text-[#FFE500] transition-colors">
-            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Footer Bar */}
-      <div className="px-6 sm:px-10 py-6 bg-black flex flex-col md:flex-row items-center justify-between text-xs font-mono w-full max-w-full overflow-hidden">
-        {/* Left Globe / Location Badge */}
-        <div className="flex items-center gap-3 text-zinc-400">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-300 hover:border-[#FFE500] hover:text-[#FFE500] transition-colors">
-            <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          </div>
-          <span className="tracking-widest uppercase text-[10px] sm:text-[11px] text-zinc-400">
-            {siteConfig.contact.location || "REMOTE"}
-          </span>
-        </div>
-
-        {/* Middle Social Outline Pills */}
-        {/* <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          {socialLinks.map((social) => (
-            <a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-zinc-700/80 hover:border-[#FFE500] hover:bg-[#FFE500] hover:text-black px-3.5 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-mono tracking-widest transition-all duration-200 text-zinc-300 uppercase"
-            >
-              {social.name}
-            </a>
-          ))}
-        </div> */}
-
-        {/* Right Credits */}
-        <div className="text-zinc-400 text-center md:text-right tracking-wider text-[11px] sm:text-xs">
-          Crafted by{" "}
-          <span className="font-extrabold text-[#FFE500] uppercase tracking-wider">
-            {siteConfig.name}
-          </span>
-        </div>
-      </div>
-    </footer>
-  )
+  return <footer className="overflow-hidden bg-black text-white">
+    <CheckerboardBanner /><RulerStrip />
+    <div className="relative flex flex-col items-center overflow-hidden px-4 py-14 text-center sm:py-24">
+      <p className="font-mono text-xs font-bold uppercase tracking-[.25em]">Have something in mind?</p>
+      <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(5rem,15vw,13.5rem)] font-normal uppercase leading-[.85] text-[#FFE500]">Let’s create</h2>
+      <button onClick={copyEmail} className="group relative -mt-2 inline-flex items-center gap-4 rounded-full border border-zinc-600 bg-black px-6 py-3 shadow-2xl transition hover:-translate-y-1 hover:border-[#FFE500] sm:-mt-10 sm:px-8" aria-label="Copy contact email">
+        <span className="font-bold uppercase tracking-widest">{copied ? "Email copied" : "Start a conversation"}</span><span className="grid h-9 w-9 place-items-center rounded-full bg-[#FFE500] text-black">{copied ? <Check size={18} /> : <ArrowRight size={18} />}</span>
+      </button>
+      <span className="mt-2 min-h-4 text-xs text-zinc-400" role="status">{error}</span>
+      <nav aria-label="Footer navigation" className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-widest text-zinc-400 sm:mt-16">
+        <Link href="/">Home</Link><span className="text-[#FFE500]">✦</span><Link href="/about">About</Link><span className="text-[#FFE500]">✦</span><Link href="/projects">Projects</Link><span className="text-[#FFE500]">✦</span><Link href="/writing">Writing</Link>
+      </nav>
+    </div>
+    <div className="grid border-y border-zinc-800 md:grid-cols-2">
+      <p className="border-b border-zinc-800 p-6 font-mono text-xs uppercase leading-relaxed tracking-wider text-zinc-300 md:border-b-0 md:border-r md:p-10">Good ideas deserve careful execution. Let’s make something useful, memorable, and built to last.</p>
+      <div className="flex items-center gap-3 p-6 md:p-10"><span className="text-[#FFE500]">✦</span><a href={`mailto:${siteConfig.contact.email}`} className="min-w-0 truncate font-mono text-xs font-semibold text-white transition hover:text-[#FFE500] sm:text-lg">{siteConfig.contact.email}</a><button onClick={copyEmail} aria-label="Copy email address" className="ml-auto rounded-full border border-zinc-700 p-2 text-zinc-400 transition hover:border-[#FFE500] hover:text-[#FFE500]">{copied ? <Check size={16} /> : <Copy size={16} />}</button></div>
+    </div>
+    <div className="flex flex-col items-center justify-between gap-4 px-6 py-6 font-mono text-[10px] uppercase tracking-widest text-zinc-400 sm:flex-row sm:px-10">
+      <span className="flex items-center gap-3"><Globe size={16} />{siteConfig.contact.location}</span>
+      <div className="flex gap-5">{Object.entries(siteConfig.socials).slice(0,3).map(([name,url]) => <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#FFE500]">{name}<ArrowUpRight size={11} /></a>)}</div>
+      <span>Crafted by <b className="text-[#FFE500]">{siteConfig.name}</b></span>
+    </div>
+  </footer>
 }
