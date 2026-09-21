@@ -1,58 +1,63 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useReducedMotion } from "./use-reduced-motion"
+import { useState, useEffect } from "react";
+import { useReducedMotion } from "./use-reduced-motion";
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+"
+const CHARS =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+";
 
 interface TextScrambleProps {
-    children: string
-    className?: string
-    speed?: number
+  children: string;
+  className?: string;
+  speed?: number;
 }
 
-export function TextScramble({ children, className, speed = 50 }: TextScrambleProps) {
-    const [text, setText] = useState(children)
-    const prefersReducedMotion = useReducedMotion()
+export function TextScramble({
+  children,
+  className,
+  speed = 50,
+}: TextScrambleProps) {
+  const [text, setText] = useState(children);
+  const prefersReducedMotion = useReducedMotion();
 
-    useEffect(() => {
-        if (prefersReducedMotion) {
-            setText(children)
-            return
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setText(children);
+      return;
+    }
+
+    let frame = 0;
+    let timeoutId: NodeJS.Timeout;
+
+    const scramble = () => {
+      let result = "";
+      for (let i = 0; i < children.length; i++) {
+        if (frame >= i * 3) {
+          result += children[i];
+        } else {
+          result += CHARS[Math.floor(Math.random() * CHARS.length)];
         }
+      }
+      setText(result);
 
-        let frame = 0
-        let timeoutId: NodeJS.Timeout
+      if (frame < children.length * 3) {
+        frame++;
+        timeoutId = setTimeout(scramble, speed);
+      }
+    };
 
-        const scramble = () => {
-            let result = ""
-            for (let i = 0; i < children.length; i++) {
-                if (frame >= i * 3) {
-                    result += children[i]
-                } else {
-                    result += CHARS[Math.floor(Math.random() * CHARS.length)]
-                }
-            }
-            setText(result)
+    scramble();
+    return () => clearTimeout(timeoutId);
+  }, [children, speed, prefersReducedMotion]);
 
-            if (frame < children.length * 3) {
-                frame++
-                timeoutId = setTimeout(scramble, speed)
-            }
-        }
-
-        scramble()
-        return () => clearTimeout(timeoutId)
-    }, [children, speed, prefersReducedMotion])
-
-    return (
-        <span
-            className={className}
-            onMouseEnter={() => {
-                // We could restart animation on hover here if wanted
-            }}
-        >
-            {text}
-        </span>
-    )
+  return (
+    <span
+      className={className}
+      onMouseEnter={() => {
+        // We could restart animation on hover here if wanted
+      }}
+    >
+      {text}
+    </span>
+  );
 }

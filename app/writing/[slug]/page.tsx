@@ -1,20 +1,20 @@
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
-import { getArticleBySlug, getAllArticles } from "@/lib/articles"
-import { ArticleClient } from "./article-client"
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getArticleBySlug, getAllArticles } from "@/lib/articles";
+import { ArticleClient } from "./article-client";
 
 export async function generateStaticParams() {
-  return getAllArticles().map((a) => ({ slug: a.slug }))
+  return getAllArticles().map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params
-  const article = getArticleBySlug(slug)
-  if (!article) return {}
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+  if (!article) return {};
 
   return {
     title: article.title,
@@ -33,17 +33,17 @@ export async function generateMetadata({
       title: article.title,
       description: article.excerpt,
     },
-  }
+  };
 }
 
 export default async function ArticlePage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const article = getArticleBySlug(slug)
-  if (!article) notFound()
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+  if (!article) notFound();
 
-  return <ArticleClient article={article} />
+  return <ArticleClient article={article} />;
 }

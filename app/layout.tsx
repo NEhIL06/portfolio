@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Bodoni_Moda, Playfair_Display, Bebas_Neue } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Bodoni_Moda,
+  Playfair_Display,
+  Bebas_Neue,
+} from "next/font/google";
 import "./globals.css";
 
 import { siteConfig } from "@/lib/site-config";
@@ -65,7 +71,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { LayoutShell } from "@/components/layout-shell"
+import { LayoutShell } from "@/components/layout-shell";
 
 export default function RootLayout({
   children,

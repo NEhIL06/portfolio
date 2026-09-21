@@ -1,14 +1,14 @@
-import { ragArticle } from "@/lib/article-rag"
+import { ragArticle } from "@/lib/article-rag";
 
 export interface Article {
-  slug: string
-  title: string
-  subtitle: string
-  date: string
-  readingTime: string
-  tags: string[]
-  excerpt: string
-  content: string // markdown-like string
+  slug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  excerpt: string;
+  content: string; // markdown-like string
 }
 
 export const articles: Article[] = [
@@ -16,7 +16,8 @@ export const articles: Article[] = [
   {
     slug: "authentication-is-not-one-thing",
     title: "Authentication Is Not One Thing",
-    subtitle: "The mental model that finally separated sessions, JWTs, OAuth, OIDC, and SSO for me.",
+    subtitle:
+      "The mental model that finally separated sessions, JWTs, OAuth, OIDC, and SSO for me.",
     date: "Aug 2026",
     readingTime: "11 min read",
     tags: ["Engineering", "Security", "Authentication", "System Design"],
@@ -276,7 +277,8 @@ But I do need to know which question each part of the system is answering.
   {
     slug: "junior-engineers-dont-get-to-stay-junior-anymore",
     title: "Junior Engineers Don't Get to Stay Junior Anymore",
-    subtitle: "AI is shortening the distance between \"Can you build this?\" and \"Should we build it this way?\"",
+    subtitle:
+      'AI is shortening the distance between "Can you build this?" and "Should we build it this way?"',
     date: "Aug 2025",
     readingTime: "12 min read",
     tags: ["Engineering", "AI", "Career", "Systems Thinking"],
@@ -750,12 +752,12 @@ We may just have to start earning it much sooner.
 
 **Junior engineers still get to be inexperienced. We just don't get to think narrowly anymore.**`,
   },
-]
+];
 
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find((a) => a.slug === slug)
+  return articles.find((a) => a.slug === slug);
 }
 
 export function getAllArticles(): Article[] {
-  return articles
+  return articles;
 }

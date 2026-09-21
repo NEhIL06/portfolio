@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useEffect, useState, useRef } from "react"
-import type { Article } from "@/lib/articles"
+import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+import type { Article } from "@/lib/articles";
 
 type DiagramType =
   | "auth-layers"
@@ -12,7 +12,7 @@ type DiagramType =
   | "query-toolbox"
   | "indexing-strategies"
   | "adaptive-rag"
-  | "long-context"
+  | "long-context";
 
 const DIAGRAM_TITLES: Record<DiagramType, string> = {
   "auth-layers": "The authentication landscape is a stack, not a list",
@@ -20,112 +20,302 @@ const DIAGRAM_TITLES: Record<DiagramType, string> = {
   "oauth-oidc": "How OAuth 2.0 and OIDC share one flow",
   "rag-pipeline": "RAG has an offline path and an online path",
   "query-toolbox": "Five ways to translate a question before retrieval",
-  "indexing-strategies": "The index can preserve more than one view of a document",
+  "indexing-strategies":
+    "The index can preserve more than one view of a document",
   "adaptive-rag": "Adaptive RAG turns a chain into a checked, recoverable flow",
-  "long-context": "The useful design space sits between tiny chunks and context stuffing",
-}
+  "long-context":
+    "The useful design space sits between tiny chunks and context stuffing",
+};
 
 function ArticleDiagram({ type }: { type: DiagramType }) {
   if (type === "rag-pipeline") {
     return (
-      <figure className="ar-figure ar-wide-figure" aria-labelledby={`${type}-title`}>
-        <figcaption id={`${type}-title`} className="ar-figure-title">{DIAGRAM_TITLES[type]}</figcaption>
+      <figure
+        className="ar-figure ar-wide-figure"
+        aria-labelledby={`${type}-title`}
+      >
+        <figcaption id={`${type}-title`} className="ar-figure-title">
+          {DIAGRAM_TITLES[type]}
+        </figcaption>
         <div className="ar-rag-pipeline">
           <section className="ar-pipeline-lane">
-            <div className="ar-lane-label"><strong>Offline</strong><span>build the index</span></div>
+            <div className="ar-lane-label">
+              <strong>Offline</strong>
+              <span>build the index</span>
+            </div>
             <div className="ar-node-row">
-              <div className="ar-node"><b>1</b><strong>Load</strong><span>documents + metadata</span></div><i>→</i>
-              <div className="ar-node"><b>2</b><strong>Split</strong><span>bounded, overlapping chunks</span></div><i>→</i>
-              <div className="ar-node"><b>3</b><strong>Embed</strong><span>semantic vectors</span></div><i>→</i>
-              <div className="ar-node ar-node-dark"><b>4</b><strong>Index</strong><span>vector + source text</span></div>
+              <div className="ar-node">
+                <b>1</b>
+                <strong>Load</strong>
+                <span>documents + metadata</span>
+              </div>
+              <i>→</i>
+              <div className="ar-node">
+                <b>2</b>
+                <strong>Split</strong>
+                <span>bounded, overlapping chunks</span>
+              </div>
+              <i>→</i>
+              <div className="ar-node">
+                <b>3</b>
+                <strong>Embed</strong>
+                <span>semantic vectors</span>
+              </div>
+              <i>→</i>
+              <div className="ar-node ar-node-dark">
+                <b>4</b>
+                <strong>Index</strong>
+                <span>vector + source text</span>
+              </div>
             </div>
           </section>
           <section className="ar-pipeline-lane">
-            <div className="ar-lane-label"><strong>Online</strong><span>answer one question</span></div>
+            <div className="ar-lane-label">
+              <strong>Online</strong>
+              <span>answer one question</span>
+            </div>
             <div className="ar-node-row">
-              <div className="ar-node"><b>A</b><strong>Question</strong><span>embed with same model</span></div><i>→</i>
-              <div className="ar-node"><b>B</b><strong>Retrieve</strong><span>top-k nearest chunks</span></div><i>→</i>
-              <div className="ar-node"><b>C</b><strong>Augment</strong><span>context + question prompt</span></div><i>→</i>
-              <div className="ar-node ar-node-dark"><b>D</b><strong>Generate</strong><span>grounded answer</span></div>
+              <div className="ar-node">
+                <b>A</b>
+                <strong>Question</strong>
+                <span>embed with same model</span>
+              </div>
+              <i>→</i>
+              <div className="ar-node">
+                <b>B</b>
+                <strong>Retrieve</strong>
+                <span>top-k nearest chunks</span>
+              </div>
+              <i>→</i>
+              <div className="ar-node">
+                <b>C</b>
+                <strong>Augment</strong>
+                <span>context + question prompt</span>
+              </div>
+              <i>→</i>
+              <div className="ar-node ar-node-dark">
+                <b>D</b>
+                <strong>Generate</strong>
+                <span>grounded answer</span>
+              </div>
             </div>
           </section>
         </div>
-        <p className="ar-figure-note">Retrieval does not change the model’s weights. It changes the evidence available inside the prompt at inference time.</p>
+        <p className="ar-figure-note">
+          Retrieval does not change the model’s weights. It changes the evidence
+          available inside the prompt at inference time.
+        </p>
       </figure>
-    )
+    );
   }
 
   if (type === "query-toolbox") {
     return (
-      <figure className="ar-figure ar-wide-figure" aria-labelledby={`${type}-title`}>
-        <figcaption id={`${type}-title`} className="ar-figure-title">{DIAGRAM_TITLES[type]}</figcaption>
-        <div className="ar-query-origin"><span>User question</span><i>↓</i></div>
-        <div className="ar-query-grid">
-          <div><b>01</b><strong>Multi-query</strong><span>Rephrase from several angles, retrieve each, take the unique union.</span></div>
-          <div><b>02</b><strong>RAG-Fusion</strong><span>Retrieve for several queries, then fuse the ranked lists with RRF.</span></div>
-          <div><b>03</b><strong>Decomposition</strong><span>Break a compound question into independently answerable sub-questions.</span></div>
-          <div><b>04</b><strong>Step-back</strong><span>Ask a broader principle question alongside the literal question.</span></div>
-          <div><b>05</b><strong>HyDE</strong><span>Generate a hypothetical answer passage and use its embedding to search.</span></div>
+      <figure
+        className="ar-figure ar-wide-figure"
+        aria-labelledby={`${type}-title`}
+      >
+        <figcaption id={`${type}-title`} className="ar-figure-title">
+          {DIAGRAM_TITLES[type]}
+        </figcaption>
+        <div className="ar-query-origin">
+          <span>User question</span>
+          <i>↓</i>
         </div>
-        <p className="ar-figure-note">Query translation changes the geometry or granularity of the search without changing the underlying corpus.</p>
+        <div className="ar-query-grid">
+          <div>
+            <b>01</b>
+            <strong>Multi-query</strong>
+            <span>
+              Rephrase from several angles, retrieve each, take the unique
+              union.
+            </span>
+          </div>
+          <div>
+            <b>02</b>
+            <strong>RAG-Fusion</strong>
+            <span>
+              Retrieve for several queries, then fuse the ranked lists with RRF.
+            </span>
+          </div>
+          <div>
+            <b>03</b>
+            <strong>Decomposition</strong>
+            <span>
+              Break a compound question into independently answerable
+              sub-questions.
+            </span>
+          </div>
+          <div>
+            <b>04</b>
+            <strong>Step-back</strong>
+            <span>
+              Ask a broader principle question alongside the literal question.
+            </span>
+          </div>
+          <div>
+            <b>05</b>
+            <strong>HyDE</strong>
+            <span>
+              Generate a hypothetical answer passage and use its embedding to
+              search.
+            </span>
+          </div>
+        </div>
+        <p className="ar-figure-note">
+          Query translation changes the geometry or granularity of the search
+          without changing the underlying corpus.
+        </p>
       </figure>
-    )
+    );
   }
 
   if (type === "indexing-strategies") {
     return (
-      <figure className="ar-figure ar-wide-figure" aria-labelledby={`${type}-title`}>
-        <figcaption id={`${type}-title`} className="ar-figure-title">{DIAGRAM_TITLES[type]}</figcaption>
+      <figure
+        className="ar-figure ar-wide-figure"
+        aria-labelledby={`${type}-title`}
+      >
+        <figcaption id={`${type}-title`} className="ar-figure-title">
+          {DIAGRAM_TITLES[type]}
+        </figcaption>
         <div className="ar-strategy-grid">
           <section>
             <div className="ar-strategy-kicker">Multi-representation</div>
-            <div className="ar-mini-flow"><span>summary</span><i>search</i><span className="ar-mini-dark">full document</span></div>
-            <p>Index an easy-to-match representation; return the richer parent document.</p>
+            <div className="ar-mini-flow">
+              <span>summary</span>
+              <i>search</i>
+              <span className="ar-mini-dark">full document</span>
+            </div>
+            <p>
+              Index an easy-to-match representation; return the richer parent
+              document.
+            </p>
           </section>
           <section>
             <div className="ar-strategy-kicker">RAPTOR</div>
-            <div className="ar-tree"><span>corpus summary</span><div><i>cluster summary</i><i>cluster summary</i></div><div><b>docs</b><b>docs</b><b>docs</b></div></div>
-            <p>Embed, cluster, summarize, and recurse; index every abstraction level.</p>
+            <div className="ar-tree">
+              <span>corpus summary</span>
+              <div>
+                <i>cluster summary</i>
+                <i>cluster summary</i>
+              </div>
+              <div>
+                <b>docs</b>
+                <b>docs</b>
+                <b>docs</b>
+              </div>
+            </div>
+            <p>
+              Embed, cluster, summarize, and recurse; index every abstraction
+              level.
+            </p>
           </section>
           <section>
             <div className="ar-strategy-kicker">ColBERT</div>
-            <div className="ar-token-vectors"><span>q₁</span><span>q₂</span><span>q₃</span><i>MaxSim</i><b>d₁ d₂ d₃ d₄ d₅</b></div>
-            <p>Keep one contextual vector per token and score with late interaction.</p>
+            <div className="ar-token-vectors">
+              <span>q₁</span>
+              <span>q₂</span>
+              <span>q₃</span>
+              <i>MaxSim</i>
+              <b>d₁ d₂ d₃ d₄ d₅</b>
+            </div>
+            <p>
+              Keep one contextual vector per token and score with late
+              interaction.
+            </p>
           </section>
         </div>
-        <p className="ar-figure-note">A single vector per chunk is only the baseline. The retrieval representation and the returned context do not have to be identical.</p>
+        <p className="ar-figure-note">
+          A single vector per chunk is only the baseline. The retrieval
+          representation and the returned context do not have to be identical.
+        </p>
       </figure>
-    )
+    );
   }
 
   if (type === "adaptive-rag") {
     return (
-      <figure className="ar-figure ar-wide-figure" aria-labelledby={`${type}-title`}>
-        <figcaption id={`${type}-title`} className="ar-figure-title">{DIAGRAM_TITLES[type]}</figcaption>
+      <figure
+        className="ar-figure ar-wide-figure"
+        aria-labelledby={`${type}-title`}
+      >
+        <figcaption id={`${type}-title`} className="ar-figure-title">
+          {DIAGRAM_TITLES[type]}
+        </figcaption>
         <div className="ar-adaptive-flow">
-          <div className="ar-adaptive-start">Question</div><div className="ar-adaptive-arrow">↓</div>
-          <div className="ar-adaptive-choice"><strong>Route</strong><span>vector store · web search · LLM fallback</span></div><div className="ar-adaptive-arrow">↓</div>
-          <div className="ar-adaptive-check"><strong>Are retrieved documents relevant?</strong><span>No → rewrite / search the web</span><span>Yes → generate</span></div><div className="ar-adaptive-arrow">↓</div>
-          <div className="ar-adaptive-check"><strong>Is the answer grounded in the documents?</strong><span>No → regenerate</span><span>Yes → test usefulness</span></div><div className="ar-adaptive-arrow">↓</div>
-          <div className="ar-adaptive-check"><strong>Does it answer the question?</strong><span>No → broaden retrieval</span><span>Yes → return</span></div>
+          <div className="ar-adaptive-start">Question</div>
+          <div className="ar-adaptive-arrow">↓</div>
+          <div className="ar-adaptive-choice">
+            <strong>Route</strong>
+            <span>vector store · web search · LLM fallback</span>
+          </div>
+          <div className="ar-adaptive-arrow">↓</div>
+          <div className="ar-adaptive-check">
+            <strong>Are retrieved documents relevant?</strong>
+            <span>No → rewrite / search the web</span>
+            <span>Yes → generate</span>
+          </div>
+          <div className="ar-adaptive-arrow">↓</div>
+          <div className="ar-adaptive-check">
+            <strong>Is the answer grounded in the documents?</strong>
+            <span>No → regenerate</span>
+            <span>Yes → test usefulness</span>
+          </div>
+          <div className="ar-adaptive-arrow">↓</div>
+          <div className="ar-adaptive-check">
+            <strong>Does it answer the question?</strong>
+            <span>No → broaden retrieval</span>
+            <span>Yes → return</span>
+          </div>
         </div>
-        <p className="ar-figure-note">Nodes modify shared state; conditional edges choose the next allowed transition. The loops are explicit, observable, and bounded.</p>
+        <p className="ar-figure-note">
+          Nodes modify shared state; conditional edges choose the next allowed
+          transition. The loops are explicit, observable, and bounded.
+        </p>
       </figure>
-    )
+    );
   }
 
   if (type === "long-context") {
     return (
-      <figure className="ar-figure ar-wide-figure" aria-labelledby={`${type}-title`}>
-        <figcaption id={`${type}-title`} className="ar-figure-title">{DIAGRAM_TITLES[type]}</figcaption>
+      <figure
+        className="ar-figure ar-wide-figure"
+        aria-labelledby={`${type}-title`}
+      >
+        <figcaption id={`${type}-title`} className="ar-figure-title">
+          {DIAGRAM_TITLES[type]}
+        </figcaption>
         <div className="ar-context-scale">
-          <section><strong>Precise chunks</strong><span>low token cost</span><span>complex tuning</span><span>recall risk</span></section><i>←</i>
-          <section className="ar-context-optimum"><small>likely middle</small><strong>Whole documents</strong><span>route first</span><span>preserve coherence</span><span>auditable access</span></section><i>→</i>
-          <section><strong>Stuff everything</strong><span>high token cost</span><span>latency</span><span>attention + security risk</span></section>
+          <section>
+            <strong>Precise chunks</strong>
+            <span>low token cost</span>
+            <span>complex tuning</span>
+            <span>recall risk</span>
+          </section>
+          <i>←</i>
+          <section className="ar-context-optimum">
+            <small>likely middle</small>
+            <strong>Whole documents</strong>
+            <span>route first</span>
+            <span>preserve coherence</span>
+            <span>auditable access</span>
+          </section>
+          <i>→</i>
+          <section>
+            <strong>Stuff everything</strong>
+            <span>high token cost</span>
+            <span>latency</span>
+            <span>attention + security risk</span>
+          </section>
         </div>
-        <p className="ar-figure-note">Longer context weakens the case for arbitrary micro-chunks, but it does not remove routing, retrieval, access control, cost, or attention limits.</p>
+        <p className="ar-figure-note">
+          Longer context weakens the case for arbitrary micro-chunks, but it
+          does not remove routing, retrieval, access control, cost, or attention
+          limits.
+        </p>
       </figure>
-    )
+    );
   }
 
   if (type === "auth-layers") {
@@ -162,10 +352,11 @@ function ArticleDiagram({ type }: { type: DiagramType }) {
           </div>
         </div>
         <p className="ar-figure-note">
-          The terms are related, but they solve different questions at different layers.
+          The terms are related, but they solve different questions at different
+          layers.
         </p>
       </figure>
-    )
+    );
   }
 
   if (type === "session-vs-token") {
@@ -178,27 +369,57 @@ function ArticleDiagram({ type }: { type: DiagramType }) {
           <section className="ar-compare-panel">
             <div className="ar-compare-heading">
               <span className="ar-step-number">A</span>
-              <div><strong>Session</strong><span>Server keeps the state</span></div>
+              <div>
+                <strong>Session</strong>
+                <span>Server keeps the state</span>
+              </div>
             </div>
-            <div className="ar-flow-row"><span>Client</span><b>credentials →</b><span>Server</span></div>
-            <div className="ar-flow-row"><span>Client</span><b>← session ID</b><span>Session store</span></div>
-            <p>Each request sends the ID. The server looks up the session before continuing.</p>
+            <div className="ar-flow-row">
+              <span>Client</span>
+              <b>credentials →</b>
+              <span>Server</span>
+            </div>
+            <div className="ar-flow-row">
+              <span>Client</span>
+              <b>← session ID</b>
+              <span>Session store</span>
+            </div>
+            <p>
+              Each request sends the ID. The server looks up the session before
+              continuing.
+            </p>
           </section>
           <section className="ar-compare-panel">
             <div className="ar-compare-heading">
               <span className="ar-step-number">B</span>
-              <div><strong>Signed token</strong><span>Token carries the claims</span></div>
+              <div>
+                <strong>Signed token</strong>
+                <span>Token carries the claims</span>
+              </div>
             </div>
-            <div className="ar-flow-row"><span>Client</span><b>credentials →</b><span>Server</span></div>
-            <div className="ar-flow-row"><span>Client</span><b>← signed JWT</b><span>Signer</span></div>
-            <p>Each request sends the token. The server can validate its signature locally.</p>
+            <div className="ar-flow-row">
+              <span>Client</span>
+              <b>credentials →</b>
+              <span>Server</span>
+            </div>
+            <div className="ar-flow-row">
+              <span>Client</span>
+              <b>← signed JWT</b>
+              <span>Signer</span>
+            </div>
+            <p>
+              Each request sends the token. The server can validate its
+              signature locally.
+            </p>
           </section>
         </div>
         <p className="ar-figure-note">
-          Sessions make revocation direct. Locally validated tokens remove a lookup but remain valid until they expire unless another revocation mechanism exists.
+          Sessions make revocation direct. Locally validated tokens remove a
+          lookup but remain valid until they expire unless another revocation
+          mechanism exists.
         </p>
       </figure>
-    )
+    );
   }
 
   return (
@@ -207,147 +428,225 @@ function ArticleDiagram({ type }: { type: DiagramType }) {
         {DIAGRAM_TITLES[type]}
       </figcaption>
       <ol className="ar-sequence">
-        <li><span>1</span><div><strong>App redirects the browser</strong><p>It requests access, identity, or both from the provider.</p></div></li>
-        <li><span>2</span><div><strong>User signs in and consents</strong><p>The password stays with the identity provider.</p></div></li>
-        <li><span>3</span><div><strong>Provider returns a code</strong><p>The app exchanges the short-lived code at the token endpoint.</p></div></li>
-        <li><span>4</span><div><strong>Different tokens answer different questions</strong><p>Access token: what can the app access? ID token: who authenticated?</p></div></li>
+        <li>
+          <span>1</span>
+          <div>
+            <strong>App redirects the browser</strong>
+            <p>It requests access, identity, or both from the provider.</p>
+          </div>
+        </li>
+        <li>
+          <span>2</span>
+          <div>
+            <strong>User signs in and consents</strong>
+            <p>The password stays with the identity provider.</p>
+          </div>
+        </li>
+        <li>
+          <span>3</span>
+          <div>
+            <strong>Provider returns a code</strong>
+            <p>The app exchanges the short-lived code at the token endpoint.</p>
+          </div>
+        </li>
+        <li>
+          <span>4</span>
+          <div>
+            <strong>Different tokens answer different questions</strong>
+            <p>
+              Access token: what can the app access? ID token: who
+              authenticated?
+            </p>
+          </div>
+        </li>
       </ol>
       <div className="ar-token-key">
-        <span><i className="ar-key-dot ar-key-access" />OAuth 2.0 → delegated access</span>
-        <span><i className="ar-key-dot ar-key-identity" />OIDC → verified identity</span>
+        <span>
+          <i className="ar-key-dot ar-key-access" />
+          OAuth 2.0 → delegated access
+        </span>
+        <span>
+          <i className="ar-key-dot ar-key-identity" />
+          OIDC → verified identity
+        </span>
       </div>
       <p className="ar-figure-note">
-        SSO is the experience created when several apps trust the same identity provider.
+        SSO is the experience created when several apps trust the same identity
+        provider.
       </p>
     </figure>
-  )
+  );
 }
 
 // ─── Inline renderer ──────────────────────────────────────────────────────────
 function renderInline(text: string): React.ReactNode {
-  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g)
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
     }
     if (part.startsWith("`") && part.endsWith("`")) {
-      return <code key={i} className="ar-inline-code">{part.slice(1, -1)}</code>
+      return (
+        <code key={i} className="ar-inline-code">
+          {part.slice(1, -1)}
+        </code>
+      );
     }
-    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (link) {
       return (
-        <a key={i} className="ar-inline-link" href={link[2]} target="_blank" rel="noreferrer">
+        <a
+          key={i}
+          className="ar-inline-link"
+          href={link[2]}
+          target="_blank"
+          rel="noreferrer"
+        >
           {link[1]}
         </a>
-      )
+      );
     }
-    return part
-  })
+    return part;
+  });
 }
 
 // Pull quote only when the ENTIRE paragraph is **bold**
 function isPullQuote(block: string): boolean {
-  const t = block.trim()
-  return t.startsWith("**") && t.endsWith("**") && t.indexOf("**", 2) === t.length - 2
+  const t = block.trim();
+  return (
+    t.startsWith("**") &&
+    t.endsWith("**") &&
+    t.indexOf("**", 2) === t.length - 2
+  );
 }
 
 function renderContent(raw: string) {
-  const nodes: React.ReactNode[] = []
-  const segments = raw.split(/(\[\[code:[^\]]+\]\][\s\S]*?\[\[\/code\]\])/g)
-  let nodeIndex = 0
+  const nodes: React.ReactNode[] = [];
+  const segments = raw.split(/(\[\[code:[^\]]+\]\][\s\S]*?\[\[\/code\]\])/g);
+  let nodeIndex = 0;
 
   segments.forEach((segment) => {
-    const codeBlock = segment.match(/^\[\[code:([^\]]+)\]\]\n?([\s\S]*?)\n?\[\[\/code\]\]$/)
+    const codeBlock = segment.match(
+      /^\[\[code:([^\]]+)\]\]\n?([\s\S]*?)\n?\[\[\/code\]\]$/,
+    );
     if (codeBlock) {
       nodes.push(
         <div key={nodeIndex++} className="ar-code-wrap">
           <div className="ar-code-label">{codeBlock[1]}</div>
-          <pre className="ar-code"><code>{codeBlock[2]}</code></pre>
-        </div>
-      )
-      return
+          <pre className="ar-code">
+            <code>{codeBlock[2]}</code>
+          </pre>
+        </div>,
+      );
+      return;
     }
 
     segment.split(/\n{2,}/).forEach((block) => {
-      const trimmed = block.trim()
-      if (!trimmed) return
-      const lines = trimmed.split("\n")
-      const key = nodeIndex++
+      const trimmed = block.trim();
+      if (!trimmed) return;
+      const lines = trimmed.split("\n");
+      const key = nodeIndex++;
 
-      const diagram = trimmed.match(/^\[\[diagram:([a-z-]+)\]\]$/)
+      const diagram = trimmed.match(/^\[\[diagram:([a-z-]+)\]\]$/);
       if (diagram) {
-        nodes.push(<ArticleDiagram key={key} type={diagram[1] as DiagramType} />)
-        return
+        nodes.push(
+          <ArticleDiagram key={key} type={diagram[1] as DiagramType} />,
+        );
+        return;
       }
 
       if (lines[0].startsWith("## ")) {
-        nodes.push(<h2 key={key} className="ar-h2">{lines[0].replace(/^## /, "")}</h2>)
-        return
+        nodes.push(
+          <h2 key={key} className="ar-h2">
+            {lines[0].replace(/^## /, "")}
+          </h2>,
+        );
+        return;
       }
 
       if (lines[0].startsWith("### ")) {
-        nodes.push(<h3 key={key} className="ar-h3">{lines[0].replace(/^### /, "")}</h3>)
-        return
+        nodes.push(
+          <h3 key={key} className="ar-h3">
+            {lines[0].replace(/^### /, "")}
+          </h3>,
+        );
+        return;
       }
 
       if (lines.every((line) => line.startsWith("> "))) {
         nodes.push(
           <blockquote key={key} className="ar-blockquote">
-            {renderInline(lines.map((line) => line.replace(/^> /, "")).join(" "))}
-          </blockquote>
-        )
-        return
+            {renderInline(
+              lines.map((line) => line.replace(/^> /, "")).join(" "),
+            )}
+          </blockquote>,
+        );
+        return;
       }
 
       if (lines.every((line) => line.startsWith("- "))) {
         nodes.push(
           <ul key={key} className="ar-list">
             {lines.map((line, lineIndex) => (
-              <li key={lineIndex} className="ar-list-item">{renderInline(line.replace(/^- /, ""))}</li>
+              <li key={lineIndex} className="ar-list-item">
+                {renderInline(line.replace(/^- /, ""))}
+              </li>
             ))}
-          </ul>
-        )
-        return
+          </ul>,
+        );
+        return;
       }
 
       if (lines.every((line) => /^\d+\. /.test(line))) {
         nodes.push(
           <ol key={key} className="ar-number-list">
             {lines.map((line, lineIndex) => (
-              <li key={lineIndex}>{renderInline(line.replace(/^\d+\. /, ""))}</li>
+              <li key={lineIndex}>
+                {renderInline(line.replace(/^\d+\. /, ""))}
+              </li>
             ))}
-          </ol>
-        )
-        return
+          </ol>,
+        );
+        return;
       }
 
       if (isPullQuote(trimmed)) {
-        nodes.push(<p key={key} className="ar-pull">{trimmed.slice(2, -2)}</p>)
-        return
+        nodes.push(
+          <p key={key} className="ar-pull">
+            {trimmed.slice(2, -2)}
+          </p>,
+        );
+        return;
       }
 
-      nodes.push(<p key={key} className="ar-para">{renderInline(trimmed)}</p>)
-    })
-  })
+      nodes.push(
+        <p key={key} className="ar-para">
+          {renderInline(trimmed)}
+        </p>,
+      );
+    });
+  });
 
-  return nodes
+  return nodes;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export function ArticleClient({ article }: { article: Article }) {
-  const [progress, setProgress] = useState(0)
-  const bodyRef = useRef<HTMLElement>(null)
+  const [progress, setProgress] = useState(0);
+  const bodyRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      const el = bodyRef.current
-      if (!el) return
-      const scrolled = Math.max(0, -el.getBoundingClientRect().top)
-      setProgress(Math.min(100, Math.round((scrolled / el.offsetHeight) * 100)))
-    }
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+      const el = bodyRef.current;
+      if (!el) return;
+      const scrolled = Math.max(0, -el.getBoundingClientRect().top);
+      setProgress(
+        Math.min(100, Math.round((scrolled / el.offsetHeight) * 100)),
+      );
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <main className="ar-root">
@@ -358,7 +657,9 @@ export function ArticleClient({ article }: { article: Article }) {
 
       {/* Sticky nav */}
       <div className="ar-sticky">
-        <Link href="/writing" className="ar-back">← Writing</Link>
+        <Link href="/writing" className="ar-back">
+          ← Writing
+        </Link>
         <span className="ar-sticky-title">{article.title}</span>
         <span className="ar-sticky-pct">{progress}%</span>
       </div>
@@ -367,7 +668,11 @@ export function ArticleClient({ article }: { article: Article }) {
       <header className="ar-hero">
         <div className="ar-hero-inner">
           <div className="ar-tag-row">
-            {article.tags.map(t => <span key={t} className="ar-tag">{t}</span>)}
+            {article.tags.map((t) => (
+              <span key={t} className="ar-tag">
+                {t}
+              </span>
+            ))}
           </div>
           <h1 className="ar-title">{article.title}</h1>
           <p className="ar-deck">{article.subtitle}</p>
@@ -375,7 +680,9 @@ export function ArticleClient({ article }: { article: Article }) {
             <span className="ar-avatar">NC</span>
             <div>
               <div className="ar-byline-name">Nehil Chandrakar</div>
-              <div className="ar-byline-meta">{article.date} · {article.readingTime}</div>
+              <div className="ar-byline-meta">
+                {article.date} · {article.readingTime}
+              </div>
             </div>
           </div>
         </div>
@@ -390,7 +697,9 @@ export function ArticleClient({ article }: { article: Article }) {
       <footer className="ar-footer">
         <div className="ar-footer-rule" />
         <p className="ar-footer-eyebrow">End of article</p>
-        <Link href="/writing" className="ar-footer-link">← Browse all writing</Link>
+        <Link href="/writing" className="ar-footer-link">
+          ← Browse all writing
+        </Link>
       </footer>
 
       <style>{`
@@ -742,5 +1051,5 @@ export function ArticleClient({ article }: { article: Article }) {
         }
       `}</style>
     </main>
-  )
+  );
 }

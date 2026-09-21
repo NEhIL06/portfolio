@@ -1,8 +1,8 @@
-
 export const siteConfig = {
   name: "Nehil Chandrakar",
-  url: "https://nehil.dev",
-  tagline: "Always building, crafting systems, and shaping scalable digital experiences.",
+  url: "https://nehil.vercel.dev",
+  tagline:
+    "Always building, crafting systems, and shaping scalable digital experiences.",
   role: "Full Stack Engineer",
   currentRole: {
     title: "Full Stack Engineer Intern",
@@ -18,9 +18,10 @@ export const siteConfig = {
       role: "Full Stack Engineer Intern",
       company: "Alcovia",
       duration: "6 months",
-      description: "Building scalable backend features, collaborating explicitly on seamless UX workflows.",
+      description:
+        "Building scalable backend features, collaborating explicitly on seamless UX workflows.",
       link: "https://x.com/alcovia",
-    }
+    },
   ],
   stats: [
     { label: "Projects", value: 14, suffix: "+" },
@@ -34,10 +35,10 @@ export const siteConfig = {
     leetcode: "https://leetcode.com/u/nehil_chandraakar/",
   },
   navItems: [
-    { href: '/', label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/about", label: "Who Am I?" },
     { href: "/projects", label: "My Work" },
-    { href: '/writing', label: "Writing" },
+    { href: "/writing", label: "Writing" },
   ],
   education: {
     institute: "Siddaganga Institute of Technology",
@@ -69,13 +70,15 @@ export const siteConfig = {
   },
   projectsPage: {
     title: "Selected Projects",
-    quote: "My Goal is to build systems that look simple on the surface and remain dependable under pressure.",
+    quote:
+      "My Goal is to build systems that look simple on the surface and remain dependable under pressure.",
   },
   projects: [
     // Provided additions
     {
       title: "Krishi Baazar",
-      description: "Mobile app empowering small farmers to list crops and connect directly with buyers.",
+      description:
+        "Mobile app empowering small farmers to list crops and connect directly with buyers.",
       stack: ["React Native", "Appwrite", "Node.js", "Redis", "REST APIs"],
       featured: true,
       link: "https://github.com/NEhIL06/Krishi_Bazaar",
@@ -89,8 +92,18 @@ export const siteConfig = {
     },
     {
       title: "SkyScope",
-      description: "Backend for a real-time 2D virtual office enabling presence and collaboration.",
-      stack: ["TurboRepo", "Node.js", "WebSockets", "WebRTC", "MongoDB", "Redis", "Docker", "CI/CD"],
+      description:
+        "Backend for a real-time 2D virtual office enabling presence and collaboration.",
+      stack: [
+        "TurboRepo",
+        "Node.js",
+        "WebSockets",
+        "WebRTC",
+        "MongoDB",
+        "Redis",
+        "Docker",
+        "CI/CD",
+      ],
       featured: true,
       link: "https://github.com/NEhIL06/metaverse_2d",
       demo: "https://metaverse-frontend-6gjy.onrender.com/",
@@ -103,8 +116,20 @@ export const siteConfig = {
     },
     {
       title: "Avanti",
-      description: "AI assistant simplifying travel ticketing and banking for elderly & multilingual users.",
-      stack: ["Three.js", "React.js", "Node.js", "Flask", "Gemini", "11Labs", "Rhubarb", "ffmpeg", "Sarvam.ai", "COnversational AI"],
+      description:
+        "AI assistant simplifying travel ticketing and banking for elderly & multilingual users.",
+      stack: [
+        "Three.js",
+        "React.js",
+        "Node.js",
+        "Flask",
+        "Gemini",
+        "11Labs",
+        "Rhubarb",
+        "ffmpeg",
+        "Sarvam.ai",
+        "COnversational AI",
+      ],
       featured: true,
       link: "https://github.com/NEhIL06/Avanti",
       demo: undefined,
@@ -117,49 +142,106 @@ export const siteConfig = {
     },
     {
       title: "The Journal ",
-      description: "Minimal Next.js front-end for a journaling platform focused on clarity and calm UI.",
-      stack: ["SpringBoot", "React", "Tailwind CSS", "Java", "Apache Kafka", "MongoDB", "JWT", "Swagger", "REST APIs"],
+      description:
+        "Minimal Next.js front-end for a journaling platform focused on clarity and calm UI.",
+      stack: [
+        "SpringBoot",
+        "React",
+        "Tailwind CSS",
+        "Java",
+        "Apache Kafka",
+        "MongoDB",
+        "JWT",
+        "Swagger",
+        "REST APIs",
+      ],
       link: "https://github.com/NEhIL06/The_Journal",
       demo: "https://the-journal-frontend-kvh8.vercel.app/",
       image: "/journal.png",
-      facts: ["Keyboard-first interactions", "Local drafts & autosave", "Theming and accessibility"],
-    }, {
+      facts: [
+        "Keyboard-first interactions",
+        "Local drafts & autosave",
+        "Theming and accessibility",
+      ],
+    },
+    {
       title: "zenletics",
-      description: "AI-powered fitness app offering personalized workout plans, nutrition advice, and progress tracking.",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "MongoDB", "JWT", "REST APIs", "Generative AI", "Gemini AI"],
+      description:
+        "AI-powered fitness app offering personalized workout plans, nutrition advice, and progress tracking.",
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "MongoDB",
+        "JWT",
+        "REST APIs",
+        "Generative AI",
+        "Gemini AI",
+      ],
       featured: true,
       link: "https://github.com/NEhIL06/zenfit",
       demo: "https://zenletics.vercel.app/",
       image: "/zenletics.png",
-      facts: ["Personalized workout plans", "Nutrition advice", "Progress tracking"]
+      facts: [
+        "Personalized workout plans",
+        "Nutrition advice",
+        "Progress tracking",
+      ],
     },
     {
       title: "KeyBank",
-      description: "AI-enabled API key management to store, rotate, and retrieve keys securely.",
+      description:
+        "AI-enabled API key management to store, rotate, and retrieve keys securely.",
       stack: ["Next.js", "TypeScript", "PostgreSQL", "tRPC", "JWT"],
       link: "#",
       demo: "https://keybankpro.vercel.app/",
       image: "/keybank.png",
-      facts: ["Secret versioning & rotation", "AI suggestions for least-privilege policies", "Audit trails"],
+      facts: [
+        "Secret versioning & rotation",
+        "AI suggestions for least-privilege policies",
+        "Audit trails",
+      ],
     },
 
     {
       title: "NewsAnchor — AI-powered news anchor",
-      description: "An AI-powered news anchor that summarizes, narrates, and presents daily headlines.",
-      stack: ["Three.js", "Vite.js", "React.js", "Node.js", "Flask", "Gemini", "11Labs", "Rhubarb", "ffmpeg", "Sarvam.ai"],
+      description:
+        "An AI-powered news anchor that summarizes, narrates, and presents daily headlines.",
+      stack: [
+        "Three.js",
+        "Vite.js",
+        "React.js",
+        "Node.js",
+        "Flask",
+        "Gemini",
+        "11Labs",
+        "Rhubarb",
+        "ffmpeg",
+        "Sarvam.ai",
+      ],
       link: "https://github.com/NEhIL06/NEWS_ANCHOR",
       demo: undefined,
       image: "/newsanchor.png",
-      facts: ["Multi-lingual narration", "Topic clustering", "Daily digest pipeline"],
+      facts: [
+        "Multi-lingual narration",
+        "Topic clustering",
+        "Daily digest pipeline",
+      ],
     },
     {
       title: "InstaFood",
-      description: "Instant food delivery experience with streamlined browsing and checkout.",
+      description:
+        "Instant food delivery experience with streamlined browsing and checkout.",
       stack: ["React Native", "Node.js", "Stripe", "Redis", "JavaScript"],
       link: "https://github.com/NEhIL06/Instafood",
       demo: undefined,
       image: "/instafood.png",
-      facts: ["Real-time delivery tracking", "Optimized menus & search", "Offer scheduling"],
+      facts: [
+        "Real-time delivery tracking",
+        "Optimized menus & search",
+        "Offer scheduling",
+      ],
     },
     {
       title: "AWS Music Recommender",
@@ -168,20 +250,38 @@ export const siteConfig = {
       link: "https://github.com/NEhIL06/AWSMusicRecommeder",
       demo: undefined,
       image: "/awsmusicrecommender.png",
-      facts: ["Feature stores on AWS", "Hybrid recommenders", "A/B tested playlists"],
+      facts: [
+        "Feature stores on AWS",
+        "Hybrid recommenders",
+        "A/B tested playlists",
+      ],
     },
     {
       title: "WebGen",
-      description: "AI-powered website generator that scaffolds modern, responsive sites.",
-      stack: ["React.js", "LLM", "Tailwind CSS", "Node.js", "Express.js", "JWT", "REST APIs"],
+      description:
+        "AI-powered website generator that scaffolds modern, responsive sites.",
+      stack: [
+        "React.js",
+        "LLM",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "JWT",
+        "REST APIs",
+      ],
       link: "https://github.com/NEhIL06/web_gen",
       demo: undefined,
       image: "/webgen.png",
-      facts: ["Component library aware generation", "Prompt presets", "One-click export"],
+      facts: [
+        "Component library aware generation",
+        "Prompt presets",
+        "One-click export",
+      ],
     },
     {
       title: "AI Food Recommender",
-      description: "AI-powered recommendation system suggesting dishes based on cravings, calories, and health preferences.",
+      description:
+        "AI-powered recommendation system suggesting dishes based on cravings, calories, and health preferences.",
       stack: ["Python", "Crew AI", "GRPO", "Vector DBMS", "LLM"],
       link: "https://github.com/NEhIL06/RAG-Engine-for-food-recommendation",
       demo: undefined,
@@ -189,11 +289,13 @@ export const siteConfig = {
       facts: [
         "Improved recommendation accuracy by 30%",
         "Multilingual support across 5+ Indian languages",
-        "Personalized health and diet-aware suggestions"
+        "Personalized health and diet-aware suggestions",
       ],
-    }, {
+    },
+    {
       title: "RAG_Talent_Search",
-      description: "A talent search engine leveraging Retrieval-Augmented Generation (RAG) to match candidates with job descriptions effectively.",
+      description:
+        "A talent search engine leveraging Retrieval-Augmented Generation (RAG) to match candidates with job descriptions effectively.",
       stack: ["Python", "FastAPI", "RAG", "LLM", "ChromaDB", "Elasticsearch"],
       link: "https://github.com/NEhIL06/RAG_talent_search",
       demo: undefined,
@@ -202,26 +304,50 @@ export const siteConfig = {
         "Combines dense and sparse retrieval for improved candidate-job matching",
         "Implements reranking with CrossEncoder (MiniLM-L-6-v2) for fine-grained scoring",
         "Evaluated using Recall@K, Precision@K, and MRR metrics for retrieval quality",
-        "Dockerized architecture for seamless local orchestration and deployment"
+        "Dockerized architecture for seamless local orchestration and deployment",
       ],
     },
     {
       title: "Interview Assitant Pro",
-      description: "Interview assistant, a platform dedicated to help HRs shortlist candidates and save company time.",
-      stack: ["React.js", "Express.js", "TypeScript", "Generative AI", "MongoDB", "Node.js", "JWT", "REST APIs", "Gemini", "RAG"],
+      description:
+        "Interview assistant, a platform dedicated to help HRs shortlist candidates and save company time.",
+      stack: [
+        "React.js",
+        "Express.js",
+        "TypeScript",
+        "Generative AI",
+        "MongoDB",
+        "Node.js",
+        "JWT",
+        "REST APIs",
+        "Gemini",
+        "RAG",
+      ],
       link: "https://github.com/NEhIL06/InterviewAssistant",
       demo: "https://interviewassistantfe.onrender.com/",
       image: "/interviewassistant.png",
       facts: [
         "Scores each response and summary of each candidates and a summary of the interview",
         "Conducts structured interviews based on the candidates resume",
-        "Saves HR time by automating the interview process"
+        "Saves HR time by automating the interview process",
       ],
     },
     {
       title: "EcoSap",
-      description: "An Platform designed to give initative to the small farmers to grow more trees and reduce the carbon footprint.",
-      stack: ["React.js", "Express.js", "TypeScript", "FASTApi", "YOLO", "MongoDB", "Node.js", "REST APIs", "Gemini", "Distributed Services"],
+      description:
+        "An Platform designed to give initative to the small farmers to grow more trees and reduce the carbon footprint.",
+      stack: [
+        "React.js",
+        "Express.js",
+        "TypeScript",
+        "FASTApi",
+        "YOLO",
+        "MongoDB",
+        "Node.js",
+        "REST APIs",
+        "Gemini",
+        "Distributed Services",
+      ],
       link: "https://github.com/NEhIL06/Ecosap",
       demo: undefined,
       image: "/interviewassistant.png",
@@ -234,8 +360,18 @@ export const siteConfig = {
 
     {
       title: "ScribeAI",
-      description: "Real-time AI-powered meeting transcription with intelligent summaries, action items, and key decisions.",
-      stack: ["Next.js", "TypeScript", "Socket.io", "Google Gemini", "PostgreSQL", "Prisma", "Better Auth", "Tailwind CSS"],
+      description:
+        "Real-time AI-powered meeting transcription with intelligent summaries, action items, and key decisions.",
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "Socket.io",
+        "Google Gemini",
+        "PostgreSQL",
+        "Prisma",
+        "Better Auth",
+        "Tailwind CSS",
+      ],
       featured: true,
       link: "https://github.com/NEhIL06/ScribeAI",
       demo: "https://scribe-ai-ws.vercel.app",
@@ -249,8 +385,20 @@ export const siteConfig = {
     },
     {
       title: "TruEstate",
-      description: "Comprehensive sales management dashboard for tracking and analyzing transaction data with advanced filtering and visualization.",
-      stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn UI", "Zustand", "Recharts", "Express", "Prisma", "PostgreSQL"],
+      description:
+        "Comprehensive sales management dashboard for tracking and analyzing transaction data with advanced filtering and visualization.",
+      stack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Shadcn UI",
+        "Zustand",
+        "Recharts",
+        "Express",
+        "Prisma",
+        "PostgreSQL",
+      ],
       link: "https://github.com/NEhIL06/TruEstate",
       demo: "https://tru-estate-teid.vercel.app",
       image: "/truestate.png",
@@ -263,8 +411,17 @@ export const siteConfig = {
     },
     {
       title: "Outbreak Prediction System",
-      description: "Real-time disease outbreak prediction and monitoring system powered by XGBoost machine learning.",
-      stack: ["Python", "FastAPI", "XGBoost", "React", "TypeScript", "WebSocket", "Tailwind CSS"],
+      description:
+        "Real-time disease outbreak prediction and monitoring system powered by XGBoost machine learning.",
+      stack: [
+        "Python",
+        "FastAPI",
+        "XGBoost",
+        "React",
+        "TypeScript",
+        "WebSocket",
+        "Tailwind CSS",
+      ],
       link: "https://github.com/NEhIL06/Realtime-health-system",
       demo: undefined,
       image: "/outbreak.png",
@@ -277,14 +434,25 @@ export const siteConfig = {
     },
 
     // Previously included
-
-
   ],
   achievements: [
-    { title: "Mercuria India Hackathon 2024 — EcoSap", subtitle: "2nd Prize", date: "Nov 2024" },
-    { title: "Emerging Tech Hackathon 2024 — Multi-Agent Orchestration for Choice Prediction", subtitle: "Honourable Mention", date: "Dec 2024" },
-    { title: "The Better Hack 2025 — Jarvis for Food (Multi-agentic orchestration using GRPO)", subtitle: "Top 5", date: "May 2025" },
-
+    {
+      title: "Mercuria India Hackathon 2024 — EcoSap",
+      subtitle: "2nd Prize",
+      date: "Nov 2024",
+    },
+    {
+      title:
+        "Emerging Tech Hackathon 2024 — Multi-Agent Orchestration for Choice Prediction",
+      subtitle: "Honourable Mention",
+      date: "Dec 2024",
+    },
+    {
+      title:
+        "The Better Hack 2025 — Jarvis for Food (Multi-agentic orchestration using GRPO)",
+      subtitle: "Top 5",
+      date: "May 2025",
+    },
   ],
   clubs: [
     {
@@ -292,7 +460,9 @@ export const siteConfig = {
       role: "Co-Founder & Secretary Community",
       since: "Nov 2024 – Present",
       location: "SIT, KA",
-      posts: ["Co-founded an organization empowering students in emerging tech."],
+      posts: [
+        "Co-founded an organization empowering students in emerging tech.",
+      ],
     },
     {
       name: "SARK",
@@ -321,11 +491,13 @@ export const siteConfig = {
         description: "Capturing stories in light and contrast.",
         image: "/me1.jpg",
       },
-
     ],
     gallery: [
       { src: "/mercuria.jpg", caption: "EcoSap — 2nd Prize, Mercuria 2024" },
-      { src: "/metadome.jpg", caption: "Multi-agent orchestration at Emerging Tech 2024" },
+      {
+        src: "/metadome.jpg",
+        caption: "Multi-agent orchestration at Emerging Tech 2024",
+      },
       { src: "/latenights.jpg", caption: "latenights sprints" },
       { src: "/companyvisits2.jpg", caption: "Company visits" },
       { src: "/sarkworkshop.jpg", caption: "Hands-on workshop at SARK" },
@@ -340,4 +512,4 @@ export const siteConfig = {
       preview: "/youtube-preview.png",
     },
   },
-}
+};

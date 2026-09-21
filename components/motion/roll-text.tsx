@@ -1,10 +1,13 @@
-import type { CSSProperties } from "react"
+import type { CSSProperties } from "react";
 
 export function RollText({ children }: { children: string }) {
-  const characters = Array.from(children)
+  const characters = Array.from(children);
 
   const row = (hovered: boolean) => (
-    <span className={`roll-text-row${hovered ? " roll-text-row-hover" : ""}`} aria-hidden="true">
+    <span
+      className={`roll-text-row${hovered ? " roll-text-row-hover" : ""}`}
+      aria-hidden="true"
+    >
       {characters.map((character, index) => (
         <span
           className="roll-text-character"
@@ -15,7 +18,7 @@ export function RollText({ children }: { children: string }) {
         </span>
       ))}
     </span>
-  )
+  );
 
   return (
     <span className="roll-text">
@@ -23,5 +26,5 @@ export function RollText({ children }: { children: string }) {
       {row(false)}
       {row(true)}
     </span>
-  )
+  );
 }

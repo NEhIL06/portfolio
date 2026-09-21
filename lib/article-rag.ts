@@ -1,7 +1,8 @@
 export const ragArticle = {
   slug: "rag-from-scratch-beyond-the-vector-database",
   title: "RAG From Scratch: Beyond the Vector Database",
-  subtitle: "An 18-part mental model for indexing, query translation, routing, retrieval, self-correction, and the long-context future of RAG.",
+  subtitle:
+    "An 18-part mental model for indexing, query translation, routing, retrieval, self-correction, and the long-context future of RAG.",
   date: "Aug 2026",
   readingTime: "38 min read",
   tags: ["AI", "RAG", "LLMs", "LangChain", "System Design"],
@@ -517,4 +518,4 @@ That is why the phrase “from scratch” fits this course so well. It does not 
 - [Corrective Retrieval Augmented Generation](https://arxiv.org/abs/2401.15884)
 - [Self-RAG: Retrieve, Generate, and Critique through Self-Reflection](https://arxiv.org/abs/2310.11511)
 - [Adaptive-RAG: Adapting Retrieval to Question Complexity](https://arxiv.org/abs/2403.14403)`,
-}
+};
