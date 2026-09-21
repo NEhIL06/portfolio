@@ -52,17 +52,6 @@ export function Hero() {
         </div>
       </div>
       <div className="hero-footnote">
-        <span>
-          Currently at{" "}
-          <a
-            href={siteConfig.experience[0].link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <RollText>{siteConfig.currentRole.company}</RollText>
-            <ArrowUpRight size={12} />
-          </a>
-        </span>
         <a href="#about">
           <RollText>A little more about me</RollText>
           <ArrowDown size={13} />

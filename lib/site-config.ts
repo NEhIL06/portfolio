@@ -19,8 +19,9 @@ export const siteConfig = {
       company: "Alcovia",
       duration: "6 months",
       description:
-        "Building scalable backend features, collaborating explicitly on seamless UX workflows.",
-      link: "https://x.com/alcovia",
+        "Lead software engineer who designed and shipped Alcovia's entire flagship ecosystem from scratch: 3 React Native apps, 2 Next.js web apps, 374 API endpoints, 49 background jobs, and production AI pipelines. Owned everything from architecture to deployment.",
+      link: "https://alcovia.life/",
+      location: "Gurugram, Haryana"
     },
   ],
   stats: [

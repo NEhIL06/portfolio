@@ -15,7 +15,7 @@ export function Experience() {
         <ScrollReveal className="experience-row" key={exp.company}>
           <div>
             <span className="eyebrow">{exp.duration}</span>
-            <p className="muted">{siteConfig.contact.location}</p>
+            <p className="muted">{exp.location}</p>
           </div>
           <div>
             <h3>{exp.role}</h3>
