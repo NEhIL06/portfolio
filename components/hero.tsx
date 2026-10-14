@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Asterisk } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
 import { RollText } from "@/components/motion/roll-text";
 export function Hero() {
   return (
