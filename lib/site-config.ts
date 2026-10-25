@@ -10,18 +10,18 @@ export const siteConfig = {
   },
   contact: {
     email: "nehil.contact@gmail.com",
-    phone: "",
+    phone: "9131203322",
     location: "Remote",
   },
   experience: [
     {
-      role: "Full Stack Engineer Intern",
+      role: "Fullstack Engineering Intern",
       company: "Alcovia",
-      duration: "6 months",
+      duration: "Jan 2026 – Jun 2026",
       description:
-        "Lead software engineer who designed and shipped Alcovia's entire flagship ecosystem from scratch: 3 React Native apps, 2 Next.js web apps, 374 API endpoints, 49 background jobs, and production AI pipelines. Owned everything from architecture to deployment.",
+        "Redesigned and launched the flagship web platform (alcovia.life) scaling daily traffic from 4–5 to 1,500–2,000+ visitors with sub-second loads. Spearheaded core product ecosystem shipping 3 React Native apps, 2 Next.js apps, WebSocket service with 120+ PostgreSQL models and 400+ API endpoints. Architected transactional outbox pipeline with PostgreSQL advisory locking across 23 ClickUp entities, and built asynchronous Gemini AI extraction pipeline with zero timeouts.",
       link: "https://alcovia.life/",
-      location: "Gurugram, Haryana"
+      location: "Gurugram, Haryana",
     },
   ],
   stats: [
@@ -37,36 +37,45 @@ export const siteConfig = {
   },
   navItems: [
     { href: "/", label: "Home" },
+    { href: "/fullstack", label: "Fullstack" },
+    { href: "/projects", label: "Work" },
     { href: "/about", label: "Who Am I?" },
-    { href: "/projects", label: "My Work" },
     { href: "/writing", label: "Writing" },
   ],
   education: {
     institute: "Siddaganga Institute of Technology",
     location: "Tumkur, India",
-    degree: "B.E. in CSE (AI/ML)",
+    degree: "B.E. in Computer Science and Engineering (AI/ML) | CGPA: 7.72",
     graduation: "Jun 2026",
   },
   skills: {
-    languages: ["Java", "JavaScript", "Python"],
+    languages: ["Python", "Go", "TypeScript", "Java"],
     frameworks: [
-      "Spring Boot",
-      "React.js",
+      "Go (net/http, sync.Pool)",
+      "FastAPI",
       "Node.js",
-      "Express.js",
-      "React Native",
-      "AWS (Lambda, SageMaker)",
-      "Git",
-      "Docker",
+      "PostgreSQL",
       "MongoDB",
-      "MySQL",
       "Redis",
+      "RabbitMQ",
+      "WebSockets",
+      "Docker",
+      "AWS (EC2, S3, Lambda)",
+      "Git & Linux",
+    ],
+    aiSystems: [
+      "LangGraph",
+      "RAG Architectures",
+      "Vector Search (ChromaDB, RVSS)",
+      "ONNX Runtime",
+      "Cross-Encoders",
     ],
     fundamentals: [
-      "Database Management",
       "Data Structures & Algorithms",
-      "Operating Systems",
-      "Object-Oriented Programming",
+      "System Design",
+      "Object-Oriented Programming (OOP)",
+      "DBMS",
+      "Computer Networks",
     ],
   },
   projectsPage: {
@@ -75,6 +84,31 @@ export const siteConfig = {
       "My Goal is to build systems that look simple on the surface and remain dependable under pressure.",
   },
   projects: [
+    {
+      title: "ZenFit: Distributed MultiModal AI Coach",
+      description:
+        "High-concurrency Go API Gateway (3,819 req/s at 0.95MB RAM) & speech microservice streaming raw audio. Agentic Self-RAG engine delivering 3.16ms P50 TTFT with Redis VSS HNSW caching and CPU-native FlashRank ONNX cross-encoder reranking.",
+      stack: [
+        "Go",
+        "Python",
+        "Redis VSS",
+        "RabbitMQ",
+        "Docker",
+        "ONNX",
+        "FastAPI",
+      ],
+      featured: true,
+      link: "https://github.com/NEhIL06/zenfit",
+      demo: "https://zenletics.vercel.app/",
+      image: "/zenletics.png",
+      facts: [
+        "Go Gateway handles 3,819 req/s (P50: 7.54ms) at 0.95MB RAM with sync.Pool zero-alloc reuse",
+        "Agentic Self-RAG delivers 3.16ms P50 TTFT via Redis VSS HNSW semantic caching with Dense + BM25 RRF (k=60)",
+        "CPU-native FlashRank ONNX cross-encoder (<1ms latency) with calibrated confidence gating (τ ≥ 0.65)",
+        "Dual-stream HTTP/2 SSE sentence buffering for sub-500ms TTFA; RabbitMQ at 318.4 req/s with Redis idempotency",
+        "Asymmetric RS256 JWT auth with RFC 7517 dynamic JWKS discovery and instant Redis denylist revocation",
+      ],
+    },
     // Provided additions
     {
       title: "Krishi Baazar",
@@ -439,13 +473,13 @@ export const siteConfig = {
   achievements: [
     {
       title: "Mercuria India Hackathon 2024 — EcoSap",
-      subtitle: "2nd Prize",
+      subtitle: "2nd Prize among 450+ teams Nationwide",
       date: "Nov 2024",
     },
     {
       title:
-        "Emerging Tech Hackathon 2024 — Multi-Agent Orchestration for Choice Prediction",
-      subtitle: "Honourable Mention",
+        "Emerging Tech Hackathon 2024 — Multi-Agent Choice Prediction",
+      subtitle: "3rd Place among 200+ professionals & students",
       date: "Dec 2024",
     },
     {

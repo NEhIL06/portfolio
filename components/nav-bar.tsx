@@ -7,6 +7,7 @@ import { motion, useScroll } from "framer-motion";
 import { RollText } from "@/components/motion/roll-text";
 const links = [
   { href: "/", label: "Home" },
+  { href: "/fullstack", label: "Fullstack" },
   { href: "/projects", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/writing", label: "Writing" },
