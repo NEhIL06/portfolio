@@ -41,7 +41,7 @@ export default function MinimalPage() {
           <div className="text-[15px] sm:text-base leading-relaxed text-zinc-300 space-y-3 font-sans">
             <p>
               i&apos;m an engineer specializing in <strong className="text-white font-medium">distributed systems</strong> and{" "}
-              <strong className="text-white font-medium">AI infrastructure</strong>. currently completing my B.E. in CS (AI/ML) at Siddaganga Institute of Technology and building core systems at Alcovia.
+              <strong className="text-white font-medium">AI infrastructure</strong>. Completed my B.E. in CS (AI/ML) at Siddaganga Institute of Technology and building core systems at Alcovia.
             </p>
             <p className="text-zinc-400">
               systems and high-throughput backend is what i specialize in. on the side, i design agentic RAG engines, low-latency microservices, and cross-encoder vector search pipelines.
